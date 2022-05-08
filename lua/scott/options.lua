@@ -38,6 +38,7 @@ o.guifont = "firacode"
 o.background="dark"
 o.syntax="enable"
 o.shortmess:append "c"
+-- o.colorcolumn = 80
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]

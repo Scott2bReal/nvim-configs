@@ -93,7 +93,8 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
 
   -- VimWiki
-  use 'vimwiki/vimwiki' -- Personal wiki (<leader>ww)
+  use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
+  use "michal-h21/vimwiki-sync" -- Automatically sync vimwiki on open and close
 
   -- Telescope
   use "nvim-telescope/telescope.nvim" -- Fuzzy file finder (<leader>f)
