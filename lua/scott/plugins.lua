@@ -54,8 +54,8 @@ return packer.startup(function(use)
   use "akinsho/bufferline.nvim" -- List buffers like tabs at the top of the screen
 
   -- Colorschemes
-  use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua
-  use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
+  -- use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua
+  -- use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
   use "wittyjudge/gruvbox-material.nvim"
 
   -- Colorizer
