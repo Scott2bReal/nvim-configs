@@ -1,7 +1,6 @@
 require "scott.options"
 require "scott.keymaps"
 require "scott.plugins"
-require "scott.gruvbox-material"
 require "scott.colorscheme"
 require "scott.lualine"
 require "scott.cmp"
