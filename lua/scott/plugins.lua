@@ -59,7 +59,7 @@ return packer.startup(function(use)
   use "wittyjudge/gruvbox-material.nvim"
 
   -- Colorizer
-  use "norcalli/nvim-colorizer.lua"
+  use { "norcalli/nvim-colorizer.lua", opt = true, cmd = { "ColorizerToggle" } }
 
   -- Comment
   use "numToStr/Comment.nvim" -- Easily comment lines
