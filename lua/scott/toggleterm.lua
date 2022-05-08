@@ -75,3 +75,9 @@ local irb = Terminal:new({ cmd = "irb", hidden = true })
 function _IRB_TOGGLE()
   irb:toggle()
 end
+
+local psql = Terminal:new({ cmd = "psql", hidden = true })
+
+function _PSQL_TOGGLE()
+  psql:toggle()
+end

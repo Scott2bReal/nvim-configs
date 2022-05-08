@@ -40,7 +40,7 @@ packer.init {
 
 -- Plugins!
 return packer.startup(function(use)
-  -- Plugins go here
+  -- General/dependency plugins
   use "wbthomason/packer.nvim" -- Packer manages itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim
   use "nvim-lua/plenary.nvim" -- Lua functions required by many plugins
@@ -49,7 +49,7 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
   -- Alpha
-  use 'goolord/alpha-nvim'
+  use 'goolord/alpha-nvim' -- Dashboard
 
   -- Autopairs
   use "windwp/nvim-autopairs" -- Auto close stuff like "" or ()
@@ -63,6 +63,7 @@ return packer.startup(function(use)
   use "wittyjudge/gruvbox-material.nvim"
 
   -- Colorizer
+  -- Preview colors in-file. Lazy load, enable with :ColorizerToggle
   use { "norcalli/nvim-colorizer.lua", opt = true, cmd = { "ColorizerToggle" } }
 
   -- Comment
@@ -102,8 +103,8 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim" -- Project management plugin
 
   -- Snippets
-  use "L3MON4D3/LuaSnip" -- snippet engine
-  use "rafamadriz/friendly-snippets" -- snippetssss
+  use "L3MON4D3/LuaSnip" -- Snippet engine
+  use "rafamadriz/friendly-snippets" -- Lots of snipets
 
   -- VimWiki
   use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
