@@ -46,6 +46,10 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Lua functions required by many plugins
   use "kyazdani42/nvim-web-devicons" -- Icons required by many plugins
   use "moll/vim-bbye" -- Makes sure BDelete won't exit neovim
+  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+
+  -- Alpha
+  use 'goolord/alpha-nvim'
 
   -- Autopairs
   use "windwp/nvim-autopairs" -- Auto close stuff like "" or ()
@@ -77,20 +81,29 @@ return packer.startup(function(use)
   -- Gitsigns
   use "lewis6991/gitsigns.nvim" -- Shows git indicators on each line
 
+  -- Impatient
+  use 'lewis6991/impatient.nvim' -- Creates cache to speed up loading Lua modules/nvim startup time
+
+  -- Indentline
+  use 'lukas-reineke/indent-blankline.nvim' -- Shows line on indents
+
   -- Lualine
   use 'nvim-lualine/lualine.nvim' -- Status bar, requires web dev icons
 
-  -- Snippets
-  use "L3MON4D3/LuaSnip" -- snippet engine
-  use "rafamadriz/friendly-snippets" -- snippetssss
-
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer
+  use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- NvimTree
   use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
+
+  -- Project Nvim
+  use "ahmedkhalf/project.nvim" -- Project management plugin
+
+  -- Snippets
+  use "L3MON4D3/LuaSnip" -- snippet engine
+  use "rafamadriz/friendly-snippets" -- snippetssss
 
   -- VimWiki
   use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
@@ -109,6 +122,9 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "p00f/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
+
+  -- Which-Key
+  use "folke/which-key.nvim" -- Keybind help popup
 
   -- Automatically set up configuration after cloning packer.nvim
   -- Always goes after all plugins!

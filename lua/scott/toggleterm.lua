@@ -14,8 +14,7 @@ toggleterm.setup({
 	start_in_insert = true,
 	insert_mappings = true,
 	persist_size = true,
-	-- direction = "float",
-  direction = "horizontal",
+  direction = "float", -- "vertial, horizontal, or float"
 	close_on_exit = true,
 	shell = vim.o.shell,
 	float_opts = {
@@ -69,4 +68,10 @@ local python = Terminal:new({ cmd = "python", hidden = true })
 
 function _PYTHON_TOGGLE()
 	python:toggle()
+end
+
+local irb = Terminal:new({ cmd = "irb", hidden = true })
+
+function _IRB_TOGGLE()
+  irb:toggle()
 end

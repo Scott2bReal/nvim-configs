@@ -33,8 +33,7 @@ o.signcolumn = "yes:1"                      -- always show the sign column, othe
 o.wrap = false                            -- display lines as one long line
 o.scrolloff = 8                           -- is one of my fav
 o.sidescrolloff = 8
--- o.guifont = "monospace:h17"               -- the font used in graphical neovim applications
-o.guifont = "firacode"
+o.guifont = "firacode"                    -- the font used in graphical neovim applications
 o.background="dark"
 o.syntax="enable"
 o.shortmess:append "c"
