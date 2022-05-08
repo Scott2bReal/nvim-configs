@@ -44,15 +44,22 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Packer manages itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim
   use "nvim-lua/plenary.nvim" -- Lua functions required by many plugins
-  use "kyazdani42/nvim-web-devicons"
+  use "kyazdani42/nvim-web-devicons" -- Icons required by many plugins
+  use "moll/vim-bbye" -- Makes sure BDelete won't exit neovim
 
   -- Autopairs
-  use "windwp/nvim-autopairs"
+  use "windwp/nvim-autopairs" -- Auto close stuff like "" or ()
+
+  -- Bufferline
+  use "akinsho/bufferline.nvim" -- List buffers like tabs at the top of the screen
 
   -- Colorschemes
   use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua
   use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
   use "wittyjudge/gruvbox-material.nvim"
+
+  -- Colorizer
+  use "norcalli/nvim-colorizer.lua"
 
   -- Comment
   use "numToStr/Comment.nvim" -- Easily comment lines
@@ -68,7 +75,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" --snippet completion
 
   -- Gitsigns
-  use "lewis6991/gitsigns.nvim"
+  use "lewis6991/gitsigns.nvim" -- Shows git indicators on each line
 
   -- Lualine
   use 'nvim-lualine/lualine.nvim' -- Status bar, requires web dev icons
@@ -80,26 +87,27 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- NvimTree
-  use "kyazdani42/nvim-tree.lua"
+  use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
 
   -- VimWiki
-  use 'vimwiki/vimwiki'
+  use 'vimwiki/vimwiki' -- Personal wiki (<leader>ww)
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-media-files.nvim"
+  use "nvim-telescope/telescope.nvim" -- Fuzzy file finder (<leader>f)
+  use "nvim-telescope/telescope-media-files.nvim" -- Preview images in telescope
 
   -- ToggleTerm
-  use "akinsho/toggleterm.nvim"
+  use "akinsho/toggleterm.nvim" -- Open terminal inside nvim buffer (<C-\>)
 
   --Treesitter
   use {
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
     run = ":TSUpdate",
   }
-  use "p00f/nvim-ts-rainbow"
+  use "p00f/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
 
   -- Automatically set up configuration after cloning packer.nvim
   -- Always goes after all plugins!
