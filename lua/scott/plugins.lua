@@ -106,9 +106,8 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" -- Snippet engine
   use "rafamadriz/friendly-snippets" -- Lots of snipets
 
-  -- VimWiki
-  use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
-  use "michal-h21/vimwiki-sync" -- Automatically sync vimwiki on open and close
+  -- Surround
+  use "ur4ltz/surround.nvim" -- Keybinds to auto-surround selected text
 
   -- Telescope
   use "nvim-telescope/telescope.nvim" -- Fuzzy file finder (<leader>f)
@@ -123,6 +122,10 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "p00f/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
+
+  -- VimWiki
+  use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
+  use "michal-h21/vimwiki-sync" -- Automatically sync vimwiki on open and close
 
   -- Which-Key
   use "folke/which-key.nvim" -- Keybind help popup
