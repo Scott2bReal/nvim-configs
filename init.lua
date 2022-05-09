@@ -1,3 +1,4 @@
+require "scott.impatient"
 require "scott.options"
 require "scott.keymaps"
 require "scott.plugins"
