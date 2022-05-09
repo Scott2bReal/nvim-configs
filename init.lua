@@ -1,5 +1,6 @@
 require "scott.options"
 require "scott.keymaps"
+
 require "scott.plugins"
 require "scott.colorscheme"
 require "scott.lualine"
