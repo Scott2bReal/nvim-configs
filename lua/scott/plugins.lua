@@ -113,6 +113,9 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim" -- Fuzzy file finder (<leader>f)
   use "nvim-telescope/telescope-media-files.nvim" -- Preview images in telescope
 
+  -- Tidy
+  use "McAuleyPenney/tidy.nvim" -- Remove trailing whitespace and blank lines on file write
+
   -- ToggleTerm
   use "akinsho/toggleterm.nvim" -- Open terminal inside nvim buffer (<C-\>)
 
