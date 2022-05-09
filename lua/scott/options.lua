@@ -50,3 +50,6 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 vim.g.vimwiki_list = {{path = "~/vimwiki", syntax = "markdown", ext = ".md"}}
 vim.g.gruvbox_material_palette = "original"
 -- vim.g.gruvbox_material_palette = "dark"
+
+-- Disable perl support checkhealth warning
+vim.g.lodaded_perl_provider = 0
