@@ -3,5 +3,5 @@ if not status_ok then
 	return
 end
 
-require("scott.lsp.lsp-installer")
+require("scott.lsp.configs")
 require("scott.lsp.handlers").setup()
