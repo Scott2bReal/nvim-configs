@@ -173,7 +173,7 @@ local mappings = {
 
   t = {
     name = "Terminal",
-    i = { "<cmd>lua _IRB_TOGGLE()<cr>", "IRB"},
+    i = { "<cmd>lua _IRB_TOGGLE()<cr>", "IRB" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },

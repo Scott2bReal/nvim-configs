@@ -18,3 +18,9 @@ surround.setup {
   },
   prefix = "s"
 }
+
+-- Normal Mode - Sandwich Mode
+--     Add surrounding characters. ( visually select then press s<char> or press sa{motion}{char})
+--     Provides key mapping to replace surrounding characters.( sr<from><to> )
+--     Provides key mapping to delete surrounding characters.( sd<char> )
+--     ss repeats last surround command.

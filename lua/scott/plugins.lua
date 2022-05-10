@@ -79,6 +79,10 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp" -- use lsp for completion
   use "saadparwaiz1/cmp_luasnip" --snippet completion
 
+  -- DAP
+  -- use "mfussenegger/nvim-dap" -- Debug Adapter Protocol client
+  -- use "suketa/nvim-dap-ruby" -- Ruby configs for DAP
+
   -- Gitsigns
   use "lewis6991/gitsigns.nvim" -- Shows git indicators on each line
 

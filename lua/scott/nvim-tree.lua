@@ -21,7 +21,7 @@ vim.g.nvim_tree_icons = {
   },
 }
 
-local status_ok, _= pcall(require, "nvim-tree")
+local status_ok, _ = pcall(require, "nvim-tree")
 if not status_ok then
   vim.notify("NvimTree couldn't load")
   return
@@ -34,7 +34,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   disable_netrw = true,
   hijack_cursor = true,
