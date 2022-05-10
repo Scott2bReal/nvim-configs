@@ -165,6 +165,7 @@ local mappings = {
   m = {
     name = "Markdown",
     g = { "<cmd>Glow<cr>", "Open preview in glow" },
+    p = { "<cmd>MarkdownPreviewToggle<cr>", "Open preview in browser"},
   },
 
   s = {

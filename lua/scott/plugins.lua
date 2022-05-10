@@ -105,7 +105,7 @@ return packer.startup(function(use)
   use { "ellisonleao/glow.nvim", branch = 'main' } -- In-vim markdown preview (Glow)
   use {
     'iamcco/markdown-preview.nvim',
-    opt = false,
+    ft = "markdown",
     run = 'cd app && npm install',
     cmd = 'MarkdownPreview' } -- Markdown preview in browser
 
