@@ -47,6 +47,7 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons" -- Icons required by many plugins
   use "moll/vim-bbye" -- Makes sure BDelete won't exit neovim
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+  use "arithran/vim-delete-hidden-buffers" -- Close all buffers but current
 
   -- Alpha
   use 'goolord/alpha-nvim' -- Dashboard

@@ -95,6 +95,8 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["C"] = { "<cmd>DeleteHiddenBuffers<CR>", "Close All Buffers But One" },
+  ["A"] = { "<cmd>bufdo Bdelete <CR><cmd>Alpha<CR>", "Close All Buffers To Alpha" },
 
   p = {
     name = "Packer",
