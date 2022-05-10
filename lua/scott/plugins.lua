@@ -96,6 +96,9 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+  -- Neoscroll
+  use "karb94/neoscroll.nvim" -- Smooth scrolling
+
   -- NvimTree
   use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
 
