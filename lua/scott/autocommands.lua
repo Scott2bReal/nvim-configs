@@ -29,10 +29,11 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
+  " TODO open alpha when every buffer is closed
   " augroup _show_alpha
   "   autocmd!
   "   let bufs_open = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-  "   autocmd BufDelete * if bufs_open == 0 | :execute "Alpha" | endif
+  "   autocmd BufDelete * if bufs_open == 1 | :execute "Alpha" | endif
   " augroup end
 ]]
 
