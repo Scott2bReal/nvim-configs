@@ -101,6 +101,14 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
+  -- Markdown
+  use { "ellisonleao/glow.nvim", branch = 'main' } -- In-vim markdown preview (Glow)
+  use {
+    'iamcco/markdown-preview.nvim',
+    opt = false,
+    run = 'cd app && npm install',
+    cmd = 'MarkdownPreview' } -- Markdown preview in browser
+
   -- Neoscroll
   use "karb94/neoscroll.nvim" -- Smooth scrolling
 

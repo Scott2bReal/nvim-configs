@@ -161,6 +161,12 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+
+  m = {
+    name = "Markdown",
+    g = { "<cmd>Glow<cr>", "Open preview in glow" },
+  },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },

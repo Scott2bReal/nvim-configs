@@ -32,8 +32,7 @@ vim.cmd [[
   " augroup _show_alpha
   "   autocmd!
   "   let bufs_open = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-  "   echoerr
-  "   autocmd BufUnload if bufs_open == 0 | execute ":Alpha" | endif
+  "   autocmd BufDelete * if bufs_open == 0 | :execute "Alpha" | endif
   " augroup end
 ]]
 
