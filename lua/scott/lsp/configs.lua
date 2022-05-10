@@ -7,7 +7,18 @@ end
 local lspconfig = require("lspconfig")
 
 -- List of language servers with custom config files here in /lsp
-local servers = { "jsonls", "sumneko_lua", "pyright", "solargraph" }
+local servers = {
+  "jsonls",
+  "sumneko_lua",
+  "pyright",
+  "solargraph",
+  "html",
+  "sqlls",
+  "tsserver",
+  "clangd",
+  "cmake",
+  "cssls",
+}
 
 lsp_installer.setup {
   ensure_installed = servers
