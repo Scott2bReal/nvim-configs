@@ -1,38 +1,38 @@
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
-  vim.notify("Lsp Installer couldn't load")
-  return
+	vim.notify("Lsp Installer couldn't load")
+	return
 end
 
 local lspconfig = require("lspconfig")
 
--- List of language servers with custom config files here in /lsp
+-- List of installed language servers
 local servers = {
-  "jsonls",
-  "sumneko_lua",
-  "pyright",
-  "solargraph",
-  "html",
-  "sqlls",
-  "tsserver",
-  "clangd",
-  "cmake",
-  "cssls",
+	"jsonls",
+	"sumneko_lua",
+	"pyright",
+	"solargraph",
+	"html",
+	"sqlls",
+	"tsserver",
+	"clangd",
+	"cmake",
+	"cssls",
 }
 
-lsp_installer.setup {
-  ensure_installed = servers
-}
+lsp_installer.setup({
+	ensure_installed = servers,
+})
 
 for _, server in pairs(servers) do
-  local opts = {
-    on_attach = require("scott.lsp.handlers").on_attach,
-    capabilities = require("scott.lsp.handlers").capabilities,
-  }
+	local opts = {
+		on_attach = require("scott.lsp.handlers").on_attach,
+		capabilities = require("scott.lsp.handlers").capabilities,
+	}
 
-  local has_custom_opts, server_custom_opts = pcall(require, "scott.lsp.settings." .. server)
-  if has_custom_opts then
-    opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
-  end
-  lspconfig[server].setup(opts)
+	local has_custom_opts, server_custom_opts = pcall(require, "scott.lsp.settings." .. server)
+	if has_custom_opts then
+		opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
+	end
+	lspconfig[server].setup(opts)
 end
