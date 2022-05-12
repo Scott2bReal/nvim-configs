@@ -19,7 +19,7 @@ project.setup({
   -- Allowed values: **"lsp"** uses the native neovim lsp
   -- **"pattern"** uses vim-rooter like glob pattern matching. Here
   -- order matters: if one is not detected, the other is used as fallback. You
-  -- can also delete or rearangne the detection methods.
+  -- can also delete or rearrange the detection methods.
   -- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
   detection_methods = { "pattern" },
 
