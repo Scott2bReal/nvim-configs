@@ -65,7 +65,7 @@ return packer.startup(function(use)
 
   -- Colorizer
   -- Preview colors in-file. Lazy load, enable with :ColorizerToggle
-  use { "norcalli/nvim-colorizer.lua" }
+  use "norcalli/nvim-colorizer.lua"
   -- use { "norcalli/nvim-colorizer.lua", opt = true, cmd = { "ColorizerToggle" } }
 
   -- Comment
