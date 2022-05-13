@@ -17,6 +17,7 @@ null_ls.setup({
     formatting.stylua,
     formatting.rubocop,
     formatting.sqlfluff.with({ extra_args = { "--dialect", "postgres"}}),
+    formatting.shfmt,
     diagnostics.flake8,
   },
 })
