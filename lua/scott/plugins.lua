@@ -110,7 +110,7 @@ return packer.startup(function(use)
   -- Preview in browser
   use { 'iamcco/markdown-preview.nvim',
     ft = "markdown",
-    run = 'cd app && npm install',
+    run = 'cd app && yarn install',
     cmd = 'MarkdownPreview' }
 
   -- Neoscroll
