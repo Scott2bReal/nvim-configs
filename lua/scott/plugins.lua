@@ -103,7 +103,6 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- Markdown --
-
   -- In-vim markdown preview (Glow)
   use { "ellisonleao/glow.nvim", branch = 'main' }
 
@@ -112,6 +111,9 @@ return packer.startup(function(use)
     ft = "markdown",
     run = 'cd app && yarn install',
     cmd = 'MarkdownPreview' }
+
+  -- Quickfix window
+  -- use {'kevinhwang91/nvim-bqf'}
 
   -- Neoscroll
   use "karb94/neoscroll.nvim" -- Smooth scrolling
