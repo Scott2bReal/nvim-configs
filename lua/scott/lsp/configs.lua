@@ -19,6 +19,7 @@ local servers = {
 	"clangd",
 	"cmake",
 	"cssls",
+  "taplo",
 }
 
 lsp_installer.setup({
