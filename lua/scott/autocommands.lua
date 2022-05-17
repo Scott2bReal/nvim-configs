@@ -29,6 +29,10 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
+  augroup _shape
+    autocmd VimLeave * set guicursor=a:hor10-blinkoff150-blinkon150
+  augroup end
+
   " TODO open alpha when every buffer is closed
   " augroup _show_alpha
   "   autocmd!
