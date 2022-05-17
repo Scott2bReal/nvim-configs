@@ -30,7 +30,7 @@ vim.cmd [[
   augroup end
 
   augroup _shape
-    autocmd VimLeave * set guicursor=a:hor10-blinkoff150-blinkon150
+    autocmd VimLeave * set guicursor=a:hor10-blinkwait150-blinkoff150-blinkon150
   augroup end
 
   " TODO open alpha when every buffer is closed
