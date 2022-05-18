@@ -20,6 +20,7 @@ local servers = {
 	"cmake",
 	"cssls",
   "taplo",
+  "yamlls",
 }
 
 lsp_installer.setup({
