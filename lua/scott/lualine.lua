@@ -8,8 +8,9 @@ local config = {
 	options = {
 		icons_enabled = true,
 		theme = "gruvbox-material",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "/", right = "/" },
+		-- section_separators = { left = "", right = "" },
+		section_separators = { left = " ", right = " " },
 		disabled_filetypes = { "alpha", "toggleterm" },
 		always_divide_middle = true,
 		globalstatus = true,
