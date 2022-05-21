@@ -24,10 +24,10 @@ project.setup({
   detection_methods = { "pattern" },
 
   -- usage patterns used to detect root dir, when **"pattern"** is in detection_methods
-  patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "config.fish" },
+  patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "config.fish", "rc.lua", },
 
   -- Show hidden files in telescope when searching for files in a project
-  show_hidden = false,
+  show_hidden = true,
 
   -- usage When set to false, you will get a message when project.nvim changes your directory.
   -- When set to false, you will get a message when project.nvim changes your directory.
