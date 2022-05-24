@@ -26,6 +26,9 @@ local servers = {
 
 lsp_installer.setup({
 	ensure_installed = servers,
+
+  -- Whether to automatically check for outdated servers when opening the UI window.
+  ui = { check_outdated_servers_on_open = false }
 })
 
 for _, server in pairs(servers) do
