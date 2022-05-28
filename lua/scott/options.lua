@@ -53,3 +53,6 @@ vim.g.gruvbox_material_palette = "original"
 
 -- Disable perl support checkhealth warning
 vim.g.lodaded_perl_provider = 0
+
+-- Tell vim to treat .h files as c
+vim.g.c_syntax_for_h = 1
