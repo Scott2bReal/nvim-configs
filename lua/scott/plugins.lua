@@ -107,10 +107,16 @@ return packer.startup(function(use)
   use { "ellisonleao/glow.nvim", branch = 'main' }
 
   -- Preview in browser
-  use { 'iamcco/markdown-preview.nvim',
-    ft = "markdown",
-    run = 'cd app && yarn install',
-    cmd = 'MarkdownPreview' }
+  -- install without yarn or npm
+  use { "iamcco/markdown-preview.nvim", 
+    run = "cd app && npm install", 
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, 
+    ft = { "markdown" }, }
+
+  -- use { 'iamcco/markdown-preview.nvim',
+  --   ft = "markdown",
+  --   run = 'cd app && npm install',
+  --   cmd = 'MarkdownPreview' }
 
   -- Quickfix window
   -- use {'kevinhwang91/nvim-bqf'}
