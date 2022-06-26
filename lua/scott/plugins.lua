@@ -108,9 +108,9 @@ return packer.startup(function(use)
 
   -- Preview in browser
   -- install without yarn or npm
-  use { "iamcco/markdown-preview.nvim", 
-    run = "cd app && npm install", 
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, 
+  use { "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" }, }
 
   -- use { 'iamcco/markdown-preview.nvim',
