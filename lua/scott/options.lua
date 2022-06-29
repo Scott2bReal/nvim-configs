@@ -35,6 +35,7 @@ local opts = {
   guifont = "firacode",                    -- the font used in graphical neovim applications
   background ="dark",
   syntax = "enable",
+  foldmethod = "marker",
  }
 
 for k, v in pairs(opts) do
