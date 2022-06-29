@@ -15,6 +15,8 @@ telescope.setup {
     selection_caret = " ",
     path_display = { "smart" },
 
+    file_ignore_patterns = { ".git/", },
+
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
