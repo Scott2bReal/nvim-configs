@@ -11,7 +11,7 @@ local opts = {
   pumheight = 10,                          -- pop up menu height
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2,                         -- always show tabs
-  smartcase = true,                        -- smart case
+  smartcase = true,                        -- smart case (in searches)
   smartindent = true,                      -- make indenting smarter again
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
@@ -24,18 +24,18 @@ local opts = {
   expandtab = true,                        -- convert tabs to spaces
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
   tabstop = 2,                             -- insert 2 spaces for a tab
-  cursorline = true,                      -- highlight the current line
+  cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
   relativenumber = true,                   -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes:1",                    -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
-  scrolloff = 8,                           -- is one of my fav
+  scrolloff = 8,                           -- Start scrolling n lines before edge of screen
   -- sidescrolloff = 8,                    -- Neoscroll (smooth scrolling) plugin handles this
   guifont = "firacode",                    -- the font used in graphical neovim applications
   background ="dark",
   syntax = "enable",
-  foldmethod = "marker",
+  foldmethod = "marker",                   -- Automatically add markers when creating a fold, instead of saving fold status in views locally
  }
 
 for k, v in pairs(opts) do
