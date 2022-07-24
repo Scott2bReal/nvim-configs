@@ -19,7 +19,6 @@ local servers = {
 	"clangd",
 	"cmake",
 	"cssls",
-  "taplo",
   "yamlls",
   "rust_analyzer",
 }
