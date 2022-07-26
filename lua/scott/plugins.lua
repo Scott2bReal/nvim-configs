@@ -98,8 +98,10 @@ return packer.startup(function(use)
   use 'nvim-lualine/lualine.nvim' -- Status bar, requires web dev icons
 
   -- LSP
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
+  -- use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
   -- Markdown --
