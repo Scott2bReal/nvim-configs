@@ -137,7 +137,7 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets" -- Lots of snipets
 
   -- Surround
-  use "ur4ltz/surround.nvim" -- Keybinds to auto-surround selected text
+  use 'kylechui/nvim-surround' -- Surround text with keymaps
 
   -- Telescope
   use "nvim-telescope/telescope.nvim" -- Fuzzy file finder (<leader>f)
