@@ -21,6 +21,7 @@ local servers = {
   "cssls",
   "yamlls",
   "rust_analyzer",
+  "erb-lint",
 }
 
 mason.setup({
