@@ -106,7 +106,7 @@ return packer.startup(function(use)
 
   -- Markdown --
   -- In-vim markdown preview (Glow)
-  use { "ellisonleao/glow.nvim", branch = 'main' }
+  --[[ use { "ellisonleao/glow.nvim", branch = 'main' } ]]
 
   -- Preview in browser
   -- install without yarn or npm

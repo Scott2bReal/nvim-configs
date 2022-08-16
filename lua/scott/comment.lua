@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 comment.setup {
-  pre_hook = function(ctx)
+   --[[ pre_hook = function(ctx)
     local U = require "Comment.utils"
 
     local location = nil
@@ -19,5 +19,5 @@ comment.setup {
       key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
       location = location,
     }
-  end,
+  end, ]]
 }
