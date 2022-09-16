@@ -15,7 +15,7 @@ local servers = {
   "solargraph",
   "html",
   "sqlls",
-  "tsserver",
+  "eslint",
   "clangd",
   "cmake",
   "cssls",
