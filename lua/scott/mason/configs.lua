@@ -21,6 +21,7 @@ local servers = {
   "cssls",
   "yamlls",
   "rust_analyzer",
+  "tailwindcss",
 }
 
 mason.setup({
