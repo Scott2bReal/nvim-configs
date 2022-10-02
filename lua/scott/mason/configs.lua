@@ -23,6 +23,7 @@ local servers = {
   "rust_analyzer",
   "tailwindcss",
   "tsserver",
+  "prismals",
 }
 
 mason.setup({
