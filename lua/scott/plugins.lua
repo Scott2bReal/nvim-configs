@@ -55,6 +55,9 @@ return packer.startup(function(use)
   -- Autopairs
   use "windwp/nvim-autopairs" -- Auto close stuff like "" or ()
 
+  -- Autotags
+  use "windwp/nvim-ts-autotag" -- Finish tags
+
   -- Bufferline
   use "akinsho/bufferline.nvim" -- List buffers like tabs at the top of the screen
 
