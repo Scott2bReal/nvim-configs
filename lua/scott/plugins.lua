@@ -66,6 +66,7 @@ return packer.startup(function(use)
   -- use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
   use "wittyjudge/gruvbox-material.nvim"
   use "rebelot/kanagawa.nvim"
+  use "catppuccin/nvim"
 
   -- Colorizer
   -- Preview colors in-file. Lazy load, enable with :ColorizerToggle
