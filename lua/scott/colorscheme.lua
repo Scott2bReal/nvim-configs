@@ -1,5 +1,5 @@
-local colorscheme = "gruvbox-material"
--- local colorscheme = "kanagawa"
+-- local colorscheme = "gruvbox-material"
+local colorscheme = "kanagawa"
 
 vim.g.gruvbox_material_palette = "original"
 
