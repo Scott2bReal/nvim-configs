@@ -24,6 +24,7 @@ local servers = {
   "tailwindcss",
   "tsserver",
   "prismals",
+  "taplo",
 }
 
 mason.setup({
