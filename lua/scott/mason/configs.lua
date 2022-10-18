@@ -20,7 +20,6 @@ local servers = {
   "cmake",
   "cssls",
   "yamlls",
-  "rust_analyzer",
   "tailwindcss",
   "tsserver",
   "prismals",

@@ -108,6 +108,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   -- use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "simrat39/rust-tools.nvim" -- specialized rust tools - installs rust-analyzer by default
 
   -- Markdown --
   -- In-vim markdown preview (Glow)
