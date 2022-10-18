@@ -90,6 +90,9 @@ return packer.startup(function(use)
   -- use "mfussenegger/nvim-dap" -- Debug Adapter Protocol client
   -- use "suketa/nvim-dap-ruby" -- Ruby configs for DAP
 
+  -- Fidget
+  use "j-hui/fidget.nvim" -- Progress indicator for LSP loading
+
   -- Gitsigns
   use "lewis6991/gitsigns.nvim" -- Shows git indicators on each line
 
