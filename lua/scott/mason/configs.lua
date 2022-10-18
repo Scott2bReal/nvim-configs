@@ -24,7 +24,7 @@ local servers = {
   "tsserver",
   "prismals",
   "taplo",
-  "rust-analyzer",
+  "rust_analyzer",
 }
 
 mason.setup({
