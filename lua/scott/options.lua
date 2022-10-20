@@ -36,6 +36,7 @@ local opts = {
   background ="dark",
   syntax = "enable",
   foldmethod = "marker",                   -- Automatically add markers when creating a fold, instead of saving fold status in views locally
+  mousemodel= "extend",
  }
 
 for k, v in pairs(opts) do
