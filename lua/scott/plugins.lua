@@ -48,6 +48,7 @@ return packer.startup(function(use)
   use "moll/vim-bbye" -- Makes sure BDelete won't exit neovim
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "arithran/vim-delete-hidden-buffers" -- Close all buffers but current
+  use "MunifTanjim/nui.nvim" -- UI Plugin
 
   -- Alpha
   use 'goolord/alpha-nvim' -- Dashboard
@@ -60,6 +61,9 @@ return packer.startup(function(use)
 
   -- Bufferline
   use "akinsho/bufferline.nvim" -- List buffers like tabs at the top of the screen
+
+  -- ChatGPT
+  use "jackMort/ChatGPT.nvim"  -- In-Editor ChatGPT client
 
   -- Colorschemes
   -- use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua

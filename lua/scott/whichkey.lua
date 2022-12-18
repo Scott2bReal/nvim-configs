@@ -197,6 +197,7 @@ local mappings = {
 	z = {
 		name = "Misc.",
 		c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
+    g = { "<cmd>ChatGPT<cr>", "ChatGPT" },
 		r = { "<cmd>source $MYVIMRC<cr>", "Reload Neovim config" },
     z = { "<cmd>ZenMode<cr>", "Toggle Zen Mode"}
 	},
