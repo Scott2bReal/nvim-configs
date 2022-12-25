@@ -8,6 +8,7 @@ local lspconfig = require("lspconfig")
 
 -- List of installed language servers
 local servers = {
+  "astro",
   "bashls",
   "jsonls",
   "sumneko_lua",
