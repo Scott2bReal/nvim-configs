@@ -11,6 +11,7 @@ autotag.setup({
 		'html', 'htmldjango',
 		'javascript', 'javascriptreact', 'jsx',
 		'typescript', 'typescriptreact', 'tsx',
+    'astro',
 		'rescript',
 		'svelte',
 		'vue',
