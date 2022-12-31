@@ -1,8 +1,4 @@
 vim.cmd [[
-  augroup _detect_astro
-    autocmd BufRead,BufEnter *.astro set filetype=astro
-  augroup end
-
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
