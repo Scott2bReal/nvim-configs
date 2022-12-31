@@ -10,7 +10,6 @@ local lspconfig = require("lspconfig")
 local servers = {
   "astro",
   "bashls",
-  "deno",
   "jsonls",
   "sumneko_lua",
   "pyright",
