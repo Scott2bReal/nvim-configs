@@ -43,16 +43,6 @@ require "mason-lspconfig".setup({
   ensure_installed = servers,
 })
 
--- Organize TS imports
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
-end
-
 for _, server in pairs(servers) do
   local opts = {
     on_attach = require("scott.mason.handlers").on_attach,
