@@ -167,7 +167,7 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
     run = ":TSUpdate",
   }
-  use "p00f/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
+  use "mrjones2014/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
 
   -- VimWiki
   use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
