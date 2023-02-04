@@ -90,6 +90,11 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp" -- use lsp for completion
   use "saadparwaiz1/cmp_luasnip" --snippet completion
 
+  --- Copilot
+  -- use "github/copilot.vim" -- AI Code Generation
+  use "zbirenbaum/copilot.lua"
+  -- use "zbirenbaum/copilot-cmp"
+
   -- DAP
   -- use "mfussenegger/nvim-dap" -- Debug Adapter Protocol client
   -- use "suketa/nvim-dap-ruby" -- Ruby configs for DAP
