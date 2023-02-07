@@ -89,6 +89,10 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false
   end
 
+  if client.name == "astro" then
+    client.server_capabilities.document_formatting = false
+  end
+
   -- if client.name == "solargraph" then
   --   client.server_capabilities.document_formatting = false
   -- end
