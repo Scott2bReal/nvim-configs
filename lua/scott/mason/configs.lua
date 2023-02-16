@@ -11,7 +11,7 @@ local servers = {
   "astro",
   "bashls",
   "jsonls",
-  "sumneko_lua",
+  "lua_ls",
   "pyright",
   "solargraph",
   "html",
