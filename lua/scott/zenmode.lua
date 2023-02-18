@@ -1,6 +1,6 @@
 local status_ok, zenmode = pcall(require, "zen-mode")
 if not status_ok then
-  vim.notify("Telescope couldn't load")
+  vim.notify("Zenmode couldn't load")
   return
 end
 

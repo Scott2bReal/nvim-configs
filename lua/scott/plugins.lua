@@ -181,9 +181,6 @@ return packer.startup(function(use)
   -- Which-Key
   use "folke/which-key.nvim" -- Keybind help popup
 
-  -- Zen Mode
-  use "folke/zen-mode.nvim"
-
   -- Automatically set up configuration after cloning packer.nvim
   -- Always goes after all plugins!
   if PACKER_BOOTSTRAP then
