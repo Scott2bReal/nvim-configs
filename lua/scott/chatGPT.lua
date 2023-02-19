@@ -1,11 +1,12 @@
 local status_ok, chatgpt = pcall(require, "chatgpt")
 if not status_ok then
+  vim.notify("ChatGPT Plugin couldn't load")
   return
 end
 
 chatgpt.setup({
   {
-    welcome_message = WELCOME_MESSAGE, -- set to "" if you don't like the fancy robot
+    welcome_message = "", -- set to "" if you don't like the fancy robot
     loading_text = "loading",
     question_sign = "", -- you can use emoji if you want e.g. 🙂
     answer_sign = "ﮧ", -- 🤖
