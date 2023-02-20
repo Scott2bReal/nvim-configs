@@ -173,6 +173,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "mrjones2014/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
+  use "nvim-treesitter/nvim-treesitter-context" -- Show context around cursor
 
   -- VimWiki
   use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
