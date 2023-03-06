@@ -162,6 +162,15 @@ local mappings = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
+    t = {
+      name = "Typescript",
+      a = { "<cmd>TypescriptAddMissingImports<cr>", "Add Missing Imports" },
+      f = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
+      g = { "<cmd>TypescriptGoToSourceDefinition<cr>", "Go To Source Definition" },
+      o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize Imports" },
+      r = { "<cmd>TypescriptRenameFile<cr>", "Rename File"},
+      u = { "<cmd>TypesciptRemoveUnused<cr>", "Remove Unused Variables"},
+    }
 	},
 
 	m = {
