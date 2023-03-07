@@ -1,6 +1,6 @@
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
-  vim.notify("Error loading whichkey")
+	vim.notify("Error loading whichkey")
 	return
 end
 
@@ -99,7 +99,6 @@ local mappings = {
 	["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 	["C"] = { "<cmd>DeleteHiddenBuffers<CR>", "Close All Buffers But One" },
 	["A"] = { "<cmd>bufdo Bdelete <CR><cmd>Alpha<CR>", "Close All Buffers To Alpha" },
-
 	p = {
 		name = "Packer",
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -108,7 +107,6 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-
 	g = {
 		name = "Git",
 		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -131,7 +129,6 @@ local mappings = {
 			"Diff",
 		},
 	},
-
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -157,32 +154,32 @@ local mappings = {
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		R = { "<cmd>LspRestart<cr>", "Restart LSP" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
-    t = {
-      name = "Typescript",
-      a = { "<cmd>TypescriptAddMissingImports<cr>", "Add Missing Imports" },
-      f = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
-      g = { "<cmd>TypescriptGoToSourceDefinition<cr>", "Go To Source Definition" },
-      o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize Imports" },
-      r = { "<cmd>TypescriptRenameFile<cr>", "Rename File"},
-      u = { "<cmd>TypesciptRemoveUnused<cr>", "Remove Unused Variables"},
-    }
+		t = {
+			name = "Typescript",
+			a = { "<cmd>TypescriptAddMissingImports<cr>", "Add Missing Imports" },
+			f = { "<cmd>TypescriptFixAll<cr>", "Fix All" },
+			g = { "<cmd>TypescriptGoToSourceDefinition<cr>", "Go To Source Definition" },
+			o = { "<cmd>TypescriptOrganizeImports<cr>", "Organize Imports" },
+			r = { "<cmd>TypescriptRenameFile<cr>", "Rename File" },
+			u = { "<cmd>TypesciptRemoveUnused<cr>", "Remove Unused Variables" },
+		},
 	},
-
 	m = {
 		name = "Markdown",
 		g = { "<cmd>Glow<cr>", "Open preview in glow" },
 		p = { "<cmd>MarkdownPreviewToggle<cr>", "Open preview in browser" },
 	},
-
 	s = {
 		name = "Search",
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+		d = { "<cmd>Telescope find_files hidden=true<cr>", "Include Dotfiles" },
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
@@ -190,7 +187,6 @@ local mappings = {
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
 	},
-
 	t = {
 		name = "Terminal",
 		i = { "<cmd>lua _IRB_TOGGLE()<cr>", "IRB" },
@@ -203,13 +199,12 @@ local mappings = {
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 	},
-
 	z = {
 		name = "Misc.",
 		c = { "<cmd>ColorizerToggle<cr>", "Colorizer" },
-    g = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+		g = { "<cmd>ChatGPT<cr>", "ChatGPT" },
 		r = { "<cmd>source $MYVIMRC<cr>", "Reload Neovim config" },
-    z = { "<cmd>Copilot toggle<cr>", "Toggle GitHub Copilot"},
+		z = { "<cmd>Copilot toggle<cr>", "Toggle GitHub Copilot" },
 	},
 }
 
