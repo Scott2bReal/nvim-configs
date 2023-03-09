@@ -2,15 +2,6 @@ local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
 
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
-
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -18,6 +9,23 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
+
+-- Shorten function name
+local keymap = vim.api.nvim_set_keymap
+
+--Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Disable arrow keys in insert mode
+-- local dirKeys = { "k", "j", "h", "l" }
+-- for _, mode in pairs({ "n", "i", "v", "x" }) do
+-- 	for i, key in pairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
+-- 		vim.keymap.set(mode, key, "<nop>")
+-- 		keymap(mode, key, "<cmd>echo 'Use " .. dirKeys[i] .. " instead!' <CR>", opts)
+-- 	end
+-- end
 
 -- Normal --
 -- Better window navigation
