@@ -13,8 +13,7 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettier.with({
-			-- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-      extra_args = {},
+			extra_args = {},
 			extra_filetypes = { "astro" },
 		}),
 		formatting.black.with({ extra_args = { "fast" } }),
