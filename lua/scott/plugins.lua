@@ -146,7 +146,20 @@ return packer.startup(function(use)
   use "karb94/neoscroll.nvim" -- Smooth scrolling
 
   -- NvimTree
-  use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
+  -- use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
+
+  -- NeoTree
+  -- Unless you are still migrating, remove the deprecated commands from v1.x
+  -- vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+  use {
+    "nvim-neo-tree/neo-tree.nvim", -- File explorer (<leader>e)
+      branch = "v2.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+      }
+    }
 
   -- Project Nvim
   use "ahmedkhalf/project.nvim" -- Project management plugin
