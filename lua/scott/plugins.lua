@@ -149,16 +149,20 @@ return packer.startup(function(use)
 
   -- NeoTree
   -- Unless you are still migrating, remove the deprecated commands from v1.x
-  -- vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+  vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   use {
     "nvim-neo-tree/neo-tree.nvim", -- File explorer (<leader>e)
     branch = "v2.x",
     requires = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",   -- not strictly required, but recommended
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
     }
   }
+
+  use { "mrbjarksen/neo-tree-diagnostics.nvim",
+    requires = "nvim-neo-tree/neo-tree.nvim",
+  } -- Extension for diagnostics
 
   -- Project Nvim
   use "ahmedkhalf/project.nvim" -- Project management plugin

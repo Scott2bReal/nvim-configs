@@ -13,6 +13,7 @@ local config = {
 		"filesystem",
 		"buffers",
 		"git_status",
+		"diagnostics",
 	},
 	add_blank_line_at_top = false, -- Add a blank line at the top of the tree.
 	auto_clean_after_session_restore = false, -- Automatically clean up broken neo-tree buffers saved in sessions
@@ -51,7 +52,7 @@ local config = {
 	use_default_mappings = true,
 	-- source_selector provides clickable tabs to switch between sources.
 	source_selector = {
-		winbar = false, -- toggle to show selector on winbar
+		winbar = true, -- toggle to show selector on winbar
 		statusline = false, -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
 		-- of the top visible node when scrolled down.
@@ -391,6 +392,36 @@ local config = {
 				["<C-n>"] = "move_cursor_down",
 				["<up>"] = "move_cursor_up",
 				["<C-p>"] = "move_cursor_up",
+			},
+		},
+		diagnostics = {
+			auto_preview = {
+				-- May also be set to `true`
+				enabled = false, -- Whether to automatically enable preview mode
+				preview_config = {}, -- Config table to pass to auto preview (for example `{ use_float = true }`)
+				event = "neo_tree_buffer_enter", -- The event to enable auto preview upon (for example `"neo_tree_window_after_open"`)
+			},
+			bind_to_cwd = true,
+      hide_gitignored = true,
+			diag_sort_function = "severity", -- "severity" means diagnostic items are sorted by severity in addition to their positions.
+			-- "position" means diagnostic items are sorted strictly by their positions.
+			-- May also be a function.
+			follow_behavior = {
+				-- Behavior when `follow_current_file` is true
+				always_focus_file = false, -- Focus the followed file, even when focus is currently on a diagnostic item belonging to that file.
+				expand_followed = true, -- Ensure the node of the followed file is expanded
+				collapse_others = true, -- Ensure other nodes are collapsed
+			},
+			follow_current_file = true,
+			group_dirs_and_files = true, -- when true, empty folders and files will be grouped together
+			group_empty_dirs = true, -- when true, empty directories will be grouped together
+			show_unloaded = true, -- show diagnostics from unloaded buffers
+			refresh = {
+				delay = 100, -- Time (in ms) to wait before updating diagnostics. Might resolve some issues with Neovim hanging.
+				event = "vim_diagnostic_changed", -- Event to use for updating diagnostics (for example `"neo_tree_buffer_enter"`)
+				-- Set to `false` or `"none"` to disable automatic refreshing
+				max_items = false, -- The maximum number of diagnostic items to attempt processing
+				-- Set to `false` for no maximum
 			},
 		},
 		async_directory_scan = "auto", -- "auto"   means refreshes are async, but it's synchronous when called from the Neotree commands.

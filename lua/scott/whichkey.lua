@@ -88,6 +88,7 @@ local mappings = {
 	},
 	-- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["e"] = {"<cmd>Neotree toggle<cr>", "Explorer"},
+  ["d"] = {"<cmd>Neotree diagnostics toggle bottom<cr>", "Diagnostics"},
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["H"] = { "<cmd>!firefox %<cr>", "open current HTML file in firefox" },
