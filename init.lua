@@ -12,6 +12,8 @@
 
 require "scott.impatient"
 require "scott.options"
+require "scott.gruvbox-material"
+-- require "scott.gruvbox"
 require "scott.keymaps"
 require "scott.plugins"
 require "scott.colorscheme"

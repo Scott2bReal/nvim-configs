@@ -1,7 +1,7 @@
 local colorscheme = "gruvbox-material"
 -- local colorscheme = "kanagawa"
-
-vim.g.gruvbox_material_palette = "original"
+-- local colorscheme = "gruvbox"
+-- vim.g.gruvbox_material_palette = "original"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

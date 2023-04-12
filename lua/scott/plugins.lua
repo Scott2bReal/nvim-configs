@@ -41,14 +41,14 @@ packer.init {
 -- Plugins!
 return packer.startup(function(use)
   -- General/dependency plugins
-  use "wbthomason/packer.nvim" -- Packer manages itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim
-  use "nvim-lua/plenary.nvim" -- Lua functions required by many plugins
-  use "kyazdani42/nvim-web-devicons" -- Icons required by many plugins
-  use "moll/vim-bbye" -- Makes sure BDelete won't exit neovim
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+  use "wbthomason/packer.nvim"             -- Packer manages itself
+  use "nvim-lua/popup.nvim"                -- An implementation of the Popup API from vim
+  use "nvim-lua/plenary.nvim"              -- Lua functions required by many plugins
+  use "kyazdani42/nvim-web-devicons"       -- Icons required by many plugins
+  use "moll/vim-bbye"                      -- Makes sure BDelete won't exit neovim
+  use "antoinemadec/FixCursorHold.nvim"    -- This is needed to fix lsp doc highlight
   use "arithran/vim-delete-hidden-buffers" -- Close all buffers but current
-  use "MunifTanjim/nui.nvim" -- UI Plugin
+  use "MunifTanjim/nui.nvim"               -- UI Plugin
 
   -- Alpha
   use 'goolord/alpha-nvim' -- Dashboard
@@ -63,14 +63,14 @@ return packer.startup(function(use)
   use "akinsho/bufferline.nvim" -- List buffers like tabs at the top of the screen
 
   -- ChatGPT
-  use "jackMort/ChatGPT.nvim"  -- In-Editor ChatGPT client
+  use "jackMort/ChatGPT.nvim" -- In-Editor ChatGPT client
 
   -- Colorschemes
-  -- use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua
+  use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua
   -- use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
   use "wittyjudge/gruvbox-material.nvim"
-  -- use "rebelot/kanagawa.nvim"
-  -- use "catppuccin/nvim"
+  use "rebelot/kanagawa.nvim"
+  use { "catppuccin/nvim", as = "catpuccin" }
 
   -- Colorizer
   -- Preview colors in-file. Lazy load, enable with :ColorizerToggle
@@ -78,16 +78,16 @@ return packer.startup(function(use)
   -- use { "norcalli/nvim-colorizer.lua", opt = true, cmd = { "ColorizerToggle" } }
 
   -- Comment
-  use "numToStr/Comment.nvim" -- Easily comment lines
+  use "numToStr/Comment.nvim"                       -- Easily comment lines
   use "JoosepAlviste/nvim-ts-context-commentstring" -- requires treesitter
 
   -- Completion Plugins
-  use "hrsh7th/nvim-cmp" -- Completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "hrsh7th/cmp-nvim-lua" -- nvim lua config completion
-  use "hrsh7th/cmp-nvim-lsp" -- use lsp for completion
+  use "hrsh7th/nvim-cmp"         -- Completion plugin
+  use "hrsh7th/cmp-buffer"       -- buffer completions
+  use "hrsh7th/cmp-path"         -- path completions
+  use "hrsh7th/cmp-cmdline"      -- cmdline completions
+  use "hrsh7th/cmp-nvim-lua"     -- nvim lua config completion
+  use "hrsh7th/cmp-nvim-lsp"     -- use lsp for completion
   use "saadparwaiz1/cmp_luasnip" --snippet completion
 
   --- Copilot
@@ -117,16 +117,15 @@ return packer.startup(function(use)
   -- LSP
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
-  use "neovim/nvim-lspconfig" -- enable LSP
+  use "neovim/nvim-lspconfig"              -- enable LSP
   -- use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "jose-elias-alvarez/null-ls.nvim"    -- for formatters and linters
   use "jose-elias-alvarez/typescript.nvim" -- special typescript tools
-  use "simrat39/rust-tools.nvim" -- specialized rust tools - installs rust-analyzer by default
+  use "simrat39/rust-tools.nvim"           -- specialized rust tools - installs rust-analyzer by default
 
   -- Markdown --
   -- In-vim markdown preview (Glow)
   --[[ use { "ellisonleao/glow.nvim", branch = 'main' } ]]
-
   -- Preview in browser
   -- install without yarn or npm
   use { "iamcco/markdown-preview.nvim",
@@ -153,26 +152,26 @@ return packer.startup(function(use)
   -- vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
   use {
     "nvim-neo-tree/neo-tree.nvim", -- File explorer (<leader>e)
-      branch = "v2.x",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-        "MunifTanjim/nui.nvim",
-      }
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",   -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
     }
+  }
 
   -- Project Nvim
   use "ahmedkhalf/project.nvim" -- Project management plugin
 
   -- Snippets
-  use "L3MON4D3/LuaSnip" -- Snippet engine
+  use "L3MON4D3/LuaSnip"             -- Snippet engine
   use "rafamadriz/friendly-snippets" -- Lots of snipets
 
   -- Surround
   use 'kylechui/nvim-surround' -- Surround text with keymaps
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim" -- Fuzzy file finder (<leader>f)
+  use "nvim-telescope/telescope.nvim"             -- Fuzzy file finder (<leader>f)
   use "nvim-telescope/telescope-media-files.nvim" -- Preview images in telescope
 
   -- Tidy
@@ -186,11 +185,11 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
     run = ":TSUpdate",
   }
-  use "mrjones2014/nvim-ts-rainbow" -- Color codes closure pairs like () or {}
+  use "mrjones2014/nvim-ts-rainbow"             -- Color codes closure pairs like () or {}
   use "nvim-treesitter/nvim-treesitter-context" -- Show context around cursor
 
   -- VimWiki
-  use "vimwiki/vimwiki" -- Personal wiki (<leader>ww)
+  use "vimwiki/vimwiki"         -- Personal wiki (<leader>ww)
   use "michal-h21/vimwiki-sync" -- Automatically sync vimwiki on open and close
 
   -- Which-Key
