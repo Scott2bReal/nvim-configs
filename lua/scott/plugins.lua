@@ -160,16 +160,12 @@ return packer.startup(function(use)
     }
   }
 
-  use { "mrbjarksen/neo-tree-diagnostics.nvim",
-    requires = "nvim-neo-tree/neo-tree.nvim",
-  } -- Extension for diagnostics
-
   -- Project Nvim
   use "ahmedkhalf/project.nvim" -- Project management plugin
 
   -- Snippets
   use "L3MON4D3/LuaSnip"             -- Snippet engine
-  use "rafamadriz/friendly-snippets" -- Lots of snipets
+  -- use "rafamadriz/friendly-snippets" -- Lots of snipets
 
   -- Surround
   use 'kylechui/nvim-surround' -- Surround text with keymaps
