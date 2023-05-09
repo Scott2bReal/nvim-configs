@@ -69,6 +69,7 @@ return packer.startup(function(use)
   use "ellisonleao/gruvbox.nvim" -- Gruvbox colorscheme in Lua
   -- use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
   use "wittyjudge/gruvbox-material.nvim"
+  -- use "sainnhe/gruvbox-material"
   use "rebelot/kanagawa.nvim"
   use { "catppuccin/nvim", as = "catpuccin" }
 

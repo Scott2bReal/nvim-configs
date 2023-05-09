@@ -1,5 +1,5 @@
-vim.g.gruvbox_material_background = "hard"
-vim.g.gruvbox_material_palette = "original"
+vim.g.gruvbox_material_background = "soft"
+vim.g.gruvbox_material_palette = "material"
 vim.opt.background = "dark"
 
 local status_ok, gruvbox_material = pcall(require, "gruvbox-material")

@@ -1,13 +1,13 @@
 local status_ok, gruvbox = pcall(require, "gruvbox")
 if not status_ok then
 	vim.notify("Failed to load gruvbox")
-	return
+	return;
 end
 
 gruvbox.setup({
 	undercurl = true,
 	underline = true,
-	bold = true,
+	bold = false,
 	italic = {
 		strings = true,
 		comments = true,
@@ -21,13 +21,10 @@ gruvbox.setup({
 	invert_intend_guides = false,
 	inverse = true, -- invert background for search, diffs, statuslines and errors
 	contrast = "hard", -- can be "hard", "soft" or empty string
-	overrides = {
-    fg = "#dfbf8e",
-  },
+  overrides = {},
 	dim_inactive = false,
 	transparent_mode = true,
 	palette_overrides = {
-		green = "#a9b665",
+		bright_green = "#a9b665",
 	},
 })
-vim.cmd("colorscheme gruvbox")
