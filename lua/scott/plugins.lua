@@ -41,9 +41,6 @@ local plugins = {
 	-- Bufferline
 	"akinsho/bufferline.nvim", -- List buffers like tabs at the top of the screen
 
-	-- ChatGPT
-	{ "jackMort/ChatGPT.nvim", lazy = true }, -- In-Editor ChatGPT client
-
 	-- Colorschemes
 	{ "ellisonleao/gruvbox.nvim", lazy = true }, -- Gruvbox colorscheme in Lua
 	-- use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support

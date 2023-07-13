@@ -39,7 +39,6 @@ local modules = {
 	"autocommands",
 	"ts-autotags",
 	"fidget",
-	"chatGPT",
 	"copilot",
 	"import-cost",
 }
