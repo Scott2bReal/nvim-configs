@@ -45,7 +45,7 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim"                -- An implementation of the Popup API from vim
   use "nvim-lua/plenary.nvim"              -- Lua functions required by many plugins
   use "kyazdani42/nvim-web-devicons"       -- Icons required by many plugins
-  use "moll/vim-bbye"                      -- Makes sure BDelete won't exit neovim
+  use "famiu/bufdelete.nvim"               -- Makes sure BDelete won't exit neovim
   use "antoinemadec/FixCursorHold.nvim"    -- This is needed to fix lsp doc highlight
   use "arithran/vim-delete-hidden-buffers" -- Close all buffers but current
   use "MunifTanjim/nui.nvim"               -- UI Plugin
@@ -101,13 +101,16 @@ return packer.startup(function(use)
   -- use "suketa/nvim-dap-ruby" -- Ruby configs for DAP
 
   -- Fidget
-  use "j-hui/fidget.nvim" -- Progress indicator for LSP loading
+  use {"j-hui/fidget.nvim", tag = 'legacy'} -- Progress indicator for LSP loading
 
   -- Gitsigns
   use "lewis6991/gitsigns.nvim" -- Shows git indicators on each line
 
   -- Impatient
   use 'lewis6991/impatient.nvim' -- Creates cache to speed up loading Lua modules/nvim startup time
+
+  -- Import Cost
+  use "barrett-ruth/import-cost.nvim" -- Shows the size of an import
 
   -- Indentline
   use 'lukas-reineke/indent-blankline.nvim' -- Shows line on indents

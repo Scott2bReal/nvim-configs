@@ -25,7 +25,7 @@ project.setup({
   detection_methods = { "pattern" },
 
   -- usage patterns used to detect root dir, when **"pattern"** is in detection_methods
-  patterns = { "package.json", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "config.fish", "rc.lua", },
+  patterns = { "pnpm-workspace.yaml", "package.json", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "config.fish", "rc.lua",},
 
   -- Show hidden files in telescope when searching for files in a project
   show_hidden = true,
