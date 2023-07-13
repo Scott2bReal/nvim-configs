@@ -10,7 +10,7 @@
  ░           ░  ░             ░      ░  ░   ░           ░  ░
 ]]
 
-require("scott.impatient")
+vim.loader.enable()
 require("scott.options")
 require("scott.gruvbox-material")
 -- require "scott.gruvbox"
