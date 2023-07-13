@@ -101,7 +101,7 @@ return packer.startup(function(use)
   -- use "suketa/nvim-dap-ruby" -- Ruby configs for DAP
 
   -- Fidget
-  use {"j-hui/fidget.nvim", tag = 'legacy'} -- Progress indicator for LSP loading
+  use { "j-hui/fidget.nvim", tag = 'legacy' } -- Progress indicator for LSP loading
 
   -- Gitsigns
   use "lewis6991/gitsigns.nvim" -- Shows git indicators on each line
@@ -126,6 +126,7 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim"    -- for formatters and linters
   use "jose-elias-alvarez/typescript.nvim" -- special typescript tools
   use "simrat39/rust-tools.nvim"           -- specialized rust tools - installs rust-analyzer by default
+  use 'folke/neodev.nvim'                  -- dev tools for neovim
 
   -- Markdown --
   -- In-vim markdown preview (Glow)
@@ -168,7 +169,7 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim" -- Project management plugin
 
   -- Snippets
-  use "L3MON4D3/LuaSnip"             -- Snippet engine
+  use "L3MON4D3/LuaSnip" -- Snippet engine
   -- use "rafamadriz/friendly-snippets" -- Lots of snipets
 
   -- Surround
