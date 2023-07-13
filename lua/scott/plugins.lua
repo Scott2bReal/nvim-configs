@@ -12,14 +12,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Use a protected call so no error on first use
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
 	vim.notify("Lazy couldn't load")
 	return
 end
 
--- Plugins!
 local plugins = {
 	-- General/dependency plugins
 	"folke/lazy.nvim", -- Lazy manages itself
@@ -44,10 +42,10 @@ local plugins = {
 	"akinsho/bufferline.nvim", -- List buffers like tabs at the top of the screen
 
 	-- ChatGPT
-	"jackMort/ChatGPT.nvim", -- In-Editor ChatGPT client
+	{ "jackMort/ChatGPT.nvim", lazy = true }, -- In-Editor ChatGPT client
 
 	-- Colorschemes
-	"ellisonleao/gruvbox.nvim", -- Gruvbox colorscheme in Lua
+	{ "ellisonleao/gruvbox.nvim", lazy = true }, -- Gruvbox colorscheme in Lua
 	-- use "luisiacc/gruvbox-baby" -- Gruvbox variation w/ treesitter support
 	{
 		"wittyjudge/gruvbox-material.nvim",
@@ -55,8 +53,8 @@ local plugins = {
 		lazy = false,
 	},
 	-- use "sainnhe/gruvbox-material"
-	"rebelot/kanagawa.nvim",
-	{ "catppuccin/nvim", name = "catpuccin" },
+	{ "rebelot/kanagawa.nvim", lazy = true },
+	{ "catppuccin/nvim", name = "catpuccin", lazy = true },
 
 	-- Colorizer
 	-- Preview colors in-file. Lazy load, enable with :ColorizerToggle
@@ -77,9 +75,7 @@ local plugins = {
 	"saadparwaiz1/cmp_luasnip", --snippet completion
 
 	--- Copilot
-	-- use "github/copilot.vim" -- AI Code Generation
 	"zbirenbaum/copilot.lua",
-	-- use "zbirenbaum/copilot-cmp"
 
 	-- DAP
 	-- use "mfussenegger/nvim-dap" -- Debug Adapter Protocol client
@@ -106,8 +102,8 @@ local plugins = {
 	"neovim/nvim-lspconfig", -- enable LSP
 	-- use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-	"jose-elias-alvarez/typescript.nvim", -- special typescript tools
-	"simrat39/rust-tools.nvim", -- specialized rust tools - installs rust-analyzer by default
+	{ "jose-elias-alvarez/typescript.nvim", ft = "typescript" }, -- special typescript tools
+	{ "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
 
 	-- Markdown --
 	-- In-vim markdown preview (Glow)
@@ -123,25 +119,11 @@ local plugins = {
 		ft = { "markdown" },
 	},
 
-	-- use { 'iamcco/markdown-preview.nvim',
-	--   ft = "markdown",
-	--   run = 'cd app && npm install',
-	--   cmd = 'MarkdownPreview' }
-
-	-- Quickfix window
-	-- use {'kevinhwang91/nvim-bqf'}
-
-	-- Neoscroll
-	"karb94/neoscroll.nvim", -- Smooth scrolling
-
-	-- NvimTree
-	-- use "kyazdani42/nvim-tree.lua" -- File explorer (<leader>e)
-
 	-- NeoTree
-	-- Unless you are still migrating, remove the deprecated commands from v1.x
 	{
 		"nvim-neo-tree/neo-tree.nvim", -- File explorer (<leader>e)
 		branch = "v2.x",
+		-- Unless you are still migrating, remove the deprecated commands from v1.x
 		init = function()
 			vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 		end,
@@ -157,7 +139,7 @@ local plugins = {
 
 	-- Snippets
 	"L3MON4D3/LuaSnip", -- Snippet engine
-	-- use "rafamadriz/friendly-snippets" -- Lots of snipets
+	-- use "rafamadriz/friendly-snippets" -- Lots of snippets
 
 	-- Surround
 	"kylechui/nvim-surround", -- Surround text with keymaps
@@ -182,7 +164,7 @@ local plugins = {
 
 	-- VimWiki
 	"vimwiki/vimwiki", -- Personal wiki (<leader>ww)
-	"michal-h21/vimwiki-sync", -- Automatically sync vimwiki on open and close
+	{ "michal-h21/vimwiki-sync", ft = "vimwiki" }, -- Automatically sync vimwiki on open and close
 
 	-- Which-Key
 	"folke/which-key.nvim", -- Keybind help popup
