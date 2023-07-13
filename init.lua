@@ -11,34 +11,42 @@
 ]]
 
 vim.loader.enable()
-require("scott.options")
-require("scott.gruvbox-material")
--- require "scott.gruvbox"
-require("scott.keymaps")
-require("scott.plugins")
-require("scott.colorscheme")
-require("scott.lualine")
-require("scott.cmp")
-require("scott.mason")
-require("scott.telescope")
-require("scott.treesitter")
-require("scott.autopairs")
-require("scott.comment")
-require("scott.gitsigns")
-require("scott.toggleterm")
--- require "scott.nvim-tree"
-require("scott.neotree")
-require("scott.bufferline")
-require("scott.colorizer")
-require("scott.whichkey")
-require("scott.alpha")
-require("scott.project")
-require("scott.indentline")
-require("scott.surround")
-require("scott.tidy")
-require("scott.autocommands")
-require("scott.ts-autotags")
-require("scott.fidget")
-require("scott.chatGPT")
-require("scott.copilot")
-require("scott.import-cost")
+
+local modules = {
+	"options",
+	"gruvbox-material",
+	"keymaps",
+	"plugins",
+	"colorscheme",
+	"lualine",
+	"cmp",
+	"mason",
+	"telescope",
+	"treesitter",
+	"autopairs",
+	"comment",
+	"gitsigns",
+	"toggleterm",
+	"neotree",
+	"bufferline",
+	"colorizer",
+	"whichkey",
+	"alpha",
+	"project",
+	"indentline",
+	"surround",
+	"tidy",
+	"autocommands",
+	"ts-autotags",
+	"fidget",
+	"chatGPT",
+	"copilot",
+	"import-cost",
+}
+
+for _, module in ipairs(modules) do
+	local ok, err = pcall(require, "scott." .. module)
+	if not ok then
+		vim.notify("Error loading scott." .. module .. "\n\n" .. err)
+	end
+end
