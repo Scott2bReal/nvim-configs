@@ -103,9 +103,10 @@ local mappings = {
 	["A"] = { "<cmd>bufdo Bdelete <CR><cmd>Alpha<CR>", "Close All Buffers To Alpha" },
 	p = {
 		name = "Plugins",
-		i = { "<cmd>Lazy install<cr>", "Install" },
-		s = { "<cmd>Lazy sync<cr>", "Sync" },
 		h = { "<cmd>Lazy home<cr>", "Home" },
+		i = { "<cmd>Lazy install<cr>", "Install" },
+		p = { "<cmd>Lazy profile<cr>", "Profile" },
+		s = { "<cmd>Lazy sync<cr>", "Sync" },
 		u = { "<cmd>Lazy update<cr>", "Update" },
 	},
 	g = {

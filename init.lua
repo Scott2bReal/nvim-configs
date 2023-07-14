@@ -26,7 +26,6 @@ local modules = {
 	"autopairs",
 	"comment",
 	"gitsigns",
-	"toggleterm",
 	"neotree",
 	"bufferline",
 	"colorizer",

@@ -21,13 +21,13 @@ end
 local plugins = {
 	-- General/dependency plugins
 	"folke/lazy.nvim", -- Lazy manages itself
-	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim
-	"nvim-lua/plenary.nvim", -- Lua functions required by many plugins
-	"kyazdani42/nvim-web-devicons", -- Icons required by many plugins
-	"famiu/bufdelete.nvim", -- Makes sure BDelete won't exit neovim
-	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
-	"arithran/vim-delete-hidden-buffers", -- Close all buffers but current
-	"MunifTanjim/nui.nvim", -- UI Plugin
+	{ "nvim-lua/popup.nvim", lazy = true }, -- An implementation of the Popup API from vim
+	{ "nvim-lua/plenary.nvim", lazy = true }, -- Lua functions required by many plugins
+	{ "kyazdani42/nvim-web-devicons", lazy = true }, -- Icons required by many plugins
+	{ "famiu/bufdelete.nvim", lazy = true }, -- Makes sure BDelete won't exit neovim
+	{ "antoinemadec/FixCursorHold.nvim", lazy = true }, -- This is needed to fix lsp doc highlight
+	{ "arithran/vim-delete-hidden-buffers", lazy = true }, -- Close all buffers but current
+	{ "MunifTanjim/nui.nvim", lazy = true }, -- UI Plugin
 
 	-- Alpha
 	"goolord/alpha-nvim", -- Dashboard
@@ -36,7 +36,7 @@ local plugins = {
 	"windwp/nvim-autopairs", -- Auto close stuff like "" or ()
 
 	-- Autotags
-	"windwp/nvim-ts-autotag", -- Finish tags
+	{ "windwp/nvim-ts-autotag", ft = { "html", "tsx", "jsx" } }, -- Finish tags
 
 	-- Bufferline
 	"akinsho/bufferline.nvim", -- List buffers like tabs at the top of the screen
@@ -105,6 +105,7 @@ local plugins = {
 	-- Markdown --
 	-- In-vim markdown preview (Glow)
 	--[[ use { "ellisonleao/glow.nvim", branch = 'main' } ]]
+
 	-- Preview in browser
 	-- install without yarn or npm
 	{
@@ -149,7 +150,7 @@ local plugins = {
 	"McAuleyPenney/tidy.nvim", -- Remove trailing whitespace and blank lines on file write
 
 	-- ToggleTerm
-	"akinsho/toggleterm.nvim", -- Open terminal inside nvim buffer (<C-\>)
+	-- "akinsho/toggleterm.nvim", -- Open terminal inside nvim buffer (<C-\>)
 
 	--Treesitter
 	{
