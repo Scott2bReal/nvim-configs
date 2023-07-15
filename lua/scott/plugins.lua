@@ -81,7 +81,7 @@ local plugins = {
 	-- use { "norcalli/nvim-colorizer.lua", opt = true, cmd = { "ColorizerToggle" } }
 
 	-- Comment
-	{ "numToStr/Comment.nvim", lazy = true, }, -- Easily comment lines
+	"numToStr/Comment.nvim", -- Easily comment lines
 	"JoosepAlviste/nvim-ts-context-commentstring", -- requires treesitter
 
 	-- Completion Plugins
@@ -127,6 +127,7 @@ local plugins = {
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 	"jose-elias-alvarez/typescript.nvim", -- special typescript tools
 	{ "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
+	{ "folke/neodev.nvim", ft = "lua" }, -- Neovim development tools
 
 	-- Markdown --
 	-- In-vim markdown preview (Glow)
