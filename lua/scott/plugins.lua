@@ -81,7 +81,7 @@ local plugins = {
 	-- use { "norcalli/nvim-colorizer.lua", opt = true, cmd = { "ColorizerToggle" } }
 
 	-- Comment
-	{ "numToStr/Comment.nvim", lazy = true }, -- Easily comment lines
+	{ "numToStr/Comment.nvim", lazy = true, }, -- Easily comment lines
 	"JoosepAlviste/nvim-ts-context-commentstring", -- requires treesitter
 
 	-- Completion Plugins
@@ -125,7 +125,7 @@ local plugins = {
 	"neovim/nvim-lspconfig", -- enable LSP
 	-- use "williamboman/nvim-lsp-installer" -- simple to use langauge server installer - :LspInstallInfo
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-	{ "jose-elias-alvarez/typescript.nvim", ft = "typescript" }, -- special typescript tools
+	"jose-elias-alvarez/typescript.nvim", -- special typescript tools
 	{ "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
 
 	-- Markdown --
@@ -191,7 +191,18 @@ local plugins = {
 	"nvim-treesitter/nvim-treesitter-context", -- Show context around cursor
 
 	-- VimWiki
-	"vimwiki/vimwiki", -- Personal wiki (<leader>ww)
+	{
+		"vimwiki/vimwiki",
+		config = function()
+			local l = {}
+			l.path = "~/vimwiki"
+			l.syntax = "markdown"
+			l.ext = ".md"
+			vim.g.vimwiki_list = { l }
+		end,
+	},
+
+	-- Personal wiki (<leader>ww)
 	{ "michal-h21/vimwiki-sync", ft = "vimwiki" }, -- Automatically sync vimwiki on open and close
 
 	-- Which-Key
