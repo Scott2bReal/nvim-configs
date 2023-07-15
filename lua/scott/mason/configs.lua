@@ -32,7 +32,7 @@ local servers = {
 	"prismals",
 	"taplo",
 	"rust_analyzer",
-  "graphql",
+	"graphql",
 }
 
 mason.setup({
