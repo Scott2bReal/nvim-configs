@@ -20,7 +20,7 @@ return {
 		"handlebars",
 		"hbs",
 	},
-	opt = {
+	opts = {
 		autotag = {
 			enable = true,
 		},

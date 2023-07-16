@@ -1,6 +1,6 @@
 return {
 
-	{ "nvim-telescope/telescope-media-files.nvim" }, -- Preview images in telescope
+	{ "nvim-telescope/telescope-media-files.nvim", lazy = true }, -- Preview images in telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
@@ -105,8 +105,14 @@ return {
 				},
 			}
 		end,
-		config = function()
-			require("telescope").load_extension("media_files")
+		config = function(_, opts)
+			local has_telescope, telescope = pcall(require, "telescope")
+			if not has_telescope then
+				vim.notify("Error loading telescope")
+				return
+			end
+			telescope.load_extension("media_files")
+			telescope.setup(opts)
 		end,
 	}, -- Fuzzy file finder (<leader>f)
 }

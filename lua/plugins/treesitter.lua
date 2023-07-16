@@ -1,7 +1,46 @@
 return {
-	"mrjones2014/nvim-ts-rainbow", -- Color codes closure pairs like () or {}
+	{ "mrjones2014/nvim-ts-rainbow", lazy = true }, -- Color codes closure pairs like () or {}
+	{
+		"nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
+		build = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			ensure_installed = "all", -- either "all", "maintained", or a list of languages in a table
+			sync_install = false, -- install languages synchronously (only applied to ensure_installed)
+			ignore_install = { "" }, -- List of parsers to ignore installing
+			highlight = {
+				enable = true, -- false would disable entire plugin
+				disable = { "" }, -- list of language that will be disabled
+				additional_vim_regex_highlighting = true,
+			},
+			indent = { enable = true, disable = { "yaml", "ruby", "html", "css", "sql" } },
+			rainbow = {
+				enable = true,
+				-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+				extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+				max_file_lines = nil, -- Do not enable for files with more than n lines, int
+				-- colors = {}, -- table of hex strings
+				-- termcolors = {} -- table of colour name strings
+			},
+			context_commentstring = {
+				enable = true,
+				enable_autocmd = false,
+			},
+			autotag = {
+				enable = true,
+			},
+		},
+		config = function(_, opts)
+			local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+			if not status_ok then
+				return
+			end
+			treesitter.setup(opts)
+		end,
+	},
 	{
 		"nvim-treesitter/nvim-treesitter-context", -- Show context around cursor
+		lazy = true,
 		opts = {
 			enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 			max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -90,36 +129,6 @@ return {
 			-- Separator between context and content. Should be a single character string, like '-'.
 			-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
 			separator = nil,
-		},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
-		build = ":TSUpdate",
-		opts = {
-			ensure_installed = { "lua", "typescript" }, -- either "all", "maintained", or a list of languages in a table
-			sync_install = false, -- install languages synchronously (only applied to ensure_installed)
-			ignore_install = { "" }, -- List of parsers to ignore installing
-			highlight = {
-				enable = true, -- false would disable entire plugin
-				disable = { "" }, -- list of language that will be disabled
-				additional_vim_regex_highlighting = true,
-			},
-			indent = { enable = true, disable = { "yaml", "ruby", "html", "css", "sql" } },
-			rainbow = {
-				enable = true,
-				-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-				extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-				max_file_lines = nil, -- Do not enable for files with more than n lines, int
-				-- colors = {}, -- table of hex strings
-				-- termcolors = {} -- table of colour name strings
-			},
-			context_commentstring = {
-				enable = true,
-				enable_autocmd = false,
-			},
-			autotag = {
-				enable = true,
-			},
 		},
 	},
 }

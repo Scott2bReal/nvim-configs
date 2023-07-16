@@ -21,6 +21,14 @@ return {
 			highlight = "PmenuSel",
 			highlight_grey = "LineNr",
 		},
+		config = function(_, opts)
+			local status_ok, npairs = pcall(require, "nvim-autopairs")
+			if not status_ok then
+				vim.notify("Comment.nvim couldn't load ts_context_commentstring")
+				return
+			end
+			npairs.setup(opts)
+		end,
 	},
 	-- config = function()
 	-- 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")

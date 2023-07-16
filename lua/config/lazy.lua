@@ -20,9 +20,7 @@ end
 
 lazy.setup({
 	spec = {
-		import = 
-			"plugins",
-		
+		import = "plugins",
 	},
 	install = {
 		colorscheme = { "gruvbox-material" },
@@ -32,9 +30,9 @@ lazy.setup({
 	disabled_plugins = {
 		"tutor",
 		"gzip",
-		-- "matchit",
-		-- "matchparen",
-		-- "netrwPlugin",
+		"matchit",
+		"matchparen",
+		"netrwPlugin",
 		"tarPlugin",
 		"tohtml",
 		"tutor",

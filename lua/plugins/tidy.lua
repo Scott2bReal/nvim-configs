@@ -1,7 +1,7 @@
 return {
-	"McAuleyPenney/tidy.nvim",
-	event = "InsertEnter",
-	opt = {
-		filetype_exclude = { "markdown", "vimwiki" },
-	},
+  "McAuleyPenney/tidy.nvim",
+  event = "InsertEnter",
+  opts = {
+    filetype_exclude = { "markdown", "vimwiki" },
+  },
 }

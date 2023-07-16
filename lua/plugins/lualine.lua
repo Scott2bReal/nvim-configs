@@ -34,48 +34,54 @@ return {
 		tabline = {},
 		extensions = {},
 	},
-	-- config = function(lualine, opts)
-	-- 	lualine.setup(opts)
-	--
-	-- 	function append_right(component)
-	-- 		table.insert(opts.sections.lualine_x, 1, component)
-	-- 	end
-	--
-	-- 	function ins_y(component)
-	-- 		table.insert(opts.sections.lualine_y, component)
-	-- 	end
-	--
-	-- 	-- cool function for progress
-	-- 	-- credit chris@machine
-	-- 	local progress = function()
-	-- 		local current_line = vim.fn.line(".")
-	-- 		local total_lines = vim.fn.line("$")
-	-- 		local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-	-- 		local line_ratio = current_line / total_lines
-	-- 		local index = math.ceil(line_ratio * #chars)
-	-- 		return chars[index]
-	-- 	end
-	--
-	-- 	append_right({
-	-- 		-- Lsp server name
-	-- 		function()
-	-- 			local msg = "No Active Lsp"
-	-- 			local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-	-- 			local clients = vim.lsp.get_active_clients()
-	-- 			if next(clients) == nil then
-	-- 				return msg
-	-- 			end
-	-- 			for _, client in ipairs(clients) do
-	-- 				local filetypes = client.config.filetypes
-	-- 				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-	-- 					return client.name
-	-- 				end
-	-- 			end
-	-- 			return msg
-	-- 		end,
-	-- 		icon = " LSP:",
-	-- 	})
-	--
-	-- 	ins_y(progress)
-	-- end,
+	config = function(_, opts)
+		local has_lualine, lualine = pcall(require, "lualine")
+		if not has_lualine then
+			vim.notify("Lualine not found")
+			return
+		end
+
+		local function append_right(component)
+			table.insert(opts.sections.lualine_x, 1, component)
+		end
+
+		local function ins_y(component)
+			table.insert(opts.sections.lualine_y, component)
+		end
+
+		-- cool function for progress
+		-- credit chris@machine
+		local progress = function()
+			local current_line = vim.fn.line(".")
+			local total_lines = vim.fn.line("$")
+			local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+			local line_ratio = current_line / total_lines
+			local index = math.ceil(line_ratio * #chars)
+			return chars[index]
+		end
+
+		append_right({
+			-- Lsp server name
+			function()
+				local msg = "No Active Lsp"
+				local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+				local clients = vim.lsp.get_active_clients()
+				if next(clients) == nil then
+					return msg
+				end
+				for _, client in ipairs(clients) do
+					local filetypes = client.config.filetypes
+					if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+						return client.name
+					end
+				end
+				return msg
+			end,
+			icon = " LSP:",
+		})
+
+		ins_y(progress)
+
+		lualine.setup(opts)
+	end,
 }

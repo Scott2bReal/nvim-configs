@@ -2,7 +2,6 @@ return {
 	"lewis6991/gitsigns.nvim",
 	event = "BufRead",
 	opts = {
-
 		signs = {
 			add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 			change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
@@ -50,4 +49,11 @@ return {
 			enable = false,
 		},
 	},
+	config = function(_, opts)
+		local status_ok, gitsigns = pcall(require, "gitsigns")
+		if not status_ok then
+			return
+		end
+		gitsigns.setup(opts)
+	end,
 }

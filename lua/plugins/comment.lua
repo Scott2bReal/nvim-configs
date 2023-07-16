@@ -3,7 +3,7 @@ return {
 	{
 		"numToStr/Comment.nvim", -- Easily comment lines
 		lazy = "VeryLazy",
-		opt = function()
+		opts = function()
 			local status_ok, ts_context_commentstring = pcall(require, "ts_context_commentstring")
 			if not status_ok then
 				vim.notify("Comment.nvim couldn't load ts_context_commentstring")

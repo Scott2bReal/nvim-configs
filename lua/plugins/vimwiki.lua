@@ -1,7 +1,8 @@
 return {
 	{
 		"vimwiki/vimwiki",
-		opt = {
+		ft = { "vimwiki", "markdown" },
+		opts = {
 			config = function()
 				local l = {}
 				l.path = "~/vimwiki"

@@ -2,6 +2,7 @@
 return {
 	{
 		"akinsho/bufferline.nvim",
+		lazy = "VeryLazy",
 		opts = {
 			options = {
 				numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -165,14 +166,13 @@ return {
 				},
 			},
 		},
+		-- config = function(_, opts)
+		-- 	local has_bufferline, bufferline = pcall(require, "bufferline")
+		-- 	if not has_bufferline then
+		-- 		vim.notify("Error loading bufferline")
+		-- 		return
+		-- 	end
+		-- 	bufferline.setup(opts)
+		-- end,
 	},
-	-- {
-	-- 	"echasnovski/mini.bufremove",
-	-- 	lazy = "VeryLazy",
-	--    -- stylua: ignore
-	--    keys = {
-	--      { "<leader>c", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-	--      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
-	--    },
-	-- },
 }

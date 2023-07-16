@@ -2,8 +2,7 @@ return {
 	"barrett-ruth/import-cost.nvim", -- Shows the size of an import
 	build = "sh install.sh npm",
 	ft = { "typescript", "typescriptreact", "jsx", "javascript", "javascriptreact", "svelte", "astro", "vue" },
-	opt = {
-
+	opts = {
 		-- Filetypes to attach to
 		filetypes = {
 			"javascript",
