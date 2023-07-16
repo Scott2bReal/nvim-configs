@@ -47,7 +47,7 @@ local function ins_y(component)
 end
 
 -- cool function for progress
--- credit chris@machine (for pretty much all of these configs)
+-- credit chris@machine
 local progress = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
