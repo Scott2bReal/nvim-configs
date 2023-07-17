@@ -5,7 +5,7 @@ return {
 				callSnippet = "Replace",
 			},
 			diagnostics = {
-				globals = { "vim", "awesome", "client", "screen", "root" },
+				globals = { "awesome", "client", "screen", "root" },
 				disable = { "lowercase-global", "trailing-space" },
 			},
 			workspace = {
