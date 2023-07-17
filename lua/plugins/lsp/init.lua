@@ -1,12 +1,40 @@
 require("plugins.lsp.handlers").setup()
 return {
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile", },
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    config = function(_, _)
+      local has_null_ls, null_ls = pcall(require, "null-ls")
+      if not has_null_ls then
+        vim.notify("null-ls couldn't load")
+        return
+      end
+      local formatting = null_ls.builtins.formatting
+      local diagnostics = null_ls.builtins.diagnostics
+      null_ls.setup({
+        debug = false,
+        formatting.prettier.with({
+          extra_args = {},
+          extra_filetypes = { "astro" },
+        }),
+        formatting.stylua,
+        formatting.sqlfluff.with({
+          extra_args = { "--dialect", "postgres" },
+        }),
+        formatting.shfmt,
+        diagnostics.flake8,
+      })
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
     { "folke/neodev.nvim" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "hrsh7th/cmp-nvim-lsp" },
-    "jose-elias-alvarez/null-ls.nvim",           -- for formatters and linters
     "jose-elias-alvarez/typescript.nvim",        -- special typescript tools
     { "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
     { "folke/neodev.nvim",        ft = "lua" },  -- Neovim development tools
