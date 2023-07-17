@@ -33,9 +33,9 @@ vim.cmd([[
     autocmd VimLeave * set guicursor=a:hor10-blinkwait150-blinkoff150-blinkon150
   augroup end
 
-  augroup _lsp
+  augroup _autoformat
     autocmd!
-    autocmd BufWritePre * lua vim.lsp.buf.format()
+    autocmd BufWritePre * lua vim.lsp.buf.format({ timeout_ms = 5000 })
   augroup end
 
   " TODO open alpha when every buffer is closed

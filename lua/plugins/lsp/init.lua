@@ -1,4 +1,3 @@
-require("plugins.lsp.handlers").setup()
 return {
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -16,32 +15,30 @@ return {
       local diagnostics = null_ls.builtins.diagnostics
       null_ls.setup({
         debug = false,
-        formatting.prettier.with({
-          extra_args = {},
-          extra_filetypes = { "astro" },
-        }),
-        formatting.stylua,
-        formatting.sqlfluff.with({
-          extra_args = { "--dialect", "postgres" },
-        }),
-        formatting.shfmt,
-        diagnostics.flake8,
+        sources = {
+          formatting.prettier.with({
+            extra_args = {},
+            extra_filetypes = { "astro" },
+          }),
+          formatting.stylua,
+          formatting.sqlfluff.with({
+            extra_args = { "--dialect", "postgres" },
+          }),
+          formatting.shfmt,
+          diagnostics.flake8,
+        }
       })
     end
   },
-  {
-    "neovim/nvim-lspconfig",
-    { "folke/neodev.nvim" },
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    "jose-elias-alvarez/typescript.nvim",        -- special typescript tools
-    { "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
-    { "folke/neodev.nvim",        ft = "lua" },  -- Neovim development tools
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-  },
+  { "neovim/nvim-lspconfig" },
+  { "folke/neodev.nvim" },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "jose-elias-alvarez/typescript.nvim" },             -- special typescript tools
+  { "simrat39/rust-tools.nvim",          ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
+  { "folke/neodev.nvim",                 ft = "lua" },  -- Neovim development tools
+  { "williamboman/mason-lspconfig.nvim", },
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -134,6 +131,7 @@ return {
 
         lspconfig[server].setup(server_opts)
         ::continue::
+        require("plugins.lsp.handlers").setup()
       end
     end,
   },
