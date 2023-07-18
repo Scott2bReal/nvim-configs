@@ -22,12 +22,12 @@ return {
 				highlight = {
 					-- The order of these determines the order of colors used in buffers
 					"RainbowDelimiterYellow",
-					"RainbowDelimiterRed",
 					"RainbowDelimiterBlue",
 					"RainbowDelimiterOrange",
 					"RainbowDelimiterGreen",
 					"RainbowDelimiterViolet",
 					"RainbowDelimiterCyan",
+					"RainbowDelimiterRed",
 				},
 			}
 		end,
