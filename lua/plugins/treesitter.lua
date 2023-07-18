@@ -1,5 +1,37 @@
 return {
-	{ "mrjones2014/nvim-ts-rainbow", lazy = true }, -- Color codes closure pairs like () or {}
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		config = function()
+			local has_rainbow_delimiters, rainbow = pcall(require, "rainbow-delimiters")
+			if not has_rainbow_delimiters then
+				vim.notify("Failed to load rainbow-delimiters")
+				return
+			end
+			vim.g.rainbow_delimiters = {
+				strategy = {
+					[""] = rainbow.strategy["global"],
+					vim = rainbow.strategy["local"],
+				},
+				query = {
+					[""] = rainbow.strategy["local"],
+					lua = "rainbow-blocks",
+					javascript = "rainbow-delimiters-react",
+					tsx = "rainbow-parens",
+				},
+				highlight = {
+					-- The order of these determines the order of colors used in buffers
+					"RainbowDelimiterYellow",
+					"RainbowDelimiterRed",
+					"RainbowDelimiterBlue",
+					"RainbowDelimiterOrange",
+					"RainbowDelimiterGreen",
+					"RainbowDelimiterViolet",
+					"RainbowDelimiterCyan",
+				},
+			}
+		end,
+	},
 	{
 		"nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
 		build = ":TSUpdate",
