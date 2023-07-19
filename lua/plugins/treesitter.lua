@@ -19,6 +19,7 @@ return {
 					tsx = "rainbow-parens",
 				},
 				highlight = {
+					-- The order of these determines the order used for delimiters
 					"RainbowDelimiterYellow",
 					"RainbowDelimiterCyan",
 					"RainbowDelimiterOrange",
