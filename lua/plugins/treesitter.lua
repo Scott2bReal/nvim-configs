@@ -18,6 +18,7 @@ return {
 					lua = "rainbow-blocks",
 					javascript = "rainbow-delimiters-react",
 					tsx = "rainbow-parens",
+					typescript = "rainbow-parens",
 				},
 				highlight = {
 					-- The order of these determines the order of colors used in buffers
