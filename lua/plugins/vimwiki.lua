@@ -1,16 +1,17 @@
 return {
 	{
 		"vimwiki/vimwiki",
-		ft = { "vimwiki", "markdown" },
-		opts = {
-			config = function()
-				local l = {}
-				l.path = "~/vimwiki"
-				l.syntax = "markdown"
-				l.ext = ".md"
-				vim.g.vimwiki_list = { l }
-			end,
-		},
+		-- event = "VeryLazy",
+		config = function()
+			local l = {}
+			l.path = "~/vimwiki"
+			l.syntax = "markdown"
+			l.ext = ".md"
+			vim.g.vimwiki_list = { l }
+			vim.cmd([[set nocompatible]])
+			vim.cmd([[filetype plugin on]])
+			vim.cmd([[syntax on]])
+		end,
 	},
-	{ "michal-h21/vimwiki-sync", ft = "vimwiki" },
+	{ "michal-h21/vimwiki-sync" },
 }
