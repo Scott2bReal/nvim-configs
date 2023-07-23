@@ -1,7 +1,6 @@
 return {
 	{
 		"vimwiki/vimwiki",
-		-- event = "VeryLazy",
 		config = function()
 			local l = {}
 			l.path = "~/vimwiki"
