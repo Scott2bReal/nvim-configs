@@ -494,7 +494,7 @@ return {
 			--end,
 			group_empty_dirs = false, -- when true, empty folders will be grouped together
 			search_limit = 50, -- max number of search results when using filters
-			follow_current_file = { enabled = false }, -- This will find and focus the file in the active buffer every time
+			follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every time
 			-- the current file is changed while the tree is open.
 			hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
 			-- in whatever position is specified in window.position
