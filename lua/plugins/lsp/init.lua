@@ -17,8 +17,8 @@ return {
 				debug = false,
 				sources = {
 					formatting.prettier.with({
-						extra_args = {},
 						extra_filetypes = { "astro" },
+						extra_args = {},
 					}),
 					formatting.stylua,
 					formatting.sqlfluff.with({
@@ -72,6 +72,7 @@ return {
 			local servers = {
 				"astro",
 				"bashls",
+				-- "cssls",
 				"jsonls",
 				"lua_ls",
 				"pyright",
@@ -81,7 +82,6 @@ return {
 				"eslint",
 				"clangd",
 				"cmake",
-				"cssls",
 				"yamlls",
 				"tailwindcss",
 				"tsserver",
@@ -89,6 +89,7 @@ return {
 				"taplo",
 				"rust_analyzer",
 				"graphql",
+				"stylelint_lsp",
 			}
 
 			mason.setup(opts)
