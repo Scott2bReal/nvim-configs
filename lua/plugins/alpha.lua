@@ -46,6 +46,7 @@ return {
 
 		dashboard.section.buttons.val = {
 			dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
+      dashboard.button("o", "󰸊  Open Oil", ":Oil . <CR>"),
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
 			dashboard.button("r", "󱋡  Recently used files", ":Telescope oldfiles <CR>"),

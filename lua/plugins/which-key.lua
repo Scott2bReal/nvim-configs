@@ -179,6 +179,10 @@ return {
 				g = { "<cmd>Glow<cr>", "Open preview in glow" },
 				p = { "<cmd>MarkdownPreviewToggle<cr>", "Open preview in browser" },
 			},
+      o = {
+        name = "Oil",
+        o = { "<cmd>Oil .<cr>", "Open Oil in the current directory" },
+      },
 			s = {
 				name = "Search",
 				b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
