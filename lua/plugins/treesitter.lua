@@ -14,7 +14,7 @@ return {
 					vim = rainbow.strategy["local"],
 				},
 				query = {
-					[""] = rainbow.strategy["local"],
+					-- 	[""] = rainbow.strategy["local"],
 					lua = "rainbow-blocks",
 					javascript = "rainbow-delimiters-react",
 					tsx = "rainbow-parens",
