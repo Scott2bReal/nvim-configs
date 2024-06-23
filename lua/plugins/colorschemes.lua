@@ -19,7 +19,7 @@ return {
 				-- by the color scheme
 			},
 			signs = {
-				highlight = true, -- whether to highlight signs
+				highlight = false, -- whether to highlight signs
 			},
 			customize = nil, -- customize the theme in any way you desire, see below what this
 			-- configuration accepts

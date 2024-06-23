@@ -35,7 +35,6 @@ return {
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "jose-elias-alvarez/typescript.nvim" }, -- special typescript tools
 	{ "folke/neodev.nvim", ft = "lua" }, -- Neovim development tools
 	{ "williamboman/mason-lspconfig.nvim" },
 	{
@@ -57,11 +56,6 @@ return {
 				vim.notify("Mason couldn't load")
 				return
 			end
-			local has_typescript, typescript = pcall(require, "typescript")
-			if not has_typescript then
-				vim.notify("Typescript couldn't load")
-				return
-			end
 			local has_lspconfig, lspconfig = pcall(require, "lspconfig")
 			if not has_lspconfig then
 				vim.notify("lspconfig couldn't load")
@@ -78,7 +72,6 @@ return {
 				"cssls",
 				"yamlls",
 				"tailwindcss",
-				"tsserver",
 				"taplo",
 			}
 
@@ -107,21 +100,7 @@ return {
 					server_opts = vim.tbl_deep_extend("force", server_custom_opts, server_opts)
 				end
 
-				-- Special typescript tools (from typescript.nvim plugin)
-				if server == "tsserver" then
-					typescript.setup({
-						disable_commands = false, -- prevent the plugin from creating Vim commands
-						debug = false, -- enable debug logging for commands
-						go_to_source_definition = {
-							fallback = true, -- fall back to standard LSP definition on failure
-						},
-						server = server_opts,
-					})
-					goto continue
-				end
-
 				lspconfig[server].setup(server_opts)
-				::continue::
 				require("plugins.lsp.handlers").setup()
 			end
 		end,
