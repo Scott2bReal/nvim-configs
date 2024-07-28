@@ -1,11 +1,10 @@
 return {
   {
-    "wittyjudge/gruvbox-material.nvim",
+    "f4z3r/gruvbox-material.nvim",
+    name = "gruvbox-material",
     priority = 1000,
     lazy = false,
-    config = function()
-      vim.cmd([[colorscheme gruvbox-material]])
-    end,
+    opts = {},
   },
   { "ellisonleao/gruvbox.nvim", lazy = true }, -- Gruvbox colorscheme in Lua
   {
