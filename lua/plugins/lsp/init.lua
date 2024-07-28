@@ -35,7 +35,6 @@ return {
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "jose-elias-alvarez/typescript.nvim" }, -- special typescript tools
 	{ "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
 	{ "folke/neodev.nvim", ft = "lua" }, -- Neovim development tools
 	{ "williamboman/mason-lspconfig.nvim" },
@@ -56,11 +55,6 @@ return {
 			local has_mason, mason = pcall(require, "mason")
 			if not has_mason then
 				vim.notify("Mason couldn't load")
-				return
-			end
-			local has_typescript, typescript = pcall(require, "typescript")
-			if not has_typescript then
-				vim.notify("Typescript couldn't load")
 				return
 			end
 			local has_lspconfig, lspconfig = pcall(require, "lspconfig")
@@ -84,7 +78,6 @@ return {
 				"cmake",
 				"yamlls",
 				"tailwindcss",
-				"tsserver",
 				"prismals",
 				"taplo",
 				"rust_analyzer",
@@ -117,21 +110,7 @@ return {
 					server_opts = vim.tbl_deep_extend("force", server_custom_opts, server_opts)
 				end
 
-				-- Special typescript tools (from typescript.nvim plugin)
-				if server == "tsserver" then
-					typescript.setup({
-						disable_commands = false, -- prevent the plugin from creating Vim commands
-						debug = false, -- enable debug logging for commands
-						go_to_source_definition = {
-							fallback = true, -- fall back to standard LSP definition on failure
-						},
-						server = server_opts,
-					})
-					goto continue
-				end
-
 				lspconfig[server].setup(server_opts)
-				::continue::
 				require("plugins.lsp.handlers").setup()
 			end
 		end,
