@@ -57,9 +57,6 @@ return {
 				enable = true,
 				enable_autocmd = false,
 			},
-			autotag = {
-				enable = true,
-			},
 		},
 		config = function(_, opts)
 			local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
