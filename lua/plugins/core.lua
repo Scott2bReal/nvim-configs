@@ -5,4 +5,5 @@ return {
 	{ "kyazdani42/nvim-web-devicons", lazy = true }, -- Icons required by many plugins
 	{ "antoinemadec/FixCursorHold.nvim", lazy = true }, -- This is needed to fix lsp doc highlight
 	{ "MunifTanjim/nui.nvim", lazy = true }, -- UI Plugin
+	{ "echasnovski/mini.icons", lazy = true },
 }
