@@ -4,7 +4,9 @@ return {
     name = "gruvbox-material",
     priority = 1000,
     lazy = false,
-    opts = {},
+    opts = {
+      contrast = "medium", -- set contrast, can be any of "hard", "medium", "soft"
+    },
   },
   { "ellisonleao/gruvbox.nvim", lazy = true }, -- Gruvbox colorscheme in Lua
   {
