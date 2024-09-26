@@ -62,6 +62,12 @@ return {
 				nowait = true,
 				remap = false,
 			},
+      {
+        "<leader>a",
+        desc = "Avante",
+        nowait = true,
+        remap = false,
+      },
 			{
 				"<leader>F",
 				"<cmd>Telescope live_grep theme=ivy<cr>",
@@ -80,13 +86,6 @@ return {
 				"<leader>P",
 				"<cmd>Telescope projects<cr>",
 				desc = "Projects",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>a",
-				"<cmd>Alpha<cr>",
-				desc = "Alpha",
 				nowait = true,
 				remap = false,
 			},
