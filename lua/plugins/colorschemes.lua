@@ -4,6 +4,7 @@ return {
 		name = "gruvbox-material",
 		lazy = false,
 		priority = 1000,
+		-- lazy = true,
 		opts = {
 			italics = true, -- enable italics in general
 			contrast = "medium", -- set contrast, can be any of "hard", "medium", "soft"
@@ -21,7 +22,12 @@ return {
 			signs = {
 				highlight = false, -- whether to highlight signs
 			},
-			customize = nil, -- customize the theme in any way you desire, see below what this
+			customize = function(group, options)
+				if group == "DiffChange" then
+					options.bg = "#4a0e0e"
+				end
+				return options
+			end, -- customize the theme in any way you desire, see below what this
 			-- configuration accepts
 		},
 	},
@@ -29,6 +35,8 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = true,
+		-- lazy = false,
+		-- priority = 1000,
 		opts = {
 
 			compile = false, -- enable compiling the colorscheme

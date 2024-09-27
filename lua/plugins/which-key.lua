@@ -90,8 +90,9 @@ return {
 			},
 			{
 				"<leader>a",
-				"<cmd>Alpha<cr>",
-				desc = "Alpha",
+				desc = "Avante",
+				nowait = true,
+				remap = false,
 			},
 			{
 				"<leader>b",
