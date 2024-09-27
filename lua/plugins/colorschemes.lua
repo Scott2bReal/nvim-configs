@@ -6,6 +6,12 @@ return {
     lazy = false,
     opts = {
       contrast = "medium", -- set contrast, can be any of "hard", "medium", "soft"
+      customize = function(group, options)
+        if (group == "DiffChange") then
+          options.bg = "#4a0e0e"
+        end
+        return options
+      end
     },
   },
   { "ellisonleao/gruvbox.nvim", lazy = true }, -- Gruvbox colorscheme in Lua
