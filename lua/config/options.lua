@@ -62,3 +62,5 @@ vim.g.lodaded_perl_provider = 0
 vim.g.c_syntax_for_h = 1
 
 vim.g.skip_ts_context_commentstring_module = true
+
+vim.lsp.set_log_level("error")
