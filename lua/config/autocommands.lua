@@ -37,10 +37,10 @@ vim.cmd([[
     autocmd BufRead,BufEnter *.astro set filetype=astro
   augroup end
 
-  augroup _autoformat
-    autocmd!
-    autocmd BufWritePre * lua vim.lsp.buf.format({ timeout_ms = 5000 })
-  augroup end
+  " augroup _autoformat
+  "   autocmd!
+  "   autocmd BufWritePre * lua vim.lsp.buf.format({ timeout_ms = 5000 })
+  " augroup end
 
   " TODO open alpha when every buffer is closed
   " augroup _show_alpha
