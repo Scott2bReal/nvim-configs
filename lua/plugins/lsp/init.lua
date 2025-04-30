@@ -12,7 +12,7 @@ return {
         return
       end
       local formatting = null_ls.builtins.formatting
-      local diagnostics = null_ls.builtins.diagnostics
+      -- local diagnostics = null_ls.builtins.diagnostics
       null_ls.setup({
         debug = false,
         sources = {
@@ -25,7 +25,7 @@ return {
             extra_args = { "--dialect", "postgres" },
           }),
           formatting.shfmt,
-          diagnostics.flake8,
+          -- diagnostics.flake8,
         },
       })
     end,
