@@ -21,6 +21,7 @@ return {
             extra_filetypes = { "astro" },
             extra_args = {},
           }),
+          formatting.biome,
           formatting.stylua,
           formatting.sqlfluff.with({
             extra_args = { "--dialect", "postgres" },
@@ -66,6 +67,7 @@ return {
       -- List of installed language servers
       local servers = {
         "astro",
+        "biome",
         "bashls",
         -- "cssls",
         "jsonls",
