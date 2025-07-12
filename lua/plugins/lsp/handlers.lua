@@ -83,6 +83,10 @@ M.on_attach = function(client, bufnr)
     -- client.server_capabilities.semanticTokensProvider = nil
   end
 
+  if client.name == "jsonls" then
+    client.server_capabilities.document_formatting = false
+  end
+
   if client.name == "astro" then
     client.server_capabilities.document_formatting = false
   end
