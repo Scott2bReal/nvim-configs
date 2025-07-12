@@ -4,7 +4,8 @@ return {
     "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "williamboman/mason.nvim",
+      -- "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
     },
     config = function(_, _)
       local has_null_ls, null_ls = pcall(require, "null-ls")
@@ -34,14 +35,14 @@ return {
   },
   { "neovim/nvim-lspconfig" },
   { "folke/neodev.nvim" },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
+  { "mason-org/mason.nvim" },
+  { "mason-org/mason-lspconfig.nvim" },
   { "hrsh7th/cmp-nvim-lsp" },
-  { "simrat39/rust-tools.nvim",         ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
-  { "folke/neodev.nvim",                ft = "lua" },  -- Neovim development tools
-  { "williamboman/mason-lspconfig.nvim" },
+  { "simrat39/rust-tools.nvim",      ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
+  { "folke/neodev.nvim",             ft = "lua" },  -- Neovim development tools
+  { "mason-org/mason-lspconfig.nvim" },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     build = ":MasonUpdate",
     opts = {
       ui = {
