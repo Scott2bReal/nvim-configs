@@ -83,7 +83,6 @@ return {
         "prismals",
         "taplo",
         "rust_analyzer",
-        "graphql",
         "stylelint_lsp",
       }
 
