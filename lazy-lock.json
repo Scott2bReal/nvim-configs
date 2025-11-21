@@ -48,7 +48,6 @@
   "telescope-media-files.nvim": { "branch": "master", "commit": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "tidy.nvim": { "branch": "main", "commit": "c862cae8faba9e587774d40e38cb9c979a0300f0" },
-  "ts-error-translator.nvim": { "branch": "main", "commit": "47e5ba89f71b9e6c72eaaaaa519dd59bd6897df4" },
   "typescript-tools.nvim": { "branch": "master", "commit": "3c501d7c7f79457932a8750a2a1476a004c5c1a9" },
   "vimwiki": { "branch": "dev", "commit": "72792615e739d0eb54a9c8f7e0a46a6e2407c9e8" },
   "vimwiki-sync": { "branch": "master", "commit": "99eeab3402010d89a9a41c9f759cee21ec81922b" },

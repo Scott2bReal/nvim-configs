@@ -18,11 +18,11 @@ return {
       null_ls.setup({
         debug = false,
         sources = {
-          -- formatting.prettier.with({
-          --   extra_filetypes = { "astro" },
-          --   extra_args = {},
-          -- }),
-          formatting.biome,
+          formatting.prettier.with({
+            extra_filetypes = { "astro" },
+            extra_args = {},
+          }),
+          -- formatting.biome,
           formatting.stylua,
           formatting.sqlfluff.with({
             extra_args = { "--dialect", "postgres" },
