@@ -5,15 +5,16 @@ return {
 				callSnippet = "Replace",
 			},
 			diagnostics = {
-				globals = { "awesome", "client", "screen", "root" },
+				globals = { "awesome", "client", "screen", "root", "vim" },
 				disable = { "lowercase-global", "trailing-space" },
 			},
 			workspace = {
 				checkThirdParty = false,
 				library = {
-					vim.api.nvim_get_runtime_file("", true),
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
+					-- vim.api.nvim_get_runtime_file("", true),
+          vim.env.VIMRUNTIME,
+					vim.fn.expand("$VIMRUNTIME/lua"),
+					vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
 				},
 			},
 		},
