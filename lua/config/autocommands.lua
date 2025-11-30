@@ -49,9 +49,3 @@ vim.cmd([[
   "   autocmd BufDelete * if bufs_open == 1 | :execute "Alpha" | endif
   " augroup end
 ]])
-
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
