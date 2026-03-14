@@ -16,11 +16,11 @@ return {
 			null_ls.setup({
 				debug = false,
 				sources = {
-					formatting.prettier.with({
-						extra_filetypes = { "astro" },
-						extra_args = {},
-					}),
-					-- formatting.biome,
+					-- formatting.prettier.with({
+					-- 	extra_filetypes = { "astro" },
+					-- 	extra_args = {},
+					-- }),
+					formatting.biome,
 					formatting.stylua,
 					formatting.sqlfluff.with({
 						extra_args = { "--dialect", "postgres" },
@@ -34,8 +34,8 @@ return {
 	{ "neovim/nvim-lspconfig" },
 	{ "mason-org/mason.nvim" },
 	{ "mason-org/mason-lspconfig.nvim" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
+	-- { "hrsh7th/cmp-nvim-lsp" },
+	-- { "simrat39/rust-tools.nvim", ft = "rust" }, -- specialized rust tools - installs rust-analyzer by default
 	{
 		"mason-org/mason.nvim",
 		-- build = ":MasonUpdate",
@@ -64,16 +64,16 @@ return {
 				-- "cssls",
 				"jsonls",
 				"lua_ls",
-				"pyright",
+				-- "pyright",
 				"html",
-				"sqlls",
+				-- "sqlls",
 				"eslint",
-				"clangd",
+				-- "clangd",
 				"yamlls",
 				"tailwindcss",
 				"prismals",
 				"taplo",
-				"rust_analyzer",
+				-- "rust_analyzer",
 				"stylelint_lsp",
 			}
 
@@ -89,6 +89,16 @@ return {
 				ensure_installed = servers,
 			})
 
+			-- Setup handlers once
+			require("plugins.lsp.handlers").setup()
+
+			-- Get lspconfig
+			-- local has_lspconfig, lspconfig = pcall(require, "lspconfig")
+			-- if not has_lspconfig then
+			-- 	vim.notify("lspconfig couldn't load")
+			-- 	return
+			-- end
+
 			for _, server in pairs(servers) do
 				local server_opts = {
 					on_attach = require("plugins.lsp.handlers").on_attach,
@@ -97,11 +107,11 @@ return {
 
 				local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
 				if has_custom_opts then
-					server_opts = vim.tbl_deep_extend("force", server_custom_opts, server_opts)
+					server_opts = vim.tbl_deep_extend("force", server_opts, server_custom_opts)
 				end
 
-				vim.lsp.config(server, server_opts)
-				require("plugins.lsp.handlers").setup()
+        vim.lsp.config(server, server_opts)
+        vim.lsp.enable(server)
 			end
 		end,
 	},

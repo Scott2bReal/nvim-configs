@@ -1,12 +1,9 @@
 return {
-	{ "L3MON4D3/LuaSnip", event = "InsertEnter" }, -- Snippet engine
-	{ "hrsh7th/nvim-cmp", event = "InsertEnter" }, -- Completion plugin
 	{ "hrsh7th/cmp-buffer", event = "InsertEnter" }, -- buffer completions
 	{ "hrsh7th/cmp-path", event = "InsertEnter" }, -- path completions
 	{ "hrsh7th/cmp-cmdline", event = "InsertEnter" }, -- cmdline completions
 	{ "hrsh7th/cmp-nvim-lua", event = "InsertEnter" }, -- nvim lua config completion
 	{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" }, -- use lsp for completion
-	{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" }, --snippet completion
 	{
 		"hrsh7th/nvim-cmp",
 		version = false,
@@ -15,7 +12,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
 		},
 		opts = function()
 			local status_ok, cmp = pcall(require, "cmp")
@@ -23,12 +19,6 @@ return {
 				vim.notify("Failed to load cmp settings")
 				return
 			end
-			local snip_status_ok, luasnip = pcall(require, "luasnip")
-			if not snip_status_ok then
-				vim.notify("Failed to load luasnip")
-				return
-			end
-			require("luasnip/loaders/from_vscode").lazy_load()
 			local check_backspace = function()
 				local col = vim.fn.col(".") - 1
 				return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -61,11 +51,6 @@ return {
 				TypeParameter = "",
 			}
 			return {
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
 				mapping = {
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-j>"] = cmp.mapping.select_next_item(),
@@ -83,10 +68,6 @@ return {
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.expandable() then
-							luasnip.expand()
-						elseif luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
 						elseif check_backspace() then
 							fallback()
 						else
@@ -99,8 +80,6 @@ return {
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif luasnip.jumpable(-1) then
-							luasnip.jump(-1)
 						else
 							fallback()
 						end
@@ -118,7 +97,6 @@ return {
 						vim_item.menu = ({
 							nvim_lsp = "[LSP]",
 							nvim_lua = "[NVIM_LUA]",
-							luasnip = "[Snippet]",
 							buffer = "[Buffer]",
 							path = "[Path]",
 						})[entry.source.name]
@@ -128,7 +106,6 @@ return {
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
-					{ name = "luasnip" },
 					{ name = "buffer" },
 					{ name = "path" },
 				},
