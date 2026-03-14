@@ -5,7 +5,16 @@ if not ok then
 end
 
 local config = {
-  root_dir = util.root_pattern("biome.json"),
+  root_dir = util.root_pattern("biome.json", "biome.jsonc"),
+  filetypes = {
+    "javascript",
+    "javascriptreact", 
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc",
+  },
+  single_file_support = false, -- Only enable when biome.json is present
 }
 
 return config
