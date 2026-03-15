@@ -23,5 +23,6 @@ return {
     require("mini.tabline").setup()
     require("mini.bufremove").setup()
     require("mini.comment").setup()
+    require("mini.extra").setup()
   end
 }
