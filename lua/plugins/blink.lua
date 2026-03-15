@@ -16,7 +16,8 @@ return {
       ["<C-j>"] = { "select_next", "fallback" },
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<cr>"] = { "accept", "fallback" },
-      ["<Tab>"] = { "select_next", "fallback" }
+      ["<Tab>"] = { "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
     },
   },
   build = "cargo build --release"
