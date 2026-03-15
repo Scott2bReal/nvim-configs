@@ -97,11 +97,11 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
+local has_blink, blink = pcall(require, "blink.cmp")
+if has_blink then
+  M.capabilities = blink.get_lsp_capabilities(capabilities)
+else
+  M.capabilities = capabilities
 end
-
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

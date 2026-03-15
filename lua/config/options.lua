@@ -38,6 +38,7 @@ local opts = {
 	foldmethod = "marker", -- Automatically add markers when creating a fold, instead of saving fold status in views locally
 	mousemodel = "extend",
   laststatus = 3,
+  winborder = "rounded",
 }
 
 for k, v in pairs(opts) do
@@ -51,8 +52,8 @@ vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 
 -- Set vimwiki to use markdown instead of .wiki
-vim.g.vimwiki_list = { { path = "~/vimwiki", syntax = "markdown", ext = ".md" } }
-vim.g.gruvbox_material_palette = "original"
+-- vim.g.vimwiki_list = { { path = "~/vimwiki", syntax = "markdown", ext = ".md" } }
+-- vim.g.gruvbox_material_palette = "original"
 -- vim.g.gruvbox_material_palette = "dark"
 
 -- Disable perl support checkhealth warning
@@ -62,4 +63,4 @@ vim.g.lodaded_perl_provider = 0
 vim.g.c_syntax_for_h = 1
 
 -- Sip ts-context-commentstring
-vim.g.skip_ts_context_commentstring_module = true
+-- vim.g.skip_ts_context_commentstring_module = true

@@ -55,13 +55,13 @@ return {
 		-- }
 
 		local mappings = {
-			{
-				"<leader>/",
-				'<cmd>lua require("Comment.api").toggle.linewise.current()<CR>',
-				desc = "Comment",
-				nowait = true,
-				remap = false,
-			},
+			-- {
+			-- 	"<leader>/",
+			-- 	'<cmd>lua MiniComment.toggle_lines()<CR>',
+			-- 	desc = "Comment",
+			-- nowait = true,
+			-- 	remap = false,
+			-- },
       {
         "<leader>a",
         desc = "Avante",
@@ -112,14 +112,14 @@ return {
 			},
 			{
 				"<leader>e",
-				"<cmd>Neotree toggle<cr>",
+				"<cmd>lua MiniFiles.open()<cr>",
 				desc = "Explorer",
 				nowait = true,
 				remap = false,
 			},
 			{
 				"<leader>f",
-				"<cmd>Telescope find_files<cr>",
+				"<cmd>Pick files<cr>",
 				desc = "Find files",
 				nowait = true,
 				remap = false,
@@ -461,41 +461,6 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>sC",
-				"<cmd>Telescope commands<cr>",
-				desc = "Commands",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>sM",
-				"<cmd>Telescope man_pages<cr>",
-				desc = "Man Pages",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>sR",
-				"<cmd>Telescope registers<cr>",
-				desc = "Registers",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>sb",
-				"<cmd>Telescope git_branches<cr>",
-				desc = "Checkout branch",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>sc",
-				"<cmd>Telescope colorscheme<cr>",
-				desc = "Colorscheme",
-				nowait = true,
-				remap = false,
-			},
-			{
 				"<leader>sd",
 				"<cmd>Telescope find_files hidden=true<cr>",
 				desc = "Include Dotfiles",
@@ -504,7 +469,7 @@ return {
 			},
 			{
 				"<leader>sh",
-				"<cmd>Telescope help_tags<cr>",
+				"<cmd>Pick help<cr>",
 				desc = "Find Help",
 				nowait = true,
 				remap = false,
