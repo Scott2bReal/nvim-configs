@@ -18,6 +18,11 @@ local set_files_custom_colors = function(colors)
 	set_hl("MiniFilesBorder", { bg = colors.bg2 })
 end
 
+local set_notify_custom_colors = function(colors)
+	set_hl("MiniNotifyNormal", { bg = colors.bg2 })
+	set_hl("MiniNotifyBorder", { bg = colors.bg2 })
+end
+
 local add_modified_icon = function(buf_nr, label)
 	local modified_icon = "●"
 	local is_modified = vim.api.nvim_get_option_value("modified", {
@@ -83,6 +88,7 @@ return {
 
 		set_tabline_custom_colors(colors)
 		set_files_custom_colors(colors)
+		set_notify_custom_colors(colors)
 
 		for name, opts in pairs(plugins) do
 			require("mini." .. name).setup(opts)
