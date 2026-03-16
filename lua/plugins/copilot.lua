@@ -9,7 +9,7 @@ return {
 		suggestion = {
 			enabled = true,
 			auto_trigger = true,
-			debounce = 75,
+			debounce = 50,
 			keymap = {
 				accept = "<C-f>",
 				accept_word = false,
