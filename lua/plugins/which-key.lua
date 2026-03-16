@@ -488,6 +488,13 @@ return {
 				remap = false,
 			},
 			{
+				"<leader>sR",
+				"<cmd>Telescope registers<cr>",
+				desc = "Search Registers",
+				nowait = true,
+				remap = false,
+			},
+			{
 				"<leader>z",
 				group = "Misc.",
 				nowait = true,
