@@ -80,3 +80,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- NvimTree
 keymap("n", "<leader>e", "<cmd>lua MiniFiles.open()<cr>", opts)
+
+-- Quick Grep
+keymap("n", "<C-t>", "<cmd>Pick grep_live<cr>", opts)
