@@ -110,13 +110,6 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>d",
-				"<cmd>Neotree diagnostics toggle bottom<cr>",
-				desc = "Diagnostics",
-				nowait = true,
-				remap = false,
-			},
-			{
 				"<leader>e",
 				"<cmd>lua MiniFiles.open()<cr>",
 				desc = "Explorer",
@@ -494,6 +487,13 @@ return {
 				nowait = true,
 				remap = false,
 			},
+      {
+        "<leader>sD",
+        "<cmd>Telescope diagnostics<cr>",
+        desc = "Search Diagnostics",
+        nowait = true,
+        remap = false,
+      },
 			{
 				"<leader>z",
 				group = "Misc.",
