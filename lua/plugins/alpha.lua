@@ -51,7 +51,7 @@ return {
       -- dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
       -- dashboard.button("r", "󱋡  Recently used files", ":Telescope oldfiles <CR>"),
       dashboard.button("t", "󰍉  Find text", ":Pick grep_live <CR>"),
-      -- dashboard.button("w", "  Vimwiki", ":VimwikiIndex<CR>"),
+      dashboard.button("w", "  Vimwiki", ":VimwikiIndex<CR>"),
       -- dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
       dashboard.button("q", "󰩈  Quit Neovim", ":qa<CR>"),
     }
