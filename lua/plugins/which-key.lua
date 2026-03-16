@@ -487,13 +487,13 @@ return {
 				nowait = true,
 				remap = false,
 			},
-      {
-        "<leader>sD",
-        "<cmd>Telescope diagnostics<cr>",
-        desc = "Search Diagnostics",
-        nowait = true,
-        remap = false,
-      },
+			{
+				"<leader>sD",
+				"<cmd>Telescope diagnostics<cr>",
+				desc = "Search Diagnostics",
+				nowait = true,
+				remap = false,
+			},
 			{
 				"<leader>z",
 				group = "Misc.",
