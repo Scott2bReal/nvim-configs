@@ -3,9 +3,6 @@ return {
 	---@module "blink-cmp"
 	---@type blink.cmp.Config
 	opts = {
-		appearance = {
-			nerd_font_variant = "mono",
-		},
 		sources = {
 			default = {
 				"lazydev",
