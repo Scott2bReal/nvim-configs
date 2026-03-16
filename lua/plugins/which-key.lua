@@ -119,7 +119,7 @@ return {
       },
       {
         "<leader>f",
-        "<cmd>Pick files<cr>",
+        "<cmd>Telescope find_files<cr>",
         desc = "Find files",
         nowait = true,
         remap = false,
@@ -469,7 +469,7 @@ return {
       },
       {
         "<leader>sh",
-        "<cmd>Pick help<cr>",
+        "<cmd>Telescope help_tags<cr>",
         desc = "Find Help",
         nowait = true,
         remap = false,

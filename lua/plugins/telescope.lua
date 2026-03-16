@@ -1,6 +1,10 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VeryLazy",
     cmd = "Telescope",
     opts = function()
       local actions = require("telescope.actions")
