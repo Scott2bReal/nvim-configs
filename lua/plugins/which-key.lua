@@ -571,6 +571,13 @@ return {
         remap = false,
       },
       {
+        "<leader>zd",
+        "<cmd>lua MiniDiff.toggle_overlay()<cr>",
+        desc = "Toggle Diff Overlay",
+        nowait = true,
+        remap = false,
+      },
+      {
         "<leader>zg",
         "<cmd>ChatGPT<cr>",
         desc = "ChatGPT",
