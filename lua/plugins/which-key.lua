@@ -262,15 +262,8 @@ return {
         remap = false,
       },
       {
-        "<leader>la",
-        "<cmd>lua vim.lsp.buf.code_action()<cr>",
-        desc = "Code Action",
-        nowait = true,
-        remap = false,
-      },
-      {
         "<leader>ld",
-        "<cmd>Telescope lsp_document_diagnostics<cr>",
+        "<cmd>Telescope diagnostics<cr>",
         desc = "Document Diagnostics",
         nowait = true,
         remap = false,
