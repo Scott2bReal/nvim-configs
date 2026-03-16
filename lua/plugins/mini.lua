@@ -7,7 +7,7 @@ local plugins = {
   },
   pick = {
     mappings = {
-      move_down  = '<C-j>',
+      move_down  = "<C-j>",
       move_up    = '<C-k>',
       move_start = '<C-g>',
     },
@@ -17,10 +17,11 @@ local plugins = {
   },
   icons = {},
   pairs = {},
-  tabline = {},
+  tabline = {
+    tabpage_section = "right"
+  },
   bufremove = {},
   comment = {},
-  surround = {}
 }
 
 return {
