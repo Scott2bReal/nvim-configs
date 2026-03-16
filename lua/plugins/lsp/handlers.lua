@@ -78,7 +78,8 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" then
+  vim.notify(client.name)
+  if client.name == "tsserver" or client.name == "ts_ls" then
     client.server_capabilities.document_formatting = false
     -- client.server_capabilities.semanticTokensProvider = nil
   end
