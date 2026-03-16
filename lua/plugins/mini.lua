@@ -22,12 +22,12 @@ local plugins = {
 	},
 	bufremove = {},
 	comment = {},
-	indentscope = {
-		predicate = false,
-    draw = {
-      delay = 30
-    }
-	},
+	-- indentscope = {
+	-- 	predicate = false,
+	--    draw = {
+	--      delay = 30
+	--    }
+	-- },
 }
 
 return {

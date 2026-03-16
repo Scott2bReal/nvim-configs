@@ -1,3 +1,13 @@
+local highlights = {
+	"RainbowDelimiterYellow",
+	"RainbowDelimiterCyan",
+	"RainbowDelimiterOrange",
+	"RainbowDelimiterGreen",
+	"RainbowDelimiterViolet",
+	"RainbowDelimiterRed",
+	"RainbowDelimiterBlue",
+}
+
 return {
 	{
 		"HiPhish/rainbow-delimiters.nvim",
@@ -18,18 +28,21 @@ return {
 					lua = "rainbow-blocks",
 					tsx = "rainbow-parens",
 				},
-				highlight = {
-					-- The order of these determines the order used for delimiters
-					"RainbowDelimiterYellow",
-					"RainbowDelimiterCyan",
-					"RainbowDelimiterOrange",
-					"RainbowDelimiterGreen",
-					"RainbowDelimiterViolet",
-					"RainbowDelimiterRed",
-					"RainbowDelimiterBlue",
-				},
+				highlight = highlights,
 			}
 		end,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		main = "ibl",
+		---@module "ibl.config"
+		---@type ibl.config
+		opts = {
+			scope = {
+				enabled = false,
+			},
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter", -- Robust syntax highlighting
