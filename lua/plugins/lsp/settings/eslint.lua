@@ -5,7 +5,7 @@ if not ok then
 end
 
 local config = {
-  root_dir = util.root_pattern(
+  root_markers = util.root_pattern(
     ".eslintrc.js",
     ".eslintrc.cjs",
     ".eslintrc.json",
