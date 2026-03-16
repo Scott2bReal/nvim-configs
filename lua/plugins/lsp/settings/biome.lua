@@ -5,7 +5,7 @@ if not ok then
 end
 
 local config = {
-	root_dir = util.root_pattern("biome.json", "biome.jsonc"),
+	root_markers = util.root_pattern("biome.json", "biome.jsonc"),
 	filetypes = {
 		"javascript",
 		"javascriptreact",
