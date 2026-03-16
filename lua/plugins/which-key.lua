@@ -393,6 +393,19 @@ return {
 				remap = false,
 			},
 			{
+				"<leader>n",
+				group = "Notifications",
+				nowait = true,
+				remap = false,
+			},
+			{
+				"<leader>nh",
+				"<cmd>lua MiniNotify.show_histor()<cr>",
+				desc = "Notification History",
+				nowait = true,
+				remap = false,
+			},
+			{
 				"<leader>o",
 				group = "Oil",
 				nowait = true,
@@ -449,6 +462,13 @@ return {
 			{
 				"<leader>s",
 				group = "Search",
+				nowait = true,
+				remap = false,
+			},
+			{
+				"<leader>sc",
+				"<cmd>Telescope colorscheme<cr>",
+				desc = "Search colorschemes",
 				nowait = true,
 				remap = false,
 			},
