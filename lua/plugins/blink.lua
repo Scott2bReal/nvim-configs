@@ -1,11 +1,22 @@
 return {
   "saghen/blink.cmp",
+  ---@module "blink-cmp"
+  ---@type blink.cmp.Config
   opts = {
+    appearance = {
+      nerd_font_variant = "mono",
+    },
     sources = {
       default = {
-        'lsp', 'path', 'buffer'
+        'lazydev', 'lsp', 'path', 'snippets', 'buffer'
       },
       providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
         lsp = {
           fallbacks = {}
         }
