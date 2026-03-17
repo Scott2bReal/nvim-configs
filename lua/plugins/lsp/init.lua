@@ -13,41 +13,74 @@ return {
 			},
 		},
 	},
+	-- {
+	-- 	"nvimtools/none-ls.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		local has_none_ls, null_ls = pcall(require, "null-ls")
+	-- 		if not has_none_ls then
+	-- 			vim.notify("Could not load none-ls")
+	-- 			return
+	-- 		end
+	-- 		local formatting = null_ls.builtins.formatting
+	-- 		null_ls.setup({
+	-- 			sources = {
+	-- 				-- Formatters
+	-- 				formatting.prettier.with({
+	-- 					extra_filetypes = { "astro" },
+	-- 				}),
+	-- 				formatting.biome,
+	-- 				formatting.stylua,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	{
-		"nvimtools/none-ls.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
+		"stevearc/conform.nvim",
+		event = "BufWritePre",
+		---@module "conform"
+		---@type conform.setupOpts
+		opts = {
+			log_level = vim.log.levels.DEBUG,
+			formatters_by_ft = {
+				lua = { "stylua" },
+			},
 		},
-		config = function()
-			local has_none_ls, null_ls = pcall(require, "null-ls")
-			if not has_none_ls then
-				vim.notify("Could not load none-ls")
-				return
+		config = function(_, opts)
+			-- Change up order or whatever for the whole JS family if need be
+			for _, ft in ipairs({
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"json",
+			}) do
+				opts.formatters_by_ft[ft] = {
+					"biome",
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+				}
 			end
-			local formatting = null_ls.builtins.formatting
-			null_ls.setup({
-				sources = {
-					-- Formatters
-					-- formatting.prettier.with({
-					--   extra_filetypes = { "astro" }
-					-- }),
-					formatting.biome,
-					formatting.stylua,
-				},
-			})
+
+			require("conform").setup(opts)
 		end,
 	},
 	{ "neovim/nvim-lspconfig" },
 	{
 		"pmizio/typescript-tools.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {},
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {},
 	},
 	{
 		"mason-org/mason.nvim",
 		dependencies = {
 			"mason-org/mason-lspconfig.nvim",
 		},
+		---@module "mason"
+		---@type MasonSettings
 		opts = {
 			ui = {
 				check_outdated_packages_on_open = false,
