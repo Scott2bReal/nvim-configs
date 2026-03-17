@@ -1,276 +1,194 @@
-# AGENTS.md - Neovim Configuration Guide
+# AGENTS.md — Neovim Config
 
-This is a comprehensive Neovim configuration built with Lazy.nvim package manager. This guide helps AI agents understand how to work effectively in this codebase.
+Personal Neovim configuration managed as a git repo. Plugin manager is **lazy.nvim**. All Lua, no Vimscript beyond compatibility shims.
 
-## Project Structure
+---
+
+## Repository Layout
 
 ```
 ~/.config/nvim/
-├── init.lua                   # Main entry point
-├── lazy-lock.json            # Plugin version lock file
+├── init.lua                   # Entry point; loads config/ unless running in VSCode
+├── lazy-lock.json             # Lockfile — commit when adding/updating plugins
 ├── lua/
-│   ├── .luarc.json          # Lua LSP configuration
-│   ├── config/              # Core configuration modules
-│   │   ├── init.lua         # Config loader
-│   │   ├── options.lua      # Neovim options/settings
-│   │   ├── keymaps.lua      # Key mappings
-│   │   ├── lazy.lua         # Lazy.nvim setup
-│   │   └── autocommands.lua # Auto commands
-│   └── plugins/             # Plugin configurations
-│       ├── core.lua         # Core dependencies
-│       ├── lsp/             # LSP configurations
-│       │   ├── init.lua     # Main LSP setup
-│       │   ├── handlers.lua # LSP handlers
-│       │   └── settings/    # Language-specific settings
-│       └── [individual plugin configs]
-└── spell/                   # Spell check files
+│   ├── config/
+│   │   ├── init.lua           # Requires the four config modules in order
+│   │   ├── options.lua        # vim.opt settings
+│   │   ├── keymaps.lua        # Global keymaps (leader = <Space>)
+│   │   ├── autocommands.lua   # FileType / event autocmds
+│   │   └── lazy.lua           # Bootstrap + lazy.nvim setup
+│   └── plugins/
+│       ├── core.lua           # Lazy self-manages
+│       ├── lsp/
+│       │   ├── init.lua       # Mason, mason-lspconfig, conform, LSP wiring
+│       │   ├── handlers.lua   # on_attach, capabilities, diagnostics config
+│       │   └── settings/      # Per-server opts (lua_ls.lua, biome.lua, etc.)
+│       └── *.lua              # One file per plugin or plugin group
+└── spell/                     # Custom spell files
 ```
 
-## Core Architecture
+---
 
-### Entry Point
-- `init.lua`: Main entry point with VSCode compatibility check
-- Loads `config` module which orchestrates everything
+## Plugin Management
 
-### Configuration Loading Order
-1. `config/options.lua` - Neovim settings
-2. `config/keymaps.lua` - Key mappings  
-3. `config/lazy.lua` - Plugin manager setup
-4. `config/autocommands.lua` - Auto commands
+- **lazy.nvim** auto-bootstraps on first run via `lua/config/lazy.lua`
+- Plugins are discovered by `import = "plugins"` — every `.lua` in `lua/plugins/` is loaded
+- Adding a plugin: create or edit a file in `lua/plugins/` returning a lazy spec table
+- Updating plugins: `:Lazy update` or `<leader>pu`; commit `lazy-lock.json` afterward
+- Syncing (install missing + remove unused): `:Lazy sync` or `<leader>ps`
+- Default colorscheme: `gruvbox-material` (installed eagerly, `priority = 1000`)
 
-### Plugin System
-- Uses **Lazy.nvim** as package manager
-- Plugins defined in `lua/plugins/` directory
-- Each plugin file returns a table/array of plugin specs
-- Lazy loading extensively used with `event`, `cmd`, `ft` triggers
+---
 
-## Key Conventions
+## LSP & Formatting
 
-### Lua Coding Style
-- **Indentation**: 2 spaces (not tabs)
-- **Quotes**: Double quotes preferred
-- **Tables**: Trailing commas used
-- **Error Handling**: `pcall` used for safe require statements
-- **Notifications**: `vim.notify()` for user messages
+### Servers managed by Mason
+`astro`, `biome`, `bashls`, `jsonls`, `lua_ls`, `html`, `eslint`, `yamlls`, `tailwindcss`, `prismals`
 
-### Plugin Configuration Pattern
-```lua
-return {
-  {
-    "plugin/name",
-    event = "BufRead", -- or cmd, ft, keys, etc.
-    dependencies = { "dep1", "dep2" },
-    opts = function()
-      -- configuration logic
-      return config_table
-    end,
-    config = function(_, opts)
-      -- setup logic
-    end,
-  },
-}
-```
+Adding a new server: add the string to the `servers` table in `lua/plugins/lsp/init.lua`, then optionally add `lua/plugins/lsp/settings/<server>.lua` returning extra opts.
 
-### Error Handling Pattern
-```lua
-local status_ok, module = pcall(require, "module_name")
-if not status_ok then
-  vim.notify("Module couldn't load")
-  return
-end
-```
+### Formatting (conform.nvim)
+- Lua → `stylua`
+- JS/TS/JSON → `biome` → `prettierd` → `prettier` (first found, `stop_after_first = true`)
+- Format current buffer: `<leader>lf`
+- Runs automatically on `BufWritePre`
 
-## Key Settings
+### Formatting disabled on LSP side
+`tsserver`/`ts_ls`, `jsonls`, and `astro` have `document_formatting = false` in `on_attach` — conform owns formatting for those types.
 
-### Editor Settings (options.lua)
-- **Indentation**: 2 spaces, tabs converted to spaces
-- **Line numbers**: Both absolute and relative enabled
-- **Clipboard**: System clipboard integration (`unnamedplus`)
-- **Search**: Case-insensitive with smart case
-- **Splits**: Open below/right by default
-- **Backup/Swap**: Disabled, persistent undo enabled
-- **Scrolling**: 8 lines offset from edges
+### Biome LSP
+Only activates when a `biome.json` / `biome.jsonc` is present in the project root (`single_file_support = false`).
 
-### Key Mappings (keymaps.lua)
-- **Leader Key**: Space (`<Space>`)
-- **Window Navigation**: `Ctrl+hjkl`
-- **Buffer Navigation**: `Shift+hl`
-- **File Explorer**: `<leader>e`
-- **Window Resizing**: `Ctrl+arrow keys`
+### Completion (blink.cmp)
+Source priority order: `lazydev` (score_offset 100) → `lsp` → `path` → `snippets` → `buffer`
 
-## Plugin Categories
+Build step: `cargo build --release` — requires Rust toolchain.
 
-### Core Dependencies
-- `plenary.nvim` - Lua utility functions
-- `nvim-web-devicons` - File icons
-- `nui.nvim` - UI components
-- `mini.icons` - Additional icons
+---
 
-### LSP & Completion
-- **LSP**: `nvim-lspconfig` + `mason.nvim` + `mason-lspconfig.nvim`
-- **Formatting**: `none-ls.nvim` (null-ls successor)
-- **Completion**: `nvim-cmp` with multiple sources
-- **Snippets**: `LuaSnip`
+## Code Conventions
 
-### UI & Navigation
-- **File Explorer**: `neo-tree.nvim`
-- **Fuzzy Finder**: `telescope.nvim`
-- **Statusline**: `lualine.nvim`
-- **Bufferline**: `bufferline.nvim`
-- **Dashboard**: `alpha-nvim`
-- **Notifications**: `noice.nvim`
+- **Indentation**: 2 spaces (tabs expanded, `shiftwidth = 2`, `tabstop = 2`)
+- **Plugin files**: each returns a lazy spec table (or list of tables)
+- **Error handling pattern**: `pcall` + `vim.notify` on failure, then `return`
+  ```lua
+  local ok, mod = pcall(require, "some.module")
+  if not ok then
+    vim.notify("some.module couldn't load")
+    return
+  end
+  ```
+- **Keymap options**: always pass `{ noremap = true, silent = true }`
+- **Autocommands**: always create a named augroup with `{ clear = true }` to avoid duplicate registrations
+- **Type annotations**: use EmmyLua (`---@type`, `---@module`) where helpful — `lazydev.nvim` provides completions for lazy specs and blink types
 
-### Development Tools
-- **Git**: `gitsigns.nvim`
-- **Commenting**: `Comment.nvim`
-- **Surround**: `nvim-surround`
-- **Auto Pairs**: `nvim-autopairs`
-- **Treesitter**: `nvim-treesitter`
+---
 
-### Language Support
-- **TypeScript**: `typescript-tools.nvim`
-- **Rust**: `rust-tools.nvim`
-- **Markdown**: `render-markdown.nvim`, `markdown-preview.nvim`
-- **Various LSPs**: Configured in `plugins/lsp/settings/`
+## Key Bindings Reference
 
-## Language Server Configuration
+**Leader** = `<Space>`
 
-### Supported Languages
-- **TypeScript/JavaScript**: ESLint integration, Biome formatting and LSP
-- **Lua**: Stylua formatting, nvim API completion
-- **Python**: Pyright LSP
-- **Rust**: Rust-analyzer via rust-tools
-- **C/C++**: Clangd
-- **JSON**: JSON LSP
-- **Astro**: Astro LSP
-- **Tailwind**: TailwindCSS LSP
+| Key | Action |
+|-----|--------|
+| `<leader>e` | MiniFiles explorer |
+| `<leader>f` | Telescope find files |
+| `<leader>F` | Telescope live grep (ivy theme) |
+| `<C-t>` | Telescope live grep |
+| `<leader>b` | Telescope buffers (dropdown) |
+| `<leader>c` | Close buffer (MiniBufremove) |
+| `<leader>/` | Comment current line (mini.comment) |
+| `<leader>h` | Clear search highlight |
+| `<leader>lf` | Format (conform) |
+| `<leader>lR` | Restart LSP |
+| `<leader>lI` | Open Mason UI |
+| `<leader>lt*` | TypeScript Tools (add imports, organize, fix all, rename) |
+| `<leader>g*` | Git (gitsigns hunks, blame, diff, Telescope git views) |
+| `<leader>p*` | Lazy plugin management |
+| `<leader>s*` | Search (oldfiles, help, keymaps, diagnostics, colorschemes) |
+| `<leader>zr` | Reload Neovim config (`:source $MYVIMRC`) |
+| `<leader>zz` | Toggle GitHub Copilot |
+| `<leader>zd` | Toggle MiniDiff overlay |
+| `<leader>nh` | MiniNotify history |
+| `jj` (insert) | Escape to normal |
+| `<S-l>` / `<S-h>` | Next/previous buffer |
+| `<C-h/j/k/l>` | Window navigation |
 
-### Biome LSP Configuration
-- **Filetypes**: javascript, javascriptreact, typescript, typescriptreact, json, jsonc
-- **Root Detection**: biome.json or biome.jsonc in project root
-- **Single File Support**: Disabled (requires biome.json configuration)
-- **Auto-attach**: Only when biome.json is present in project
+**LSP buffer keys** (set in `on_attach`):
 
-### Formatting Tools (via none-ls)
-- **Biome**: JavaScript/TypeScript/JSON
-- **Stylua**: Lua
-- **SQLFluff**: SQL (PostgreSQL dialect)
-- **shfmt**: Shell scripts
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gr` | References |
+| `gi` | Implementation |
+| `K` | Hover |
+| `<C-k>` | Signature help |
+| `[d` / `]d` | Prev/next diagnostic |
+| `gl` | Open diagnostic float |
+| `<leader>q` | Diagnostics → loclist |
 
-## Development Workflow
+**Completion (blink.cmp)**:
 
-### Adding New Plugins
-1. Create new file in `lua/plugins/` or add to existing file
-2. Follow the plugin spec pattern with lazy loading
-3. Test the configuration
-4. Update lazy-lock.json will be updated automatically
+| Key | Action |
+|-----|--------|
+| `<C-j>` / `<Tab>` | Select next |
+| `<C-k>` / `<S-Tab>` | Select prev |
+| `<CR>` | Accept |
 
-### Modifying LSP Settings
-1. Language-specific settings in `lua/plugins/lsp/settings/`
-2. General LSP setup in `lua/plugins/lsp/init.lua`
-3. Formatters configured in none-ls setup
+---
 
-### Key Binding Changes
-- Modify `lua/config/keymaps.lua` for global mappings
-- Plugin-specific mappings usually in plugin config files
+## Plugins Quick Reference
 
-## Important Gotchas
+| Plugin | Purpose |
+|--------|---------|
+| `lazy.nvim` | Plugin manager |
+| `gruvbox-material` | Default colorscheme (also gruvbox, kanagawa, catppuccin available) |
+| `nvim-lspconfig` + `mason` | LSP servers |
+| `typescript-tools.nvim` | Enhanced TS/JS LSP (`:TSTools*` commands) |
+| `conform.nvim` | Formatting on save |
+| `blink.cmp` | Completion (requires Rust) |
+| `nvim-treesitter` | Syntax / indent (`:TSUpdate` build step) |
+| `nvim-treesitter-context` | Sticky context header |
+| `telescope.nvim` | Fuzzy finder |
+| `mini.nvim` | Files, tabline, bufremove, comment, notify, diff, pairs, icons, pick |
+| `which-key.nvim` | Keybinding help popup |
+| `gitsigns.nvim` | Git hunk signs + actions |
+| `lualine.nvim` | Status line |
+| `alpha-nvim` | Dashboard on startup |
+| `copilot.lua` | GitHub Copilot (`<C-f>` accept, `<C-]>` dismiss) |
+| `render-markdown.nvim` | Rendered markdown display (markdown ft only) |
+| `vimwiki` + `vimwiki-sync` | Personal wiki at `~/vimwiki` (markdown syntax, `.md` ext) |
+| `lazydev.nvim` | Neovim Lua type completions (lua ft only) |
+| `rainbow-delimiters` | Rainbow bracket coloring |
+| `indent-blankline` | Indent guides |
+| `colorizer` | Inline color preview |
+| `surround` (mini or separate) | Text surrounds |
+| `tidy` | Whitespace cleanup |
+| `ts-autotags` | Auto close/rename HTML tags |
 
-### Plugin Loading
-- Many plugins use lazy loading - check `event`, `cmd`, `ft` triggers
-- Some functionality only available after triggering events
-- Use `:Lazy` command to check plugin status
+---
 
-### LSP Setup
-- Mason installs LSP servers automatically
-- Language servers configured in `settings/` directory
-- Some languages (like Rust) use specialized tools
+## Autocommands
 
-### File Paths
-- Configuration uses absolute paths starting from `~/.config/nvim/`
-- Lua modules use dot notation (`config.options`)
+| Event | Filetype/Pattern | Effect |
+|-------|-----------------|--------|
+| `FileType` | `gitcommit` | `wrap = true`, `spell = true` |
+| `FileType` | `markdown` | `spell = true`, treesitter highlight |
+| `BufRead/BufEnter` | `*.astro` | Force `filetype = astro` |
+| `VimResized` | `*` | `tabdo wincmd =` (equalize splits) |
+| `User AlphaReady` | — | Hide tabline on dashboard |
+| `VimLeave` | — | Reset cursor to horizontal bar |
 
-### Custom Settings
-- VimWiki configured for Markdown syntax
-- Gruvbox Material colorscheme with "original" palette  
-- Treesitter context commentstring integration
-- C files (.h) treated as C syntax by default
+---
 
-### VSCode Compatibility
-- Main init.lua includes VSCode check
-- Only loads full config when not in VSCode
+## Gotchas
 
-## Common Commands
-
-### Plugin Management
-- `:Lazy` - Open Lazy.nvim interface
-- `:Lazy update` - Update all plugins
-- `:Lazy clean` - Remove unused plugins
-- `:Lazy profile` - Profile startup time
-
-### LSP Commands
-- `:Mason` - Open Mason interface
-- `:LspInfo` - Show LSP client info
-- `:LspRestart` - Restart LSP clients
-
-### File Operations
-- `:Neotree` - Toggle file explorer
-- `:Telescope find_files` - Fuzzy file finder
-- `:Telescope live_grep` - Search in files
-
-## Maintenance Notes
-
-### Regular Maintenance
-- Update plugins occasionally with `:Lazy update`
-- lazy-lock.json tracks exact versions for reproducibility
-- Check `:checkhealth` for configuration issues
-
-### When Adding Language Support
-1. Add LSP server to Mason configuration
-2. Create settings file in `lua/plugins/lsp/settings/`
-3. Add formatter to none-ls if needed
-4. Test with sample files
-
-### Performance Considerations
-- Lazy loading configured for most plugins
-- Core plugins load on startup, others on demand
-- Use `:Lazy profile` to identify slow plugins
-
-## File Editing Guidelines
-
-### When Modifying Plugin Configs
-- Always read the existing file first to understand structure
-- Follow the established pattern of error handling with `pcall`
-- Maintain lazy loading configuration
-- Test changes immediately
-
-### Configuration Changes
-- Options changes go in `lua/config/options.lua`
-- New keymaps in `lua/config/keymaps.lua`
-- Plugin-specific settings in respective plugin files
-- Follow 2-space indentation consistently
-
-## Troubleshooting
-
-### LSP Issues
-- Use `:LspInfo` to check which LSP clients are attached to current buffer
-- Use `:Mason` to verify language servers are installed
-- Check `:checkhealth mason` and `:checkhealth lsp` for diagnostics
-- For Biome LSP specifically: ensure `biome.json` exists in project root
-
-### Common LSP Problems
-- **Biome LSP not attaching**: Verify biome.json exists and contains valid configuration
-- **Multiple formatters conflicting**: Check none-ls and LSP formatter settings in handlers.lua
-- **LSP not starting**: Check Mason installation and server configuration files
-
-### Plugin Loading Issues
-- Use `:Lazy` to check plugin status and errors
-- Check if plugins are properly lazy-loaded with correct triggers
-- Use `:Lazy profile` to identify startup performance issues
-
-### Configuration Changes Not Taking Effect
-- Restart Neovim completely for major configuration changes
-- Use `:LspRestart` for LSP-related changes
-- Clear plugin cache with `:Lazy clean` if needed
-
-This configuration provides a full-featured development environment with modern Neovim capabilities while maintaining performance through lazy loading and careful plugin selection.
+- **VSCode guard**: `init.lua` skips loading config when `vim.g.vscode` is set — keep that check intact.
+- **treesitter.lua uses tabs** while most files use 2-space indent — don't reformat it without checking the actual file.
+- **lazy-lock.json**: treat it like a lockfile. Commit changes when plugins are intentionally updated.
+- **`netrwPlugin` is disabled** in lazy's `disabled_plugins` — use `MiniFiles` (`<leader>e`) for file browsing, not netrw/`:Lex`.
+- **Formatting ownership**: LSP formatting is disabled for `ts_ls`, `jsonls`, and `astro`; always goes through conform. Don't re-enable it on the LSP side.
+- **Biome only loads with config file**: `single_file_support = false` means biome LSP won't start in projects without `biome.json`.
+- **blink.cmp needs Rust**: the `build = "cargo build --release"` step requires a Rust toolchain; without it completions won't work.
+- **MiniTabline `add_modified_icon`** references the global `MiniTabline` (set up by mini.nvim) — it must be loaded before calling.
+- **Fold method is `marker`** (`{{{` / `}}}`), not treesitter or LSP folds.
