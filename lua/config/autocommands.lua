@@ -1,5 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Enable word wrap and spell checking in git commit messages
 autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_git", { clear = true }),
 	pattern = "gitcommit",
@@ -9,6 +10,7 @@ autocmd("FileType", {
 	end,
 })
 
+-- Enable spell checking and treesitter highlighting for markdown buffers
 autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_markdown", { clear = true }),
 	pattern = "markdown",
@@ -18,6 +20,7 @@ autocmd("FileType", {
 	end,
 })
 
+-- Equalize window sizes when the terminal is resized
 autocmd("VimResized", {
 	group = vim.api.nvim_create_augroup("_auto_resize", { clear = true }),
 	pattern = "*",
@@ -26,6 +29,7 @@ autocmd("VimResized", {
 	end,
 })
 
+-- Hide the tabline on the alpha dashboard, restoring it when the buffer is closed
 autocmd("User", {
 	group = vim.api.nvim_create_augroup("_alpha", { clear = true }),
 	pattern = "AlphaReady",
@@ -41,6 +45,7 @@ autocmd("User", {
 	end,
 })
 
+-- Reset the cursor to a horizontal bar on exit (prevents block cursor persisting in the terminal)
 autocmd("VimLeave", {
 	group = vim.api.nvim_create_augroup("_shape", { clear = true }),
 	callback = function()
@@ -48,6 +53,7 @@ autocmd("VimLeave", {
 	end,
 })
 
+-- Force filetype detection for .astro files
 autocmd({ "BufRead", "BufEnter" }, {
 	group = vim.api.nvim_create_augroup("_astro", { clear = true }),
 	pattern = "*.astro",
