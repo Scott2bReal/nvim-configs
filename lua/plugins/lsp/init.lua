@@ -13,30 +13,6 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"nvimtools/none-ls.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		local has_none_ls, null_ls = pcall(require, "null-ls")
-	-- 		if not has_none_ls then
-	-- 			vim.notify("Could not load none-ls")
-	-- 			return
-	-- 		end
-	-- 		local formatting = null_ls.builtins.formatting
-	-- 		null_ls.setup({
-	-- 			sources = {
-	-- 				-- Formatters
-	-- 				formatting.prettier.with({
-	-- 					extra_filetypes = { "astro" },
-	-- 				}),
-	-- 				formatting.biome,
-	-- 				formatting.stylua,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
