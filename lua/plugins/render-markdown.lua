@@ -1,6 +1,8 @@
 return {
-  "MeanderingProgrammer/render-markdown.nvim",
-  opts = {
-    file_types = { "markdown" },
-  }
+	"MeanderingProgrammer/render-markdown.nvim",
+	---@module "render-markdown"
+	---@type render.md.UserConfig
+	opts = {
+		file_types = { "markdown" },
+	},
 }

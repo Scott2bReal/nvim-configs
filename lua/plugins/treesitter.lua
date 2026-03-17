@@ -27,8 +27,9 @@ return {
       },
     },
     config = function(_, opts)
-      local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+      local status_ok, treesitter = pcall(require, "nvim-treesitter")
       if not status_ok then
+        vim.notify("nvim-treesitter not found!", vim.log.levels.ERROR)
         return
       end
       treesitter.setup(opts)
