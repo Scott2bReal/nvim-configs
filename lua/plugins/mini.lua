@@ -1,4 +1,4 @@
---- Wrapper to globally sets highlight group colors
+--- Wrapper to globally set highlight group colors
 ---@param name string
 ---@param opts table
 ---@returns nil
