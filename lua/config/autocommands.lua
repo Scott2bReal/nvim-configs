@@ -1,43 +1,57 @@
-vim.cmd([[
-  augroup _git
-    autocmd!
-    autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
-  augroup end
+local autocmd = vim.api.nvim_create_autocmd
 
-  augroup _markdown
-    autocmd!
-    " autocmd FileType markdown setlocal wrap
-    autocmd FileType markdown setlocal spell
-  augroup end
+autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("_git", { clear = true }),
+	pattern = "gitcommit",
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
+	end,
+})
 
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd =
-  augroup end
+autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("_markdown", { clear = true }),
+	pattern = "markdown",
+	callback = function(ev)
+		vim.opt_local.spell = true
+		vim.treesitter.start(ev.buf, "markdown")
+	end,
+})
 
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-  augroup end
+autocmd("VimResized", {
+	group = vim.api.nvim_create_augroup("_auto_resize", { clear = true }),
+	pattern = "*",
+	callback = function()
+		vim.cmd("tabdo wincmd =")
+	end,
+})
 
-  augroup _shape
-    autocmd VimLeave * set guicursor=a:hor10-blinkwait150-blinkoff150-blinkon150
-  augroup end
+autocmd("User", {
+	group = vim.api.nvim_create_augroup("_alpha", { clear = true }),
+	pattern = "AlphaReady",
+	callback = function()
+		vim.opt.showtabline = 0
+		vim.api.nvim_create_autocmd("BufUnload", {
+			buffer = 0,
+			once = true,
+			callback = function()
+				vim.opt.showtabline = 2
+			end,
+		})
+	end,
+})
 
-  augroup _astro
-    autocmd BufRead,BufEnter *.astro set filetype=astro
-  augroup end
+autocmd("VimLeave", {
+	group = vim.api.nvim_create_augroup("_shape", { clear = true }),
+	callback = function()
+		vim.opt.guicursor = "a:hor10-blinkwait150-blinkoff150-blinkon150"
+	end,
+})
 
-  " augroup _autoformat
-  "   autocmd!
-  "   autocmd BufWritePre * lua vim.lsp.buf.format({ timeout_ms = 5000 })
-  " augroup end
-
-  " TODO open alpha when every buffer is closed
-  " augroup _show_alpha
-  "   autocmd!
-  "   let bufs_open = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-  "   autocmd BufDelete * if bufs_open == 1 | :execute "Alpha" | endif
-  " augroup end
-]])
+autocmd({ "BufRead", "BufEnter" }, {
+	group = vim.api.nvim_create_augroup("_astro", { clear = true }),
+	pattern = "*.astro",
+	callback = function()
+		vim.opt.filetype = "astro"
+	end,
+})
