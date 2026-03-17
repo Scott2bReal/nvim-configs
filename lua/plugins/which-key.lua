@@ -263,7 +263,8 @@ return {
 			},
 			{
 				"<leader>lf",
-				"<cmd>lua vim.lsp.buf.format { timeout_ms = 5000 }<cr>",
+				-- "<cmd>lua vim.lsp.buf.format { timeout_ms = 5000 }<cr>",
+				"<cmd>lua require('conform').format()<cr>",
 				desc = "Format",
 				nowait = true,
 				remap = false,
@@ -400,7 +401,7 @@ return {
 			},
 			{
 				"<leader>nh",
-				"<cmd>lua MiniNotify.show_histor()<cr>",
+				"<cmd>lua MiniNotify.show_history()<cr>",
 				desc = "Notification History",
 				nowait = true,
 				remap = false,
