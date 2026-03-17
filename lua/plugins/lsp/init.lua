@@ -19,7 +19,6 @@ return {
 		---@module "conform"
 		---@type conform.setupOpts
 		opts = {
-			log_level = vim.log.levels.DEBUG,
 			formatters_by_ft = {
 				lua = { "stylua" },
 			},
@@ -79,7 +78,6 @@ return {
 				"yamlls",
 				"tailwindcss",
 				"prismals",
-				"taplo",
 			}
 
 			local has_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
