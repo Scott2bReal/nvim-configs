@@ -45,9 +45,11 @@ for k, v in pairs(opts) do
 	vim.opt[k] = v
 end
 
-vim.loader.enable()
+-- Don't pass messages to |ins-completion-menu|. e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found", "Back at original"
 vim.opt.shortmess:append("c")
+-- Allow these keys to wrap
 vim.cmd("set whichwrap+=<,>,[,],h,l")
+-- Allow hyphenated words to be treated as a single word
 vim.cmd([[set iskeyword+=-]])
 
 -- Disable perl support checkhealth warning
