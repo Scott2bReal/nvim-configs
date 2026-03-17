@@ -5,4 +5,5 @@ return {
 	opts = {
 		file_types = { "markdown" },
 	},
+	ft = { "markdown" },
 }
