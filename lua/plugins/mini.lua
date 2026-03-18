@@ -48,27 +48,12 @@ local plugins = {
 			config = notify_win_config,
 		},
 	},
-	diff = {
-		view = {
-			style = "sign",
-			priority = 0,
-		},
-	},
 	files = {
 		windows = {
 			preview = true,
 			width_preview = 75,
 		},
-	},
-	pick = {
-		mappings = {
-			move_down = "<C-j>",
-			move_up = "<C-k>",
-			move_start = "<C-g>",
-		},
-		options = {
-			content_from_bottom = true,
-		},
+    use_as_default_explorer = true,
 	},
 	icons = {},
 	pairs = {},
