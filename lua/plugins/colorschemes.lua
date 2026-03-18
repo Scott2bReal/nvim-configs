@@ -19,7 +19,6 @@ return {
 		"rebelot/kanagawa.nvim",
 		lazy = true,
 		opts = {
-
 			compile = false, -- enable compiling the colorscheme
 			undercurl = true, -- enable undercurls
 			commentStyle = { italic = true },
@@ -48,4 +47,5 @@ return {
 		end,
 	},
 	{ "catppuccin/nvim", name = "catpuccin", lazy = true },
+	{ "folke/tokyonight.nvim", lazy = true },
 }
