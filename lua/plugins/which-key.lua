@@ -371,6 +371,17 @@ return {
 				remap = false,
 			},
 			{
+				"<leader>sn",
+				function()
+					telescope.find_files({
+						cwd = vim.fn.stdpath("config"),
+					})
+				end,
+				desc = "Search neovim config",
+				nowait = true,
+				remap = false,
+			},
+			{
 				"<leader>sr",
 				telescope.oldfiles,
 				desc = "Open Recent File",
