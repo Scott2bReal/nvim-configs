@@ -71,14 +71,17 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>a",
-				desc = "Avante",
+				"<leader>f",
+				require("telescope.builtin").find_files,
+				desc = "Find files",
 				nowait = true,
 				remap = false,
 			},
 			{
 				"<leader>F",
-				"<cmd>Telescope live_grep theme=ivy<cr>",
+				function()
+					require("telescope.builtin").live_grep(require("telescope.themes").get_ivy())
+				end,
 				desc = "Find Text",
 				nowait = true,
 				remap = false,
@@ -91,37 +94,32 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>P",
-				"<cmd>Telescope projects<cr>",
-				desc = "Projects",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>b",
-				"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-				desc = "Buffers",
-				nowait = true,
-				remap = false,
-			},
-			{
 				"<leader>c",
-				"<cmd>lua MiniBufremove.delete(0, false)<CR>",
+				function()
+					require("mini.bufremove").delete(0, false)
+				end,
 				desc = "Close Buffer",
 				nowait = true,
 				remap = false,
 			},
 			{
-				"<leader>e",
-				"<cmd>lua MiniFiles.open()<cr>",
-				desc = "Explorer",
+				"<leader>d",
+				function()
+					require("gitsigns").diffthis("~1")
+				end,
+				desc = "Toggle diff overlay",
 				nowait = true,
 				remap = false,
 			},
 			{
-				"<leader>f",
-				"<cmd>Telescope find_files<cr>",
-				desc = "Find files",
+				"<leader>e",
+				function()
+					local mini_files = require("mini.files")
+					if not mini_files.close() then
+						mini_files.open(vim.api.nvim_buf_get_name(0))
+					end
+				end,
+				desc = "Toggle explorer",
 				nowait = true,
 				remap = false,
 			},
@@ -149,20 +147,6 @@ return {
 				"<leader>gc",
 				"<cmd>Telescope git_commits<cr>",
 				desc = "Checkout commit",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>gd",
-				"<cmd>Gitsigns diffthis HEAD<cr>",
-				desc = "Diff",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>gg",
-				"<cmd>lua _LAZYGIT_TOGGLE()<CR>",
-				desc = "Lazygit",
 				nowait = true,
 				remap = false,
 			},
@@ -265,8 +249,7 @@ return {
 			},
 			{
 				"<leader>lf",
-				-- "<cmd>lua vim.lsp.buf.format { timeout_ms = 5000 }<cr>",
-				"<cmd>lua require('conform').format()<cr>",
+				require("conform").format,
 				desc = "Format",
 				nowait = true,
 				remap = false,
@@ -376,26 +359,6 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>m",
-				group = "Markdown",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>mg",
-				"<cmd>Glow<cr>",
-				desc = "Open preview in glow",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>mp",
-				"<cmd>MarkdownPreviewToggle<cr>",
-				desc = "Open preview in browser",
-				nowait = true,
-				remap = false,
-			},
-			{
 				"<leader>n",
 				group = "Notifications",
 				nowait = true,
@@ -405,19 +368,6 @@ return {
 				"<leader>nh",
 				"<cmd>lua MiniNotify.show_history()<cr>",
 				desc = "Notification History",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>o",
-				group = "Oil",
-				nowait = true,
-				remap = false,
-			},
-			{
-				"<leader>oo",
-				"<cmd>Oil .<cr>",
-				desc = "Open Oil in the current directory",
 				nowait = true,
 				remap = false,
 			},
@@ -469,15 +419,30 @@ return {
 				remap = false,
 			},
 			{
+				"<leader>sb",
+				function()
+					require("telescope.builtin").buffers(
+						require("telescope.themes").get_dropdown({ previewer = false })
+					)
+				end,
+				desc = "Buffers",
+				nowait = true,
+				remap = false,
+			},
+			{
 				"<leader>sc",
-				"<cmd>Telescope colorscheme<cr>",
+				function()
+					require("telescope.builtin").colorscheme(require("telescope.themes").get_dropdown())
+				end,
 				desc = "Search colorschemes",
 				nowait = true,
 				remap = false,
 			},
 			{
 				"<leader>sd",
-				"<cmd>Telescope find_files hidden=true<cr>",
+				function()
+					require("telescope.builtin").find_files({ hidden = true })
+				end,
 				desc = "Include Dotfiles",
 				nowait = true,
 				remap = false,
@@ -531,13 +496,6 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>zd",
-				"<cmd>lua MiniDiff.toggle_overlay()<cr>",
-				desc = "Toggle Diff Overlay",
-				nowait = true,
-				remap = false,
-			},
-			{
 				"<leader>zg",
 				"<cmd>ChatGPT<cr>",
 				desc = "ChatGPT",
@@ -545,15 +503,11 @@ return {
 				remap = false,
 			},
 			{
-				"<leader>zr",
-				"<cmd>source $MYVIMRC<cr>",
-				desc = "Reload Neovim config",
-				nowait = true,
-				remap = false,
-			},
-			{
 				"<leader>zz",
-				"<cmd>Copilot toggle<cr>",
+				function()
+					vim.notify("Toggling Copilot auto suggestions")
+					require("copilot.suggestion").toggle_auto_trigger()
+				end,
 				desc = "Toggle GitHub Copilot",
 				nowait = true,
 				remap = false,
