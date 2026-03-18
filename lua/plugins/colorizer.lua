@@ -1,9 +1,22 @@
 return {
-	"norcalli/nvim-colorizer.lua",
-	event = { "BufReadPre", "BufNewFile" },
+	"catgoose/nvim-colorizer.lua",
+	event = { "BufReadPre" },
 	opts = {
-		"*",
-		"!markdown",
-		"!vimwiki",
+		parsers = {
+			css = {
+				enable = true,
+			},
+			names = {
+				enable = false,
+			},
+			tailwind = {
+				enable = true,
+			},
+		},
+		filetypes = {
+			"*",
+			"!markdown",
+			"!vimwiki",
+		},
 	},
 }
