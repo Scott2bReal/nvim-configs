@@ -89,6 +89,8 @@ return {
 					},
 				},
 			})
+			-- Load the fzf extension
+			require("telescope").load_extension("fzf")
 		end,
 	},
 }
