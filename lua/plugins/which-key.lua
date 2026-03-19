@@ -12,37 +12,26 @@ return {
 	opts = {
 		preset = "modern",
 		plugins = {
-			marks = true, -- shows a list of your marks on ' and `
-			registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-			spelling = {
-				enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-				suggestions = 20, -- how many suggestions should be shown in the list?
-			},
-			-- the presets plugin, adds help for a bunch of default keybindings in Neovim
-			-- No actual key bindings are created
 			presets = {
-				operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-				motions = false, -- adds help for motions
-				text_objects = false, -- help for text objects triggered after entering an operator
-				windows = true, -- default bindings on <c-w>
-				nav = true, -- misc bindings to work with windows
-				z = true, -- bindings for folds, spelling and others prefixed with z
-				g = true, -- bindings for prefixed with g
+				operators = false,
+				motions = false,
+				text_objects = false,
+				windows = true,
+				nav = true,
+				z = true,
+				g = true,
 			},
 		},
-		-- add operators that will trigger motion and text object completion
-		-- to enable all native operators, set the preset / operators plugin above
-		-- operators = { gc = "Comments" },
 		icons = {
-			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-			separator = "➜", -- symbol used between a key and it's label
-			group = "+", -- symbol prepended to a group
+			breadcrumb = "»",
+			separator = "➜",
+			group = "+",
 		},
 		layout = {
-			height = { min = 4, max = 25 }, -- min and max height of the columns
-			width = { min = 20, max = 50 }, -- min and max width of the columns
-			spacing = 3, -- spacing between columns
-			align = "left", -- align columns left, center or right
+			height = { min = 4, max = 25 },
+			width = { min = 20, max = 50 },
+			spacing = 3,
+			align = "left",
 		},
 		show_help = true, -- show help message on the command line when the popup is visible
 	},
@@ -63,20 +52,45 @@ return {
 		-- 	silent = true, -- use `silent` when creating keymaps
 		-- 	noremap = true, -- use `noremap` when creating keymaps
 		-- 	nowait = true, -- use `nowait` when creating keymaps
+
+		local DEFAULT_CONFIG = {
+			nowait = true,
+			remap = false,
+		}
+
+		local add_default_config_to_table = function(table)
+			for _, mapping in ipairs(table) do
+				for key, value in pairs(DEFAULT_CONFIG) do
+					if mapping[key] == nil then
+						mapping[key] = value
+					end
+				end
+			end
+			return table
+		end
+
+		local create_mappings_with_defaults = function(mappings)
+			local mappings_with_defaults = {}
+			for _, mapping in ipairs(mappings) do
+				local mapping_with_defaults = vim.tbl_deep_extend("keep", mapping, DEFAULT_CONFIG)
+				table.insert(mappings_with_defaults, mapping_with_defaults)
+			end
+			return mappings_with_defaults
+		end
+
+		--- Mappings will have a default configuration injected after
 		local mappings = {
 			{
 				"<leader>/",
 				comment_current_line,
 				desc = "Comment",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>f",
 				telescope.find_files,
 				desc = "Find files",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>F",
@@ -84,15 +98,13 @@ return {
 					telescope.live_grep(telescope_themes.get_ivy())
 				end,
 				desc = "Find Text",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>H",
 				"<cmd>!firefox %<cr>",
 				desc = "open current HTML file in firefox",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>c",
@@ -100,8 +112,7 @@ return {
 					require("mini.bufremove").delete(0, false)
 				end,
 				desc = "Close Buffer",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>d",
@@ -109,8 +120,7 @@ return {
 					require("gitsigns").diffthis("~1")
 				end,
 				desc = "Toggle diff overlay",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>e",
@@ -121,199 +131,170 @@ return {
 					end
 				end,
 				desc = "Toggle explorer",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>h",
 				"<cmd>nohlsearch<CR>",
 				desc = "No Highlight",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>l",
 				group = "LSP",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lI",
 				"<cmd>Mason<cr>",
 				desc = "Installer Info",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lR",
 				"<cmd>LspRestart<cr>",
 				desc = "Restart LSP",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lf",
 				require("conform").format,
 				desc = "Format",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>li",
 				"<cmd>LspInfo<cr>",
 				desc = "Info",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lj",
 				vim.lsp.diagnostic.goto_next,
 				desc = "Next Diagnostic",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lk",
 				vim.lsp.diagnostic.goto_prev,
 				desc = "Prev Diagnostic",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ll",
 				vim.lsp.codelens.run,
 				desc = "CodeLens Action",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lq",
 				vim.lsp.diagnostic.set_loclist,
 				desc = "Quickfix",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lr",
 				vim.lsp.buf.rename,
 				desc = "Rename",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lt",
 				group = "Typescript",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lta",
 				"<cmd>TSToolsAddMissingImports<cr>",
 				desc = "Add Missing Imports",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ltf",
 				"<cmd>TSToolsFixAll<cr>",
 				desc = "Fix All",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ltg",
 				"<cmd>TSToolsGoToSourceDefinition<cr>",
 				desc = "Go To Source Definition",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lto",
 				"<cmd>TSToolsOrganizeImports<cr>",
 				desc = "Organize Imports",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ltr",
 				"<cmd>TSToolsRenameFile<cr>",
 				desc = "Rename File",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ltu",
 				"<cmd>TypesciptRemoveUnused<cr>",
 				desc = "Remove Unused Variables",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>lw",
 				"<cmd>Telescope lsp_workspace_diagnostics<cr>",
 				desc = "Workspace Diagnostics",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>n",
 				group = "Notifications",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>nh",
 				"<cmd>lua MiniNotify.show_history()<cr>",
 				desc = "Notification History",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>p",
 				group = "Plugins",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ph",
 				"<cmd>Lazy home<cr>",
 				desc = "Home",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>pi",
 				"<cmd>Lazy install<cr>",
 				desc = "Install",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>pp",
 				"<cmd>Lazy profile<cr>",
 				desc = "Profile",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>ps",
 				"<cmd>Lazy sync<cr>",
 				desc = "Sync",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>pu",
 				"<cmd>Lazy update<cr>",
 				desc = "Update",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>s",
 				group = "Search",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sb",
@@ -321,8 +302,7 @@ return {
 					telescope.buffers(telescope_themes.get_dropdown({ previewer = false }))
 				end,
 				desc = "Search buffers",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sc",
@@ -330,8 +310,7 @@ return {
 					telescope.colorscheme(telescope_themes.get_dropdown())
 				end,
 				desc = "Search colorschemes",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sd",
@@ -339,8 +318,7 @@ return {
 					telescope.find_files({ hidden = true })
 				end,
 				desc = "Include Dotfiles",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sh",
@@ -348,8 +326,7 @@ return {
 					telescope.help_tags(telescope_themes.get_ivy())
 				end,
 				desc = "Find Help",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sk",
@@ -357,8 +334,7 @@ return {
 					telescope.keymaps(telescope_themes.get_ivy())
 				end,
 				desc = "Keymaps",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sn",
@@ -368,49 +344,42 @@ return {
 					})
 				end,
 				desc = "Search neovim config",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sr",
 				telescope.oldfiles,
 				desc = "Open Recent File",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sR",
 				telescope.registers,
 				desc = "Search Registers",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sD",
 				telescope.diagnostics,
 				desc = "Search Diagnostics",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>sS",
 				telescope.lsp_dynamic_workspace_symbols,
 				desc = "Workspace Symbols",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>z",
 				group = "Misc.",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>zc",
 				"<cmd>ColorizerToggle<cr>",
 				desc = "Colorizer",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 			{
 				"<leader>zz",
@@ -419,8 +388,7 @@ return {
 					require("copilot.suggestion").toggle_auto_trigger()
 				end,
 				desc = "Toggle GitHub Copilot",
-				nowait = true,
-				remap = false,
+				unpack(DEFAULT_CONFIG),
 			},
 		}
 
@@ -430,8 +398,7 @@ return {
 		--     comment_visual_selection,
 		--     desc = "Comment",
 		--     mode = "v",
-		--     nowait = true,
-		--     remap = false,
+		--     unpack(DEFAULT_CONFIG),
 		--   },
 		-- }
 
