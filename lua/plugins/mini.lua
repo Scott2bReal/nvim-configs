@@ -53,7 +53,9 @@ local plugins = {
 			preview = true,
 			width_preview = 75,
 		},
-    use_as_default_explorer = true,
+		options = {
+			use_as_default_explorer = true,
+		},
 	},
 	icons = {},
 	pairs = {},
