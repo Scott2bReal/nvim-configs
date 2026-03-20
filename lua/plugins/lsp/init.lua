@@ -43,7 +43,11 @@ return {
 			require("conform").setup(opts)
 		end,
 	},
-	{ "neovim/nvim-lspconfig" },
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+	},
 	{
 		"pmizio/typescript-tools.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -51,10 +55,13 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = { "mason-org/mason.nvim" },
+		event = { "BufReadPre", "BufNewFile" },
+	},
+	{
 		"mason-org/mason.nvim",
-		dependencies = {
-			"mason-org/mason-lspconfig.nvim",
-		},
+		cmd = "Mason",
 		---@module "mason"
 		---@type MasonSettings
 		opts = {
@@ -81,14 +88,14 @@ return {
 				"prismals",
 			}
 
+			-- Mason must be set up before mason lsp config
+			require("mason").setup(opts)
+
 			local has_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 			if not has_mason_lspconfig then
 				vim.notify("Could not load mason lsp config")
 				return
 			end
-
-			-- Mason must be set up before mason lsp config
-			require("mason").setup(opts)
 
 			-- Make sure required servers are installed
 			mason_lspconfig.setup({
