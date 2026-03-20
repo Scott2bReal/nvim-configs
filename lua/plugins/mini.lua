@@ -23,15 +23,33 @@ local set_notify_custom_colors = function(colors)
 	set_hl("MiniNotifyBorder", { bg = colors.bg2 })
 end
 
+-- Used in mini.files to open the file in a vertical split
+function map_split(buf_id, lhs, direction)
+	local mini_files = require("mini.files")
+
+	function rhs()
+		local cur_target = mini_files.get_explorer_state().target_window
+		local new_target = vim.api.nvim_win_call(cur_target, function()
+			vim.cmd(direction .. " split")
+			return vim.api.nvim_get_current_win()
+		end)
+
+		mini_files.set_target_window(new_target)
+	end
+
+		local desc = "Split " .. direction
+		vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
+end
+
 local add_modified_icon = function(buf_nr, label)
 	local modified_icon = "●"
 	local is_modified = vim.api.nvim_get_option_value("modified", {
 		buf = buf_nr,
 	})
 	if is_modified then
-		return MiniTabline.default_format(buf_nr, label) .. modified_icon .. " "
+		return require("mini.tabline").default_format(buf_nr, label) .. modified_icon .. " "
 	else
-		return MiniTabline.default_format(buf_nr, label)
+		return require("mini.tabline").default_format(buf_nr, label)
 	end
 end
 
@@ -80,5 +98,16 @@ return {
 		for name, opts in pairs(plugins) do
 			require("mini." .. name).setup(opts)
 		end
+
+    -- enable opening files in splits from mini.files
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "MiniFilesBufferCreate",
+			callback = function(args)
+				local buf_id = args.data.buf_id
+				map_split(buf_id, "<C-s>", "belowright horizontal")
+				map_split(buf_id, "<C-v>", "belowright vertical")
+				map_split(buf_id, "<C-t>", "tab")
+			end,
+		})
 	end,
 }
