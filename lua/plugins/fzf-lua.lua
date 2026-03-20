@@ -10,6 +10,7 @@ return {
 			file_icons = "mini",
 		},
 		files = {
+			git_icons = true,
 			cwd_prompt = false,
 		},
 		oldfiles = {
@@ -17,10 +18,10 @@ return {
 			include_current_session = true,
 		},
 		helptags = {
-			theme = "ivy",
+			profile = "ivy",
 		},
 		live_grep = {
-			theme = "ivy",
+			profile = "ivy",
 		},
 		previewers = {
 			builtin = {
