@@ -31,6 +31,13 @@ lazy.setup({
 	change_detection = {
 		enabled = false,
 	},
+	rocks = {
+		enabled = false,
+	},
+	checker = {
+		enabled = true,
+		notify = true,
+	},
 	browser = "firefox",
 	-- disable some rtp plugins
 	performance = {
@@ -46,5 +53,9 @@ lazy.setup({
 				"zipPlugin",
 			},
 		},
+	},
+	profiling = {
+		require = true,
+		loader = true,
 	},
 })
