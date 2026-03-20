@@ -16,7 +16,23 @@ return {
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff", "diagnostics" },
 			lualine_c = {
-				"filename",
+				function()
+					local project_root_dirname = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+					-- show path to current file starting at project root
+					local file_path = vim.fn.expand("%:~:.")
+
+					if file_path == "" then
+						return project_root_dirname
+					else
+						-- Truncate the file path if it's too long
+						local max_length = 40
+						if #file_path > max_length then
+							file_path = "..." .. string.sub(file_path, -max_length)
+						end
+						return project_root_dirname .. " > " .. string.gsub(file_path, "/", " > ")
+					end
+				end,
+				-- "filename",
 			},
 			lualine_x = { "encoding", "fileformat", "filetype" },
 			-- lualine_y = { 'progress' },
