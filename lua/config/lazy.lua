@@ -28,10 +28,8 @@ lazy.setup({
 	install = {
 		colorscheme = { "gruvbox-material" },
 	},
-	checker = {
-		change_detection = {
-			enabled = false,
-		},
+	change_detection = {
+		enabled = false,
 	},
 	browser = "firefox",
 	-- disable some rtp plugins
