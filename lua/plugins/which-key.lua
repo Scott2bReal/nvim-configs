@@ -83,6 +83,13 @@ return {
 				desc = "Find Text",
 			},
 			{
+				"<C-t>",
+				function()
+					telescope.live_grep(telescope_themes.get_ivy())
+				end,
+				desc = "Find Text",
+			},
+			{
 				"<leader>H",
 				"<cmd>!firefox %<cr>",
 				desc = "open current HTML file in firefox",
