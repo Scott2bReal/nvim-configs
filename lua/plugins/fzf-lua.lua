@@ -10,7 +10,6 @@ return {
 			file_icons = "mini",
 		},
 		files = {
-			git_icons = true,
 			cwd_prompt = false,
 		},
 		oldfiles = {
