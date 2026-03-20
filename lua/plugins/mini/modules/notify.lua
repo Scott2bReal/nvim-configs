@@ -8,8 +8,8 @@ return (function()
 		return { anchor = "SE", col = vim.o.columns, row = vim.o.lines - pad }
 	end
 
-	utils.set_hl("MiniFilesNormal", { bg = utils.color.bg2 })
-	utils.set_hl("MiniFilesBorder", { bg = utils.color.bg2 })
+	utils.set_hl("MiniFilesNormal", { bg = utils.colors.bg2 })
+	utils.set_hl("MiniFilesBorder", { bg = utils.colors.bg2 })
 
 	return {
 		window = {
