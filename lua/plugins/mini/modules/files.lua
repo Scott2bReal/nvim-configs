@@ -1,4 +1,4 @@
-local utils = require("plugins.mini.modules.utils")
+local utils = require("plugins.mini.utils")
 
 return (function()
 	utils.set_hl("MiniFilesBorder", { bg = utils.colors.bg2 })

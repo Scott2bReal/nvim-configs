@@ -1,11 +1,11 @@
 local enabled_plugins = {
+	"bufremove",
+	"comment",
 	"notify",
 	"files",
 	"icons",
 	"pairs",
 	"tabline",
-	"bufremove",
-	"comment",
 }
 
 return {
@@ -13,12 +13,13 @@ return {
 	event = "VeryLazy",
 	config = function()
 		for _, name in pairs(enabled_plugins) do
-			local has_custom_opts, opts = pcall(require, "plugins.mini.modules." .. name)
+			local has_custom_opts, custom_opts = pcall(require, "plugins.mini.modules." .. name)
 			if has_custom_opts then
-				require("mini." .. name).setup(opts)
+				print("setting up mini." .. name)
+				require("mini." .. name).setup(custom_opts)
+			else
+				require("mini." .. name).setup()
 			end
-
-			require("mini." .. name).setup()
 		end
 	end,
 }
