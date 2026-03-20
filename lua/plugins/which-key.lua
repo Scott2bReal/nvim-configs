@@ -33,7 +33,7 @@ return {
 			spacing = 3,
 			align = "left",
 		},
-		show_help = true, -- show help message on the command line when the popup is visible
+		show_help = true,
 	},
 	config = function(_, opts)
 		local status_ok, which_key = pcall(require, "which-key")
