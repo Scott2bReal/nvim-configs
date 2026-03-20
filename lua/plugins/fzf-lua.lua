@@ -22,6 +22,11 @@ return {
 		live_grep = {
 			theme = "ivy",
 		},
+		previewers = {
+			builtin = {
+				syntax_limit_b = 100 * 1024, -- 100kb
+			},
+		},
 	},
 	---@diagnostic enable: missing-fields
 }
