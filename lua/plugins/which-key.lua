@@ -42,9 +42,7 @@ return {
 			return
 		end
 
-		--- Telescope builtin functions
-		local telescope = require("telescope.builtin")
-		local telescope_themes = require("telescope.themes")
+		local fzf_lua = require("fzf-lua")
 
 		local DEFAULT_CONFIG = {
 			silent = true,
@@ -72,20 +70,20 @@ return {
 			},
 			{
 				"<leader>f",
-				telescope.find_files,
+				fzf_lua.files,
 				desc = "Find files",
 			},
 			{
 				"<leader>F",
 				function()
-					telescope.live_grep(telescope_themes.get_ivy())
+					fzf_lua.live_grep({ profile = "ivy" })
 				end,
 				desc = "Find Text",
 			},
 			{
 				"<C-t>",
 				function()
-					telescope.live_grep(telescope_themes.get_ivy())
+					fzf_lua.live_grep({ profile = "ivy" })
 				end,
 				desc = "Find Text",
 			},
@@ -207,11 +205,6 @@ return {
 				desc = "Remove Unused Variables",
 			},
 			{
-				"<leader>lw",
-				"<cmd>Telescope lsp_workspace_diagnostics<cr>",
-				desc = "Workspace Diagnostics",
-			},
-			{
 				"<leader>n",
 				group = "Notifications",
 			},
@@ -256,65 +249,65 @@ return {
 			{
 				"<leader>sb",
 				function()
-					telescope.buffers(telescope_themes.get_dropdown({ previewer = false }))
+					fzf_lua.buffers({ previewer = false })
 				end,
 				desc = "Search buffers",
 			},
 			{
 				"<leader>sc",
 				function()
-					telescope.colorscheme(telescope_themes.get_dropdown())
+					fzf_lua.colorschemes({ previewer = false })
 				end,
 				desc = "Search colorschemes",
 			},
 			{
 				"<leader>sd",
 				function()
-					telescope.find_files({ hidden = true })
+					fzf_lua.files({ hidden = true })
 				end,
 				desc = "Include Dotfiles",
 			},
 			{
 				"<leader>sh",
 				function()
-					telescope.help_tags(telescope_themes.get_ivy())
+					fzf_lua.help_tags({ previewer = false, theme = "ivy" })
 				end,
 				desc = "Find Help",
 			},
 			{
 				"<leader>sk",
 				function()
-					telescope.keymaps(telescope_themes.get_ivy())
+					fzf_lua.keymaps({ previewer = false, theme = "ivy" })
 				end,
 				desc = "Keymaps",
 			},
 			{
 				"<leader>sn",
 				function()
-					telescope.find_files({
-						cwd = vim.fn.stdpath("config"),
-					})
+					fzf_lua.files({ cwd = vim.fn.stdpath("config") })
 				end,
 				desc = "Search neovim config",
 			},
 			{
 				"<leader>sr",
-				telescope.oldfiles,
+				function()
+					fzf_lua.oldfiles()
+				end,
 				desc = "Open Recent File",
 			},
 			{
 				"<leader>sR",
-				telescope.registers,
+        fzf_lua.registers,
 				desc = "Search Registers",
 			},
 			{
 				"<leader>sD",
-				telescope.diagnostics,
+				fzf_lua.diagnostics_workspace,
 				desc = "Search Diagnostics",
 			},
 			{
 				"<leader>sS",
-				telescope.lsp_dynamic_workspace_symbols,
+				fzf_lua.lsp_document_symbols,
 				desc = "Workspace Symbols",
 			},
 			{

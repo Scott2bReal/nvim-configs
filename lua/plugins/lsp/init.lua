@@ -48,6 +48,7 @@ return {
 		"pmizio/typescript-tools.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {},
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"mason-org/mason.nvim",

@@ -17,15 +17,15 @@ return {
 		}
 
 		dashboard.section.buttons.val = {
-			dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
+			dashboard.button("f", "󰈞  Find file", "<cmd>lua require('fzf-lua').files()<CR>"),
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-			dashboard.button("r", "󱋡  Recently used files", ":Telescope oldfiles <CR>"),
-			dashboard.button("t", "󰍉  Find text", ":Telescope live_grep <CR>"),
+			dashboard.button("r", "󱋡  Recently used files", "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
+			dashboard.button("t", "󰍉  Find text", "<cmd>lua require('fzf-lua').live_grep()<CR>"),
 			dashboard.button("w", "  Vimwiki", ":VimwikiIndex<CR>"),
 			dashboard.button(
 				"c",
 				"  Configuration",
-				":lua require('telescope.builtin').find_files({cwd=vim.fn.stdpath('config')})<cr>"
+				"<cmd>lua require('fzf-lua').files({cwd = vim.fn.stdpath('config')})<CR>"
 			),
 			dashboard.button("q", "󰩈  Quit Neovim", ":qa<CR>"),
 		}
