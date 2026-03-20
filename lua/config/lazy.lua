@@ -54,8 +54,4 @@ lazy.setup({
 			},
 		},
 	},
-	profiling = {
-		require = true,
-		loader = true,
-	},
 })
