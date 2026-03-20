@@ -1,25 +1,25 @@
 local utils = require("plugins.mini.utils")
 
+function map_split(buf_id, lhs, direction)
+	local mini_files = require("mini.files")
+
+	function rhs()
+		local cur_target = mini_files.get_explorer_state().target_window
+		local new_target = vim.api.nvim_win_call(cur_target, function()
+			vim.cmd(direction .. " split")
+			return vim.api.nvim_get_current_win()
+		end)
+
+		mini_files.set_target_window(new_target)
+	end
+
+	local desc = "Split " .. direction
+	vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
+end
+
 return (function()
 	utils.set_hl("MiniFilesBorder", { bg = utils.colors.bg2 })
 	utils.set_hl("MiniFilesNormal", { bg = utils.colors.bg2 })
-
-	function map_split(buf_id, lhs, direction)
-		local mini_files = require("mini.files")
-
-		function rhs()
-			local cur_target = mini_files.get_explorer_state().target_window
-			local new_target = vim.api.nvim_win_call(cur_target, function()
-				vim.cmd(direction .. " split")
-				return vim.api.nvim_get_current_win()
-			end)
-
-			mini_files.set_target_window(new_target)
-		end
-
-		local desc = "Split " .. direction
-		vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
-	end
 
 	-- enable opening files in splits
 	vim.api.nvim_create_autocmd("User", {
