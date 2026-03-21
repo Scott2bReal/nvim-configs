@@ -1,4 +1,4 @@
-local utils = require("plugins.mini.utils")
+local utils = require("utils")
 
 local add_modified_icon = function(buf_nr, label)
 	local modified_icon = "●"

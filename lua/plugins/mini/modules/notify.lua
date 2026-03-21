@@ -6,7 +6,7 @@ local notify_win_config = function()
 end
 
 return (function()
-	local utils = require("plugins.mini.utils")
+	local utils = require("utils")
 
 	utils.set_hl("MiniFilesNormal", { bg = utils.colors.bg2 })
 	utils.set_hl("MiniFilesBorder", { bg = utils.colors.bg2 })

@@ -1,4 +1,4 @@
-local utils = require("plugins.mini.utils")
+local utils = require("utils")
 
 return (function()
 	utils.set_hl("MiniTrailspace", { bg = utils.colors.green })

@@ -1,4 +1,4 @@
-local utils = require("plugins.mini.utils")
+local utils = require("utils")
 
 function map_split(buf_id, lhs, direction)
 	local mini_files = require("mini.files")
