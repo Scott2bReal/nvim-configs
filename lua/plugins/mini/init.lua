@@ -1,4 +1,5 @@
 local enabled_plugins = {
+	"bracketed",
 	"bufremove",
 	"comment",
 	"notify",
