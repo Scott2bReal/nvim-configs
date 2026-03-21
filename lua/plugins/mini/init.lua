@@ -6,6 +6,7 @@ local enabled_plugins = {
 	"icons",
 	"pairs",
 	"tabline",
+	"trailspace",
 }
 
 return {
