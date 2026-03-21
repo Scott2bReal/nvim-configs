@@ -1,5 +1,6 @@
 return {
 	"saghen/blink.cmp",
+	event = "InsertEnter",
 	---@module "blink-cmp"
 	---@type blink.cmp.Config
 	opts = {

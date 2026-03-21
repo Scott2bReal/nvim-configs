@@ -1,5 +1,6 @@
 return {
 	"ibhagwan/fzf-lua",
+	cmd = "FzfLua",
 	---@module "fzf-lua"
 	---@module "fzf-lua"
 	---@type fzf-lua.Config|{}
