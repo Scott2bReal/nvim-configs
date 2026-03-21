@@ -50,7 +50,7 @@ return {
 	},
 	{
 		"pmizio/typescript-tools.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 		opts = {},
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
