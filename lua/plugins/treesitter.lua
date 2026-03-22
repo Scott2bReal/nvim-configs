@@ -23,23 +23,15 @@ return {
 				enable_autocmd = false,
 			},
 		},
-		config = function(_, opts)
-			local status_ok, treesitter = pcall(require, "nvim-treesitter")
-			if not status_ok then
-				vim.notify("nvim-treesitter not found!", vim.log.levels.ERROR)
-				return
-			end
-			treesitter.setup(opts)
-		end,
 	},
-	{
-		"nvim-treesitter/nvim-treesitter-context", -- Show context around cursor
-		event = "VeryLazy",
-		opts = {},
-		config = function(_, opts)
-			local utils = require("utils")
-			vim.api.nvim_set_hl(0, "TreesitterContext", { bg = utils.colors.bg1 })
-			require("treesitter-context").setup(opts)
-		end,
-	},
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter-context", -- Show context around cursor
+	-- 	event = "VeryLazy",
+	-- 	opts = {},
+	-- 	config = function(_, opts)
+	-- 		local utils = require("utils")
+	-- 		vim.api.nvim_set_hl(0, "TreesitterContext", { bg = utils.colors.bg1 })
+	-- 		require("treesitter-context").setup(opts)
+	-- 	end,
+	-- },
 }
