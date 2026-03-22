@@ -297,7 +297,7 @@ return {
 			},
 			{
 				"<leader>sR",
-        fzf_lua.registers,
+				fzf_lua.registers,
 				desc = "Search Registers",
 			},
 			{
