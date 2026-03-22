@@ -4,6 +4,9 @@ return {
 	-- Set up alpha dashboard
 	opts = function()
 		local dashboard = require("alpha.themes.dashboard")
+		---@type vim.Version
+		local version = vim.version()
+
 		dashboard.section.header.val = {
 			[[                                      ]],
 			[[                                      ]],
@@ -14,6 +17,16 @@ return {
 			[[█  █ █ ▀███▀           █  █   ▐    █  ]],
 			[[█   ██                  █▐        ▀   ]],
 			[[                        ▐             ]],
+			[[                                      ]],
+			[[                ]]
+				.. "v"
+				.. version.major
+				.. "."
+				.. version.minor
+				.. "."
+				.. version.patch
+				.. [[           ]],
+			[[                                      ]],
 		}
 
 		dashboard.section.buttons.val = {
@@ -21,7 +34,7 @@ return {
 			dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("r", "󱋡  Recently used files", "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
 			dashboard.button("t", "󰍉  Find text", "<cmd>lua require('fzf-lua').live_grep()<CR>"),
-			dashboard.button("w", "  Vimwiki", ":VimwikiIndex<CR>"),
+			-- dashboard.button("w", "  Vimwiki", ":VimwikiIndex<CR>"),
 			dashboard.button(
 				"c",
 				"  Configuration",
