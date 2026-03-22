@@ -4,7 +4,6 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			theme = "gruvbox-material",
 			component_separators = { left = "/", right = "/" },
 			section_separators = { left = "", right = "" },
 			-- section_separators = { left = " ", right = " " },
@@ -36,7 +35,6 @@ return {
 				},
 			},
 			lualine_x = { "encoding", "fileformat", "filetype" },
-			-- lualine_y = { 'progress' },
 			lualine_y = {},
 			lualine_z = { "location" },
 		},
@@ -89,7 +87,11 @@ return {
 					return msg
 				end
 				for _, client in ipairs(clients) do
-					local filetypes = client.config.filetypes
+					-- Lua LSP doesn't know about the filetypes field on the config table, but it's there!
+					---@class vim.lsp.ClientConfig
+					---@field filetypes string[] | nil
+					local client_config = client.config
+					local filetypes = client_config.filetypes
 					if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
 						return client.name
 					end
