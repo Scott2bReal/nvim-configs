@@ -1,4 +1,4 @@
-local enabled_plugins = {
+local enabled_modules = {
 	"bracketed",
 	"bufremove",
 	"comment",
@@ -14,12 +14,12 @@ return {
 	"nvim-mini/mini.nvim",
 	event = "VeryLazy",
 	config = function()
-		for _, name in pairs(enabled_plugins) do
-			local has_custom_opts, custom_opts = pcall(require, "plugins.mini.modules." .. name)
+		for _, module in pairs(enabled_modules) do
+			local has_custom_opts, custom_opts = pcall(require, "plugins.mini.modules." .. module)
 			if has_custom_opts then
-				require("mini." .. name).setup(custom_opts)
+				require("mini." .. module).setup(custom_opts)
 			else
-				require("mini." .. name).setup()
+				require("mini." .. module).setup()
 			end
 		end
 	end,
