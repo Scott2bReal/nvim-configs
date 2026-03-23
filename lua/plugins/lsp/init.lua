@@ -76,7 +76,6 @@ return {
 		},
 		config = function(_, opts)
 			local servers = {
-				"astro",
 				"biome",
 				"bashls",
 				"jsonls",
