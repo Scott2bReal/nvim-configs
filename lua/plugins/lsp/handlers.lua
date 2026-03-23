@@ -30,17 +30,20 @@ M.setup = function()
 end
 
 local function lsp_keymaps(bufnr)
-	local set_keymap = vim.api.nvim_buf_set_keymap
+	local DEFAULT_OPTS = { noremap = true, silent = true, nowait = true }
 
-	local opts = { noremap = true, silent = true }
+	local set_keymap = function(mode, lhs, rhs, custom_opts)
+		custom_opts = vim.tbl_extend("force", DEFAULT_OPTS, custom_opts or {})
+		return vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, custom_opts)
+	end
 
-	set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
-	set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+	set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+	set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+	set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
+	set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+	set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+	set_keymap("n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>')
+	set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
 end
 
 M.on_attach = function(client, bufnr)
