@@ -115,12 +115,13 @@ return {
 					on_attach = handlers.on_attach,
 					capabilities = handlers.capabilities,
 				}
+
 				local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
 				if has_custom_opts then
 					server_opts = vim.tbl_deep_extend("force", server_opts, server_custom_opts)
+					vim.lsp.config(server, server_opts)
 				end
 
-				vim.lsp.config(server, server_opts)
 				vim.lsp.enable(server)
 			end
 		end,
