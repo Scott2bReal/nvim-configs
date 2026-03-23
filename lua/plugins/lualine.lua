@@ -1,3 +1,4 @@
+local utils = require("utils")
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
@@ -34,7 +35,16 @@ return {
 					end,
 				},
 			},
-			lualine_x = { "encoding", "fileformat", "filetype" },
+			lualine_x = {
+				"encoding",
+				"fileformat",
+				"filetype",
+				{
+					require("lazy.status").updates,
+					cond = require("lazy.status").has_updates,
+					color = { fg = utils.colors.orange },
+				},
+			},
 			lualine_y = {},
 			lualine_z = { "location" },
 		},

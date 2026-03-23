@@ -36,7 +36,7 @@ lazy.setup({
 	},
 	checker = {
 		enabled = true,
-		notify = true,
+		notify = false,
 	},
 	browser = "firefox",
 	-- disable some rtp plugins
