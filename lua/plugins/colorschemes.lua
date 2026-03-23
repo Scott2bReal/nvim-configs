@@ -42,9 +42,6 @@ return {
 				light = "lotus",
 			},
 		},
-		config = function()
-			vim.cmd([[colorscheme kanagawa]])
-		end,
 	},
 	{ "catppuccin/nvim", name = "catpuccin", lazy = true },
 	{ "folke/tokyonight.nvim", lazy = true },
