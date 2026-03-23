@@ -39,6 +39,7 @@ local opts = {
 	mousemodel = "extend",
 	laststatus = 3,
 	winborder = "rounded",
+  showcmd = false,
 }
 
 for k, v in pairs(opts) do
