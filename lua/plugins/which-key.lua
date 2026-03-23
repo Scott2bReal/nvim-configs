@@ -64,7 +64,7 @@ return {
 					local line = vim.api.nvim_win_get_cursor(window)[1]
 					require("mini.comment").toggle_lines(line, line)
 				end,
-				desc = "Comment",
+				desc = "Comment current line",
 			},
 			{
 				"<leader>f",
