@@ -5,9 +5,9 @@ return {
 	opts = {
 		options = {
 			icons_enabled = true,
-			component_separators = { left = "/", right = "/" },
-			section_separators = { left = "", right = "" },
-			-- section_separators = { left = " ", right = " " },
+			component_separators = { left = "\\", right = "/" },
+			-- section_separators = { left = "", right = "" },
+			section_separators = { left = " ", right = "" },
 			disabled_filetypes = { "alpha", "toggleterm" },
 			always_divide_middle = true,
 			globalstatus = true,
@@ -33,10 +33,24 @@ return {
 							return project_root_dirname .. " > " .. string.gsub(file_path, "/", " > ")
 						end
 					end,
+					color = { fg = utils.colors.blue },
+					cond = function()
+						-- Hide when filetype is minifiles or help
+						local ft = vim.bo.filetype
+						return ft ~= "minifiles" and ft ~= "help" and ft ~= "fzf"
+					end,
 				},
 			},
 			lualine_x = {
-				"encoding",
+				{
+					"lsp_status",
+					icon = "",
+					show_name = false,
+					symbols = {
+						separator = "",
+					},
+					color = { fg = utils.colors.green },
+				},
 				"fileformat",
 				"filetype",
 				{
@@ -45,7 +59,17 @@ return {
 					color = { fg = utils.colors.orange },
 				},
 			},
-			lualine_y = {},
+			lualine_y = {
+				function()
+					local current_line = vim.fn.line(".")
+					local total_lines = vim.fn.line("$")
+					local chars =
+						{ "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+					local line_ratio = current_line / total_lines
+					local index = math.ceil(line_ratio * #chars)
+					return chars[index]
+				end,
+			},
 			lualine_z = { "location" },
 		},
 		inactive_sections = {
@@ -59,60 +83,4 @@ return {
 		tabline = {},
 		extensions = {},
 	},
-	config = function(_, opts)
-		local has_lualine, lualine = pcall(require, "lualine")
-		if not has_lualine then
-			vim.notify("Lualine not found")
-			return
-		end
-
-		local function append_right(component)
-			table.insert(opts.sections.lualine_x, 1, component)
-		end
-
-		local function ins_y(component)
-			table.insert(opts.sections.lualine_y, component)
-		end
-
-		-- cool function for progress
-		-- credit chris@machine
-		local progress = function()
-			local current_line = vim.fn.line(".")
-			local total_lines = vim.fn.line("$")
-			local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-			local line_ratio = current_line / total_lines
-			local index = math.ceil(line_ratio * #chars)
-			return chars[index]
-		end
-
-		append_right({
-			-- Lsp server name
-			function()
-				local msg = "No Active Lsp"
-				local buf_ft = vim.api.nvim_get_option_value("filetype", {
-					buf = 0,
-				})
-				local clients = vim.lsp.get_clients()
-				if next(clients) == nil then
-					return msg
-				end
-				for _, client in ipairs(clients) do
-					-- Lua LSP doesn't know about the filetypes field on the config table, but it's there!
-					---@class vim.lsp.ClientConfig
-					---@field filetypes string[] | nil
-					local client_config = client.config
-					local filetypes = client_config.filetypes
-					if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-						return client.name
-					end
-				end
-				return msg
-			end,
-			icon = " LSP:",
-		})
-
-		ins_y(progress)
-
-		lualine.setup(opts)
-	end,
 }
