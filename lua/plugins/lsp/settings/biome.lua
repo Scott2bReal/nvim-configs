@@ -14,7 +14,6 @@ local config = {
 		"json",
 		"jsonc",
 	},
-	single_file_support = false, -- Only enable when biome.json is present
 }
 
 return config
