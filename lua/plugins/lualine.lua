@@ -35,9 +35,9 @@ return {
 					end,
 					color = { fg = utils.colors.blue },
 					cond = function()
-						-- Hide when filetype is minifiles or help
 						local ft = vim.bo.filetype
-						return ft ~= "minifiles" and ft ~= "help" and ft ~= "fzf"
+						local disabled_filetypes = { "minifiles", "help", "fzf", "lazy" }
+						return not vim.tbl_contains(disabled_filetypes, ft)
 					end,
 				},
 			},
