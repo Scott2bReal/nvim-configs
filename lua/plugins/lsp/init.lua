@@ -1,5 +1,50 @@
 return {
 	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+		dependencies = { "mason-org/mason.nvim" },
+		config = function(_, opts)
+			local servers = {
+				"biome",
+				"bashls",
+				"jsonls",
+				"lua_ls",
+				"html",
+				"eslint",
+				"yamlls",
+				"tailwindcss",
+				"prismals",
+			}
+
+			-- Mason must be set up before mason lsp config
+			require("mason").setup(opts)
+
+			-- Make sure required servers are installed
+			require("mason-lspconfig").setup({
+				ensure_installed = servers,
+			})
+
+			local handlers = require("plugins.lsp.handlers")
+			handlers.setup()
+
+			for _, server in pairs(servers) do
+				local server_opts = {
+					on_attach = handlers.on_attach,
+					capabilities = handlers.capabilities,
+				}
+
+				local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
+				if has_custom_opts then
+					server_opts = vim.tbl_deep_extend("force", server_opts, server_custom_opts)
+					vim.lsp.config(server, server_opts)
+				end
+
+				vim.lsp.enable(server)
+			end
+		end,
+	},
+	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
 		opts = {
@@ -70,67 +115,5 @@ return {
 				},
 			},
 		},
-		config = function(_, opts)
-			local has_mason, mason = pcall(require, "mason")
-			if not has_mason then
-				vim.notify("Could not load mason")
-				return
-			end
-
-			local servers = {
-				"biome",
-				"bashls",
-				"jsonls",
-				"lua_ls",
-				"html",
-				"eslint",
-				"yamlls",
-				"tailwindcss",
-				"prismals",
-			}
-
-			-- Mason must be set up before mason lsp config
-			mason.setup(opts)
-
-			local has_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
-			if not has_mason_lspconfig then
-				vim.notify("Could not load mason lsp config")
-				return
-			end
-
-			-- Make sure required servers are installed
-			mason_lspconfig.setup({
-				ensure_installed = servers,
-			})
-
-			local has_handlers, handlers = pcall(require, "plugins.lsp.handlers")
-			if not has_handlers then
-				vim.notify("Could not load custom handlers")
-				return
-			end
-
-			handlers.setup()
-
-			for _, server in pairs(servers) do
-				local server_opts = {
-					on_attach = handlers.on_attach,
-					capabilities = handlers.capabilities,
-				}
-
-				local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
-				if has_custom_opts then
-					server_opts = vim.tbl_deep_extend("force", server_opts, server_custom_opts)
-					vim.lsp.config(server, server_opts)
-				end
-
-				vim.lsp.enable(server)
-			end
-		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
-		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-		dependencies = { "mason-org/mason.nvim" },
 	},
 }
