@@ -15,7 +15,8 @@ return {
 	},
 	{
 		"stevearc/conform.nvim",
-		event = "BufWritePre",
+		cmd = { "ConformInfo" },
+		event = { "BufWritePre", "BufNewFile" },
 		---@module "conform"
 		---@type conform.setupOpts
 		opts = {
@@ -39,25 +40,20 @@ return {
 					stop_after_first = true,
 				}
 			end
-
 			require("conform").setup(opts)
 		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
-		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-	},
-	{
-		"pmizio/typescript-tools.nvim",
-		ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-		opts = {},
-		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = { "mason-org/mason.nvim" },
 		event = { "BufReadPre", "BufNewFile" },
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+		opts = {},
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"mason-org/mason.nvim",
@@ -75,6 +71,12 @@ return {
 			},
 		},
 		config = function(_, opts)
+			local has_mason, mason = pcall(require, "mason")
+			if not has_mason then
+				vim.notify("Could not load mason")
+				return
+			end
+
 			local servers = {
 				"biome",
 				"bashls",
@@ -88,7 +90,7 @@ return {
 			}
 
 			-- Mason must be set up before mason lsp config
-			require("mason").setup(opts)
+			mason.setup(opts)
 
 			local has_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
 			if not has_mason_lspconfig then
@@ -106,9 +108,9 @@ return {
 				vim.notify("Could not load custom handlers")
 				return
 			end
+
 			handlers.setup()
 
-			-- Look for custom server settings
 			for _, server in pairs(servers) do
 				local server_opts = {
 					on_attach = handlers.on_attach,
@@ -124,5 +126,11 @@ return {
 				vim.lsp.enable(server)
 			end
 		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+		dependencies = { "mason-org/mason.nvim" },
 	},
 }
