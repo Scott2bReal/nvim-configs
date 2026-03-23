@@ -33,7 +33,7 @@ return {
 							return project_root_dirname .. " > " .. string.gsub(file_path, "/", " > ")
 						end
 					end,
-					color = { fg = utils.colors.blue },
+					color = { fg = utils.colors.aqua },
 					cond = function()
 						local ft = vim.bo.filetype
 						local disabled_filetypes = { "minifiles", "help", "fzf", "lazy" }
@@ -51,8 +51,11 @@ return {
 					},
 					color = { fg = utils.colors.green },
 				},
-				"fileformat",
-				"filetype",
+				{
+					"fileformat",
+					color = { fg = utils.colors.blue },
+				},
+				{ "filetype", color = { fg = utils.colors.purple } },
 				{
 					require("lazy.status").updates,
 					cond = require("lazy.status").has_updates,
@@ -60,15 +63,18 @@ return {
 				},
 			},
 			lualine_y = {
-				function()
-					local current_line = vim.fn.line(".")
-					local total_lines = vim.fn.line("$")
-					local chars =
-						{ "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
-					local line_ratio = current_line / total_lines
-					local index = math.ceil(line_ratio * #chars)
-					return chars[index]
-				end,
+				{
+					function()
+						local current_line = vim.fn.line(".")
+						local total_lines = vim.fn.line("$")
+						local chars =
+							{ "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+						local line_ratio = current_line / total_lines
+						local index = math.ceil(line_ratio * #chars)
+						return chars[index]
+					end,
+					color = { fg = utils.colors.fg0 },
+				},
 			},
 			lualine_z = { "location" },
 		},
