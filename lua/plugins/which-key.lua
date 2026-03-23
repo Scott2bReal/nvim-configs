@@ -1,9 +1,3 @@
-local comment_current_line = function()
-	local window = vim.api.nvim_get_current_win()
-	local line = vim.api.nvim_win_get_cursor(window)[1]
-	require("mini.comment").toggle_lines(line, line)
-end
-
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
@@ -65,7 +59,11 @@ return {
 		local mappings = with_default_configs({
 			{
 				"<leader>/",
-				comment_current_line,
+				function()
+					local window = vim.api.nvim_get_current_win()
+					local line = vim.api.nvim_win_get_cursor(window)[1]
+					require("mini.comment").toggle_lines(line, line)
+				end,
 				desc = "Comment",
 			},
 			{
