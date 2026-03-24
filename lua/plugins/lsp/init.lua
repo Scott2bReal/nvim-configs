@@ -47,20 +47,6 @@ return {
 		end,
 	},
 	{
-		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
-		opts = {
-			library = {
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-				-- Add full Neovim runtime library
-				{ path = "lazy.nvim", words = { "LazySpec", "LazyConfig" } },
-				-- Add blink.cmp types
-				{ path = "blink.cmp", words = { "blink" } },
-			},
-		},
-	},
-	{
 		"stevearc/conform.nvim",
 		cmd = { "ConformInfo" },
 		event = { "BufWritePre", "BufNewFile" },
@@ -119,6 +105,20 @@ return {
 					package_pending = "➜",
 					package_uninstalled = "✗",
 				},
+			},
+		},
+	},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				-- Add full Neovim runtime library
+				{ path = "lazy.nvim", words = { "LazySpec", "LazyConfig" } },
+				-- Add blink.cmp types
+				{ path = "blink.cmp", words = { "blink" } },
 			},
 		},
 	},
