@@ -11,6 +11,7 @@ function map_split(buf_id, lhs, direction)
 		end)
 
 		mini_files.set_target_window(new_target)
+		mini_files.go_in()
 	end
 
 	local desc = "Split " .. direction
@@ -65,8 +66,8 @@ return (function()
 		options = {
 			use_as_default_explorer = true,
 		},
-    content = {
-      filter = show_dotfiles and filter_show or filter_hide,
-    }
+		content = {
+			filter = show_dotfiles and filter_show or filter_hide,
+		},
 	}
 end)()
