@@ -68,6 +68,9 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 			},
+			format_after_save = {
+				lsp_format = "fallback",
+			},
 		},
 		config = function(_, opts)
 			-- Change up order or whatever for the whole JS family if need be
@@ -79,6 +82,7 @@ return {
 				"json",
 			}) do
 				opts.formatters_by_ft[ft] = {
+					"oxfmt",
 					"biome",
 					"prettierd",
 					"prettier",
