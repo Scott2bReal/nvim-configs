@@ -1,7 +1,12 @@
-local autocmd = vim.api.nvim_create_autocmd
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("_general_settings", { clear = true }),
+	pattern = { "help", "man", "lspinfo", "checkhealth", "qf" },
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true, silent = true })
+	end,
+})
 
--- Enable word wrap and spell checking in git commit messages
-autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_git", { clear = true }),
 	pattern = "gitcommit",
 	callback = function()
@@ -10,8 +15,7 @@ autocmd("FileType", {
 	end,
 })
 
--- Enable spell checking and treesitter highlighting for markdown buffers
-autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_markdown", { clear = true }),
 	pattern = "markdown",
 	callback = function(ev)
@@ -20,8 +24,7 @@ autocmd("FileType", {
 	end,
 })
 
--- Equalize window sizes when the terminal is resized
-autocmd("VimResized", {
+vim.api.nvim_create_autocmd("VimResized", {
 	group = vim.api.nvim_create_augroup("_auto_resize", { clear = true }),
 	pattern = "*",
 	callback = function()
@@ -29,8 +32,7 @@ autocmd("VimResized", {
 	end,
 })
 
--- Hide the tabline on the alpha dashboard, restoring it when the buffer is closed
-autocmd("User", {
+vim.api.nvim_create_autocmd("User", {
 	group = vim.api.nvim_create_augroup("_alpha", { clear = true }),
 	pattern = "AlphaReady",
 	callback = function()
@@ -45,16 +47,14 @@ autocmd("User", {
 	end,
 })
 
--- Reset the cursor to a horizontal bar on exit (prevents block cursor persisting in the terminal)
-autocmd("VimLeave", {
+vim.api.nvim_create_autocmd("VimLeave", {
 	group = vim.api.nvim_create_augroup("_shape", { clear = true }),
 	callback = function()
 		vim.opt.guicursor = "a:hor10-blinkwait150-blinkoff150-blinkon150"
 	end,
 })
 
--- Force filetype detection for .astro files
-autocmd({ "BufRead", "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
 	group = vim.api.nvim_create_augroup("_astro", { clear = true }),
 	pattern = "*.astro",
 	callback = function()
