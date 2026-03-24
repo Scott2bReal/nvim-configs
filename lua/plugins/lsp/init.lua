@@ -15,6 +15,8 @@ return {
 				"yamlls",
 				"tailwindcss",
 				"prismals",
+				"oxfmt",
+				"oxlint",
 			}
 
 			-- Mason must be set up before mason lsp config

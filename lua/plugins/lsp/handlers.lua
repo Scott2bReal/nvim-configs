@@ -47,9 +47,13 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" or client.name == "ts_ls" then
+	if client.name == "tsserver" or client.name == "ts_ls" or client.name == "eslint" then
 		client.server_capabilities.document_formatting = false
-		-- client.server_capabilities.semanticTokensProvider = nil
+	end
+
+	-- Conform will handle formatting for oxc tooling
+	if client.name == "oxfmt" or client.name == "oxlint" then
+		client.server_capabilities.document_formatting = false
 	end
 
 	if client.name == "jsonls" then
