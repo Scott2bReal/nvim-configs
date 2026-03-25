@@ -141,7 +141,7 @@ return {
 			},
 			{
 				"<leader>lR",
-				"<cmd>LspRestart<cr>",
+				"<cmd>lsp restart<cr>",
 				desc = "Restart LSP",
 			},
 			{
@@ -151,7 +151,7 @@ return {
 			},
 			{
 				"<leader>li",
-				"<cmd>LspInfo<cr>",
+				"<cmd>checkhealth vim.lsp<cr>",
 				desc = "Info",
 			},
 			{
@@ -318,6 +318,15 @@ return {
 				"<leader>sS",
 				fzf_lua.lsp_document_symbols,
 				desc = "Workspace Symbols",
+			},
+			{
+				"<leader>t",
+				group = "Treesitter",
+			},
+			{
+				"<leader>ts",
+				vim.treesitter.start,
+				desc = "Start Treesitter",
 			},
 			{
 				"<leader>z",
