@@ -33,7 +33,7 @@ return {
 							return project_root_dirname .. " > " .. string.gsub(file_path, "/", " > ")
 						end
 					end,
-					color = { fg = utils.colors.yellow },
+					color = { fg = utils.colors.purple },
 					cond = function()
 						local ft = vim.bo.filetype
 						local disabled_filetypes = { "minifiles", "help", "fzf", "lazy" }
