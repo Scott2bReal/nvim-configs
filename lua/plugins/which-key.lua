@@ -115,6 +115,17 @@ return {
 				desc = "Toggle explorer",
 			},
 			{
+				"<leader>g",
+				group = "Git",
+			},
+			{
+				"<leader>gl",
+				function()
+					require("gitsigns").blame_line()
+				end,
+				desc = "Blame line",
+			},
+			{
 				"<leader>h",
 				"<cmd>nohlsearch<CR>",
 				desc = "No Highlight",
@@ -338,6 +349,5 @@ return {
 
 		which_key.setup(opts)
 		which_key.add(mappings)
-		-- which_key.add(vmappings)
 	end,
 }
