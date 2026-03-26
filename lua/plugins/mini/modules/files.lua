@@ -35,8 +35,8 @@ local toggle_dotfiles = function()
 end
 
 return (function()
-	utils.set_hl("MiniFilesBorder", { bg = utils.colors.bg2 })
-	utils.set_hl("MiniFilesNormal", { bg = utils.colors.bg2 })
+	utils.set_hl("MiniFilesBorder", { bg = utils.colors.bg1 })
+	utils.set_hl("MiniFilesNormal", { bg = utils.colors.bg1 })
 
 	-- enable opening files in splits
 	vim.api.nvim_create_autocmd("User", {
