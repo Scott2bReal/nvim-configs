@@ -45,4 +45,6 @@ return {
 	},
 	{ "catppuccin/nvim", name = "catpuccin", lazy = true },
 	{ "folke/tokyonight.nvim", lazy = true },
+	{ "Mofiqul/dracula.nvim", lazy = true },
+	{ "rose-pine/neovim", lazy = true },
 }
