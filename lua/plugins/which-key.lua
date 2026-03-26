@@ -275,6 +275,20 @@ return {
 				desc = "Search colorschemes",
 			},
 			{
+				"<leader>sC",
+				group = "Commands",
+			},
+			{
+				"<leader>sCA",
+				fzf_lua.commands,
+				desc = "Available commands",
+			},
+			{
+				"<leader>sCH",
+				fzf_lua.command_history,
+				desc = "Command History",
+			},
+			{
 				"<leader>sd",
 				function()
 					fzf_lua.files({ hidden = true })
