@@ -252,6 +252,11 @@ return {
 				desc = "Update",
 			},
 			{
+				"<leader>rr",
+				"<cmd>restart<cr>",
+				desc = "Restart Neovim",
+			},
+			{
 				"<leader>s",
 				group = "Search",
 			},
