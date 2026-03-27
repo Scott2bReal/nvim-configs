@@ -1,3 +1,6 @@
+---@class Utils
+---@field set_hl fun(name: string, opts: table): nil
+---@field colors table
 local M = {}
 
 --- Wrapper to globally set highlight group colors
