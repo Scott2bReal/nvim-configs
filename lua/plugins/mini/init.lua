@@ -2,7 +2,6 @@ local enabled_modules = {
 	"bracketed",
 	"bufremove",
 	"comment",
-	"cursorword",
 	"notify",
 	"files",
 	"icons",
