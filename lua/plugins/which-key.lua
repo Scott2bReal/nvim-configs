@@ -227,6 +227,11 @@ return {
 				group = "Plugins",
 			},
 			{
+				"<leader>pc",
+				"<cmd>Lazy check<cr>",
+				desc = "Check",
+			},
+			{
 				"<leader>ph",
 				"<cmd>Lazy home<cr>",
 				desc = "Home",
