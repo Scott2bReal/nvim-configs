@@ -10,6 +10,7 @@ return {
 				"astro",
 				"bash",
 				"c",
+				"caddy",
 				"css",
 				"diff",
 				"dockerfile",
