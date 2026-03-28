@@ -6,6 +6,7 @@ return {
 		dependencies = { "mason-org/mason.nvim" },
 		config = function(_, opts)
 			local servers = {
+				"astro",
 				"biome",
 				"bashls",
 				"jsonls",
