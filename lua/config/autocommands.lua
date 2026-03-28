@@ -1,3 +1,4 @@
+-- Use just q to close some special buffers
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_general_settings", { clear = true }),
 	pattern = { "help", "man", "lspinfo", "checkhealth", "qf" },
@@ -6,6 +7,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Wrap and enable spell checking in gitcommit and markdown files
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_git", { clear = true }),
 	pattern = "gitcommit",
@@ -15,6 +17,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Enable spell checking and treesitter in markdown files
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_markdown", { clear = true }),
 	pattern = "markdown",
@@ -24,6 +27,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+-- Equalize window dimensions when resizing the Vim window
 vim.api.nvim_create_autocmd("VimResized", {
 	group = vim.api.nvim_create_augroup("_auto_resize", { clear = true }),
 	pattern = "*",
@@ -32,6 +36,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 	end,
 })
 
+-- Hide the tabline when the alpha dashboard is ready, and show it again when leaving the buffer
 vim.api.nvim_create_autocmd("User", {
 	group = vim.api.nvim_create_augroup("_alpha", { clear = true }),
 	pattern = "AlphaReady",
@@ -47,6 +52,7 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
+-- Restore the default cursor shape when leaving Neovim
 vim.api.nvim_create_autocmd("VimLeave", {
 	group = vim.api.nvim_create_augroup("_shape", { clear = true }),
 	callback = function()
@@ -54,6 +60,7 @@ vim.api.nvim_create_autocmd("VimLeave", {
 	end,
 })
 
+-- Set the filetype to astro for .astro files
 vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
 	group = vim.api.nvim_create_augroup("_astro", { clear = true }),
 	pattern = "*.astro",
