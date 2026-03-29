@@ -5,10 +5,27 @@ return {
 	---@module "conform"
 	---@type conform.setupOpts
 	opts = {
-		formatters_by_ft = {
-			lua = { "stylua" },
-			caddy = { "caddy" },
-		},
+		formatters_by_ft = (function()
+			local T = {}
+			T.lua = { "stylua" }
+			T.caddy = { "caddy" }
+			for _, ft in ipairs({
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"json",
+			}) do
+				T[ft] = {
+					"oxfmt",
+					"biome",
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+				}
+			end
+			return T
+		end)(),
 		formatters = {
 			caddy = {
 				command = "caddy",
@@ -20,23 +37,4 @@ return {
 			lsp_format = "fallback",
 		},
 	},
-	config = function(_, opts)
-		-- Change up order or whatever for the whole JS family if need be
-		for _, ft in ipairs({
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"json",
-		}) do
-			opts.formatters_by_ft[ft] = {
-				"oxfmt",
-				"biome",
-				"prettierd",
-				"prettier",
-				stop_after_first = true,
-			}
-		end
-		require("conform").setup(opts)
-	end,
 }
