@@ -1,3 +1,12 @@
+-- Don't start the next new line with a comment
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	group = vim.api.nvim_create_augroup("_comment_settings", { clear = true }),
+	pattern = "*",
+	callback = function()
+		vim.opt.formatoptions:remove({ "r", "o" })
+	end,
+})
+
 -- Use just q to close some special buffers
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_general_settings", { clear = true }),
