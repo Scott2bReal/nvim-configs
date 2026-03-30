@@ -5,7 +5,6 @@ return {
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			local treesitter = require("nvim-treesitter")
 			local parsers = {
 				"astro",
 				"bash",
@@ -44,9 +43,7 @@ return {
 				"yaml",
 			}
 
-			for _, parser in ipairs(parsers) do
-				treesitter.install(parser)
-			end
+			require("nvim-treesitter").install(parsers)
 
 			local patterns = {}
 			for _, parser in ipairs(parsers) do
@@ -57,6 +54,7 @@ return {
 			end
 
 			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("TreesitterAutoGroup", { clear = true }),
 				pattern = patterns,
 				callback = function()
 					vim.treesitter.start()
