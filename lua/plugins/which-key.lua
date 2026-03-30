@@ -147,9 +147,7 @@ return {
 			{
 				"<leader>lf",
 				function()
-					if require("conform").format() then
-						return
-					else
+					if not require("conform").format() then
 						vim.lsp.buf.format()
 					end
 				end,
