@@ -32,7 +32,7 @@ require("lualine").setup({
             return project_root_dirname .. " > " .. string.gsub(file_path, "/", " > ")
           end
         end,
-        -- color = { fg = colors.grey1 },
+        color = { fg = colors.muted },
         cond = function()
           local ft = vim.bo.filetype
           local disabled_filetypes = { "minifiles", "help", "fzf", "lazy" }
@@ -58,11 +58,6 @@ require("lualine").setup({
         "filetype",
         color = { fg = colors.gold }
       },
-      -- {
-      --   require("lazy.status").updates,
-      --   cond = require("lazy.status").has_updates,
-      --   -- color = { fg = colors.orange },
-      -- },
     },
     lualine_y = {
       {
@@ -75,7 +70,7 @@ require("lualine").setup({
           local index = math.ceil(line_ratio * #chars)
           return chars[index]
         end,
-        -- color = { fg = colors.fg0 },
+        color = { fg = colors.foam },
       },
     },
     lualine_z = { "location" },

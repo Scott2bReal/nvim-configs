@@ -87,6 +87,10 @@ local mappings = with_default_configs({
     "<leader>e",
     function()
       local mini_files = require("mini.files")
+      if vim.o.filetype == 'ministarter' then
+        mini_files.open()
+        return
+      end
       if not mini_files.close() then
         mini_files.open(vim.api.nvim_buf_get_name(0))
       end
@@ -96,6 +100,11 @@ local mappings = with_default_configs({
   {
     "<leader>l",
     group = "LSP",
+  },
+  {
+    "<leader>lci",
+    "<cmd>ConformInfo<cr>",
+    desc = "Conform Info"
   },
   {
     "<leader>lI",
