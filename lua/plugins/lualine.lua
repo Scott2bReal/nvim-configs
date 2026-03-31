@@ -6,7 +6,7 @@ require("lualine").setup({
     component_separators = { left = "\\", right = "/" },
     -- section_separators = { left = "", right = "" },
     section_separators = { left = " ", right = "" },
-    disabled_filetypes = { "alpha", "toggleterm" },
+    disabled_filetypes = { "ministarter" },
     always_divide_middle = true,
     globalstatus = true,
     theme = "rose-pine",
