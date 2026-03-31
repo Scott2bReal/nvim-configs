@@ -81,7 +81,6 @@ local mappings = with_default_configs({
 		end,
 		desc = "Close Buffer",
 	},
-
 	{
 		"<leader>e",
 		function()
@@ -96,6 +95,12 @@ local mappings = with_default_configs({
 		end,
 		desc = "Toggle explorer",
 	},
+	{
+		"<leader>h",
+		"<cmd>nohlsearch<CR>",
+		desc = "No Highlight",
+	},
+
 	{
 		"<leader>l",
 		group = "LSP",
@@ -189,14 +194,14 @@ local mappings = with_default_configs({
 	{
 		"<leader>pd",
 		function()
-			vim.iter(vim.pack.get())
+			vim.pack.del(vim.iter(vim.pack.get())
 				:filter(function(x)
 					return not x.active
 				end)
 				:map(function(x)
 					return x.spec.name
 				end)
-				:totable()
+				:totable())
 		end,
 		desc = "Remove non-active plugins",
 	},
