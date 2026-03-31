@@ -1,17 +1,14 @@
 local gh = require("utils").gh
 
 local plugins = {
-	-- LSP
 	gh("neovim/nvim-lspconfig"),
 	gh("mason-org/mason-lspconfig.nvim"),
 	gh("mason-org/mason.nvim"),
 	gh("folke/lazydev.nvim"),
 
-	-- Treesitter stuff
 	gh("nvim-treesitter/nvim-treesitter"),
 	gh("HiPhish/rainbow-delimiters.nvim"),
 
-	-- Everything else
 	{
 		src = gh("rose-pine/neovim"),
 		name = "rose-pine",
@@ -33,21 +30,4 @@ require("plugins.mini")
 require("plugins.lsp")
 require("plugins.treesitter")
 
--- Simple configs
-require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-	},
-	format_after_save = {
-		lsp_format = "fallback",
-	},
-})
-
-require("ibl").setup({
-	scope = {
-		enabled = false,
-	},
-})
-
--- Auto-load every module in "plugins.configs"
 require("utils").load_plugin_configs()
