@@ -39,6 +39,7 @@ vim.api.nvim_create_autocmd("VimLeave", {
 -- @see https://github.com/neovim/neovim/issues/36024
 vim.api.nvim_create_autocmd("PackChanged", {
 	group = vim.api.nvim_create_augroup("blink_update", { clear = true }),
+	pattern = "blink.cmp",
 	callback = function(e)
 		if e.data.kind == "update" or e.data.kind == "install" then
 			print("PackChanged triggered for blink")
@@ -52,6 +53,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.api.nvim_create_autocmd("PackChanged", {
 	group = vim.api.nvim_create_augroup("ts_update", { clear = true }),
+	pattern = "nvim-treesitter",
 	callback = function(e)
 		print("PackChanged triggered for treesitter")
 		if e.data.kind == "update" or e.data.kind == "install" then
