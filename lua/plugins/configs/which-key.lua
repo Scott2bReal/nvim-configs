@@ -169,11 +169,22 @@ local mappings = with_default_configs({
 		group = "Plugins",
 	},
 	{
-		"<leader>pc",
+		"<leader>pa",
+		function()
+			if not (vim.o.filetype == "nvim-pack") then
+				vim.notify("Not in a vimpack buffer", vim.log.levels.ERROR)
+				return
+			end
+			vim.lsp.buf.code_action()
+		end,
+		desc = "Plugin actions",
+	},
+	{
+		"<leader>ph",
 		function()
 			vim.pack.update(nil, { offline = true })
 		end,
-		desc = "Explore installed",
+		desc = "Plugins home",
 	},
 	{
 		"<leader>pd",
