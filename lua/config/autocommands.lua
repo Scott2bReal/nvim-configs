@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("VimLeave", {
 	end,
 })
 
--- On-update plugin actions need special handling (for now?)
+-- On-update and on-install plugin actions need special handling (for now?)
 -- @see https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack#hooks
 -- @see https://github.com/saghen/blink.cmp/issues/2142
 -- @see https://github.com/neovim/neovim/issues/36024
