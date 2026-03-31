@@ -38,10 +38,9 @@ vim.api.nvim_create_autocmd("VimLeave", {
 -- @see https://github.com/saghen/blink.cmp/issues/2142
 -- @see https://github.com/neovim/neovim/issues/36024
 vim.api.nvim_create_autocmd("PackChanged", {
-	pattern = "blink.cmp",
 	group = vim.api.nvim_create_augroup("blink_update", { clear = true }),
 	callback = function(e)
-		if e.data.kind == "update" then
+		if e.data.kind == "update" or e.data.kind == "install" then
 			print("PackChanged triggered for blink")
 			-- Recommended way to access plugin files inside `PackChanged` event
 			vim.cmd.packadd({ args = { e.data.spec.name }, bang = false })
@@ -52,11 +51,10 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.api.nvim_create_autocmd("PackChanged", {
-	pattern = "nvim-treesitter",
 	group = vim.api.nvim_create_augroup("ts_update", { clear = true }),
 	callback = function(e)
 		print("PackChanged triggered for treesitter")
-		if e.data.kind == "update" then
+		if e.data.kind == "update" or e.data.kind == "install" then
 			vim.cmd.packadd("nvim-treesitter")
 			-- Update installed parsers
 			vim.cmd("TSUpdate")
