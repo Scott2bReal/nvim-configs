@@ -12,7 +12,7 @@ return {
 				checkThirdParty = false,
 				library = {
 					-- vim.api.nvim_get_runtime_file("", true),
-          vim.env.VIMRUNTIME,
+					vim.env.VIMRUNTIME,
 					vim.fn.expand("$VIMRUNTIME/lua"),
 					vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
 				},
@@ -20,4 +20,3 @@ return {
 		},
 	},
 }
-

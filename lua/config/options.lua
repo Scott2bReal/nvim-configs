@@ -66,4 +66,3 @@ vim.filetype.add({
 		Caddyfile = "caddy",
 	},
 })
-
