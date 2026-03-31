@@ -155,7 +155,45 @@ local mappings = with_default_configs({
 		vim.lsp.buf.rename,
 		desc = "Rename",
 	},
-
+	{
+		"<leader>n",
+		group = "Notifications",
+	},
+	{
+		"<leader>nh",
+		"<cmd>lua MiniNotify.show_history()<cr>",
+		desc = "Notification History",
+	},
+	{
+		"<leader>p",
+		group = "Plugins",
+	},
+	{
+		"<leader>pc",
+		function()
+			vim.pack.update(nil, { offline = true })
+		end,
+		desc = "Explore installed",
+	},
+	{
+		"<leader>pd",
+		function()
+			vim.iter(vim.pack.get())
+				:filter(function(x)
+					return not x.active
+				end)
+				:map(function(x)
+					return x.spec.name
+				end)
+				:totable()
+		end,
+		desc = "Remove non-active plugins",
+	},
+	{
+		"<leader>pu",
+		vim.pack.update,
+		desc = "Update plugins",
+	},
 	{
 		"<leader>s",
 		group = "Search",
