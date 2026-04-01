@@ -1,0 +1,19 @@
+local ok, util = pcall(require, "lspconfig.util")
+if not ok then
+	vim.notify("lspconfig.util couldn't load")
+	return {}
+end
+
+local config = {
+	root_markers = util.root_pattern("biome.json", "biome.jsonc"),
+	filetypes = {
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json",
+		"jsonc",
+	},
+}
+
+return config
