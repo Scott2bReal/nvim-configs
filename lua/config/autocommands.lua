@@ -16,48 +16,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Wrap and enable spell checking in gitcommit and markdown files
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("_git", { clear = true }),
-	pattern = "gitcommit",
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
-})
-
--- Enable spell checking and treesitter in markdown files
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("_markdown", { clear = true }),
-	pattern = "markdown",
-	callback = function(ev)
-		vim.opt_local.spell = true
-		vim.treesitter.start(ev.buf, "markdown")
-	end,
-})
-
 -- Equalize window dimensions when resizing the Vim window
 vim.api.nvim_create_autocmd("VimResized", {
 	group = vim.api.nvim_create_augroup("_auto_resize", { clear = true }),
 	pattern = "*",
 	callback = function()
 		vim.cmd("tabdo wincmd =")
-	end,
-})
-
--- Hide the tabline when the alpha dashboard is ready, and show it again when leaving the buffer
-vim.api.nvim_create_autocmd("User", {
-	group = vim.api.nvim_create_augroup("_alpha", { clear = true }),
-	pattern = "AlphaReady",
-	callback = function()
-		vim.opt.showtabline = 0
-		vim.api.nvim_create_autocmd("BufUnload", {
-			buffer = 0,
-			once = true,
-			callback = function()
-				vim.opt.showtabline = 2
-			end,
-		})
 	end,
 })
 
@@ -69,11 +33,33 @@ vim.api.nvim_create_autocmd("VimLeave", {
 	end,
 })
 
--- Set the filetype to astro for .astro files
-vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
-	group = vim.api.nvim_create_augroup("_astro", { clear = true }),
-	pattern = "*.astro",
-	callback = function()
-		vim.opt.filetype = "astro"
+-- On-update and on-install plugin actions need special handling (for now?)
+-- @see https://echasnovski.com/blog/2026-03-13-a-guide-to-vim-pack#hooks
+-- @see https://github.com/saghen/blink.cmp/issues/2142
+-- @see https://github.com/neovim/neovim/issues/36024
+vim.api.nvim_create_autocmd("PackChanged", {
+	group = vim.api.nvim_create_augroup("blink_update", { clear = true }),
+	pattern = "blink.cmp",
+	callback = function(e)
+		if e.data.kind == "update" or e.data.kind == "install" then
+			vim.notify("PackChanged triggered for blink")
+			-- Recommended way to access plugin files inside `PackChanged` event
+			vim.cmd.packadd({ args = { e.data.spec.name }, bang = false })
+			-- Build the plugin from source
+			vim.cmd("BlinkCmp build")
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	group = vim.api.nvim_create_augroup("ts_update", { clear = true }),
+	pattern = "nvim-treesitter",
+	callback = function(e)
+		vim.notify("PackChanged triggered for treesitter")
+		if e.data.kind == "update" or e.data.kind == "install" then
+			vim.cmd.packadd("nvim-treesitter")
+			-- Update installed parsers
+			vim.cmd("TSUpdate")
+		end
 	end,
 })

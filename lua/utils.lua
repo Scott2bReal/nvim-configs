@@ -1,15 +1,16 @@
----@class Utils
----@field set_hl fun(name: string, opts: table): nil
----@field colors table
 local M = {}
 
---- Wrapper to globally set highlight group colors
----@param name string
----@param opts table
-M.set_hl = function(name, opts)
-	return vim.api.nvim_set_hl(0, name, opts)
+--- Helper which prepends github domain
+M.gh = function(x)
+	return "https://github.com/" .. x
 end
 
-M.colors = require("gruvbox-material.colors").get(vim.o.background, "medium")
+--Load every lua module in the plugins config directory
+M.load_plugin_configs = function()
+	for _, file in ipairs(vim.fn.glob(vim.fn.stdpath("config") .. "/lua/plugins/configs/*.lua", true, true)) do
+		local module = file:match("lua/(.+)%.lua$"):gsub("/", ".")
+		require(module)
+	end
+end
 
 return M

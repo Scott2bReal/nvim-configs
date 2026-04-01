@@ -1,7 +1,7 @@
 return {
-  diagnostic = {
-    options = {
-      severity = vim.diagnostic.severity.ERROR,
-    }
-  }
+	diagnostic = {
+		options = {
+			severity = vim.diagnostic.severity.ERROR,
+		},
+	},
 }
