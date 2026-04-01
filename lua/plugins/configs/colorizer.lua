@@ -1,4 +1,4 @@
-return {
+require("colorizer").setup({
 	parsers = {
 		css = {
 			enable = true,
@@ -15,4 +15,4 @@ return {
 		"!markdown",
 		"!vimwiki",
 	},
-}
+})
