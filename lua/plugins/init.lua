@@ -1,14 +1,15 @@
 local gh = require("utils").gh
 
 local plugins = {
+	-- Dependencies have to be declared first it seems like
+	gh("nvim-lua/plenary.nvim"),
+
 	-- LSP
 	gh("neovim/nvim-lspconfig"),
 	gh("mason-org/mason-lspconfig.nvim"),
 	gh("mason-org/mason.nvim"),
 	gh("folke/lazydev.nvim"),
 	gh("pmizio/typescript-tools.nvim"),
-	-- Dependency of typescript-tools
-	gh("nvim-lua/plenary.nvim"),
 
 	-- Treesitter
 	gh("nvim-treesitter/nvim-treesitter"),
