@@ -30,6 +30,9 @@ local plugins = {
 	gh("lewis6991/gitsigns.nvim"),
 	gh("kylechui/nvim-surround"),
 	gh("nvim-lualine/lualine.nvim"),
+	gh("zbirenbaum/copilot.lua"),
+	gh("catgoose/nvim-colorizer.lua"),
+	gh("windwp/nvim-ts-autotag"),
 }
 
 vim.pack.add(plugins)
