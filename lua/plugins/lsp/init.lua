@@ -24,6 +24,7 @@ require("mason-lspconfig").setup({
 })
 
 require("lazydev").setup()
+require("typescript-tools").setup()
 
 local handlers = require("plugins.lsp.handlers")
 handlers.setup()
