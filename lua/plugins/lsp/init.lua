@@ -1,10 +1,14 @@
 local servers = {
+	"astro",
+	"biome",
 	"bashls",
 	"jsonls",
 	"lua_ls",
 	"html",
 	"eslint",
 	"yamlls",
+	"tailwindcss",
+	"prismals",
 	"oxfmt",
 	"oxlint",
 }
@@ -24,7 +28,7 @@ require("mason-lspconfig").setup({
 })
 
 require("lazydev").setup()
-require("typescript-tools").setup()
+require("typescript-tools").setup({})
 
 local handlers = require("plugins.lsp.handlers")
 handlers.setup()
