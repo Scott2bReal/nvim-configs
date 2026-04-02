@@ -1,4 +1,3 @@
-local version = vim.version()
 return {
 	header = table.concat({
 		"   ▄   ▄███▄   ████▄     ▄   ▄█ █▀▄▀█ \n",
