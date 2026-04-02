@@ -1,4 +1,4 @@
-return {
+require("copilot").setup({
 	panel = {
 		enabled = false,
 	},
@@ -34,4 +34,4 @@ return {
 			},
 		},
 	},
-}
+})
