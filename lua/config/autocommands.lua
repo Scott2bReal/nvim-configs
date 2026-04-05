@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 -- Use just q to close some special buffers
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("_general_settings", { clear = true }),
-	pattern = { "help", "man", "lspinfo", "checkhealth", "qf" },
+	pattern = { "help", "man", "lspinfo", "checkhealth", "qf", "nvim-pack" },
 	callback = function()
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true, silent = true })
 	end,
