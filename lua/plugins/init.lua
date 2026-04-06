@@ -40,6 +40,5 @@ vim.pack.add(plugins)
 
 require("plugins.mini")
 require("plugins.lsp")
-require("plugins.treesitter")
 
 require("utils").load_plugin_configs()
