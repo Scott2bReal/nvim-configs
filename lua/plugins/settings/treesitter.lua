@@ -44,6 +44,9 @@ for _, parser in ipairs(parsers) do
 	end
 end
 
+table.insert(patterns, "typescriptreact")
+table.insert(patterns, "javascriptreact")
+
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("TreesitterAutoGroup", { clear = true }),
 	pattern = patterns,
