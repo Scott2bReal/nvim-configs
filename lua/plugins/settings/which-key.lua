@@ -100,7 +100,7 @@ local mappings = with_default_configs({
 		"<cmd>nohlsearch<CR>",
 		desc = "No Highlight",
 	},
-
+	-- LSP
 	{
 		"<leader>l",
 		group = "LSP",
@@ -169,6 +169,7 @@ local mappings = with_default_configs({
 		"<cmd>lua MiniNotify.show_history()<cr>",
 		desc = "Notification History",
 	},
+	-- Plugins
 	{
 		"<leader>p",
 		group = "Plugins",
@@ -206,10 +207,18 @@ local mappings = with_default_configs({
 		desc = "Remove non-active plugins",
 	},
 	{
+		"<leader>pr",
+		function()
+			vim.pack.update(nil, { target = "lockfile" })
+		end,
+		desc = "Restore plugins from lockfile",
+	},
+	{
 		"<leader>pu",
 		vim.pack.update,
 		desc = "Update plugins",
 	},
+	-- Search
 	{
 		"<leader>s",
 		group = "Search",
