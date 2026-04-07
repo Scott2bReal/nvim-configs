@@ -9,7 +9,6 @@ local servers = {
 	"yamlls",
 	"tailwindcss",
 	"prismals",
-	"oxfmt",
 	"oxlint",
 }
 
