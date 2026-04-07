@@ -27,8 +27,22 @@ require("mason-lspconfig").setup({
 	ensure_installed = servers,
 })
 
-require("lazydev").setup()
-require("typescript-tools").setup({})
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "lua",
+	group = vim.api.nvim_create_augroup("lazydev-setup", { clear = true }),
+	callback = function()
+		require("lazydev").setup()
+	end,
+})
+
+local ts_patterns = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = ts_patterns,
+	group = vim.api.nvim_create_augroup("typescript-tools-setup", { clear = true }),
+	callback = function()
+		require("typescript-tools").setup({})
+	end,
+})
 
 local handlers = require("plugins.lsp.handlers")
 handlers.setup()
