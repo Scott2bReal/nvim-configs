@@ -36,6 +36,8 @@ local plugins = {
 	gh("windwp/nvim-ts-autotag"),
 }
 
+require("plugins.install-hooks")
+
 vim.pack.add(plugins)
 
 require("plugins.mini")
