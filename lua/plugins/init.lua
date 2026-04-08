@@ -29,6 +29,8 @@ local plugins = {
 	gh("nvim-lualine/lualine.nvim"),
 }
 
+require("plugins.install-hooks")
+
 vim.pack.add(plugins)
 
 require("plugins.mini")
