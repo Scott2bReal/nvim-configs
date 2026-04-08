@@ -1,3 +1,6 @@
+----------------
+-- Treesitter --
+----------------
 local parsers = {
 	"bash",
 	"c",
@@ -55,6 +58,21 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+------------------
+-- Text Objects --
+------------------
+vim.g.no_plugin_maps = true
+require("nvim-treesitter-textobjects").setup()
+vim.keymap.set({ "x", "o" }, "am", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+end, { desc = "Select around function" })
+vim.keymap.set({ "x", "o" }, "im", function()
+	require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+end, { desc = "Select inside function" })
+
+------------------------
+-- Rainbow delimiters --
+------------------------
 local has_rainbow, rainbow = pcall(require, "rainbow-delimiters")
 if not has_rainbow then
 	vim.notify("Failed to load rainbow delimiters")

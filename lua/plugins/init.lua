@@ -13,6 +13,7 @@ local plugins = {
 
 	-- Treesitter
 	gh("nvim-treesitter/nvim-treesitter"),
+	gh("nvim-treesitter/nvim-treesitter-textobjects"),
 	gh("HiPhish/rainbow-delimiters.nvim"),
 
 	-- Colorschemes
