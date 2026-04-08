@@ -58,6 +58,9 @@ vim.g.lodaded_perl_provider = 0
 -- Tell vim to treat .h files as c
 vim.g.c_syntax_for_h = 1
 
+--------------------
+-- Caddy support --
+--------------------
 vim.filetype.add({
 	extension = {
 		caddy = "caddy",
@@ -66,3 +69,8 @@ vim.filetype.add({
 		Caddyfile = "caddy",
 	},
 })
+
+------------------------------------
+-- Force Ghostty support in TMUX --
+------------------------------------
+vim.opt.runtimepath:append("/Applications/Ghostty.app/Contents/Resources/nvim/site")
