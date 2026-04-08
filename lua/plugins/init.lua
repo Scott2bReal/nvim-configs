@@ -34,4 +34,4 @@ vim.pack.add(plugins)
 require("plugins.mini")
 require("plugins.lsp")
 
-require("utils").load_plugin_configs()
+require("utils").load_plugin_settings()
