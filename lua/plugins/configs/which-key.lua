@@ -55,6 +55,36 @@ local mappings = with_default_configs({
 		desc = "Comment current line",
 	},
 	{
+		"<leader>b",
+		function()
+			local line = vim.api.nvim_get_current_line()
+			local stripped = line:match("^%s*(.-)%s*$")
+
+			local comment_str = vim.bo.commentstring
+			local ch = comment_str:match("^([^%s%%]+)") or "#"
+
+			local row = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+			if ch == "//" then
+				vim.api.nvim_buf_set_lines(0, row, row + 1, false, {
+					"/**",
+					" * " .. stripped,
+					" */",
+				})
+			else
+				local middle = ch .. " " .. stripped .. " " .. ch
+				local reps = math.ceil(#middle / #ch)
+				local border = string.rep(ch, reps)
+				vim.api.nvim_buf_set_lines(0, row, row + 1, false, {
+					border,
+					middle,
+					border,
+				})
+			end
+		end,
+		desc = "Creates a comment box",
+	},
+	{
 		"<leader>f",
 		fzf_lua.files,
 		desc = "Find files",
