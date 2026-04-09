@@ -1,5 +1,6 @@
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("UIEnter", {
 	group = vim.api.nvim_create_augroup("_fzf-lua-setup", { clear = true }),
+	once = true,
 	callback = function()
 		require("fzf-lua").setup({
 			{ "telescope" },

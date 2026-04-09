@@ -1,5 +1,6 @@
 vim.api.nvim_create_autocmd("InsertEnter", {
 	group = vim.api.nvim_create_augroup("copilot-setup", { clear = true }),
+	once = true,
 	callback = function()
 		require("copilot").setup({
 			panel = {

@@ -1,5 +1,6 @@
 vim.api.nvim_create_autocmd("InsertEnter", {
 	group = vim.api.nvim_create_augroup("blink-setup", { clear = true }),
+	once = true,
 	callback = function()
 		require("blink.cmp").setup({
 			sources = {

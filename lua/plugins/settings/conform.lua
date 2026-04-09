@@ -1,5 +1,6 @@
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	group = vim.api.nvim_create_augroup("_conform-setup", { clear = true }),
+	once = true,
 	callback = function()
 		require("conform").setup({
 			formatters_by_ft = {

@@ -1,6 +1,7 @@
 vim.api.nvim_create_autocmd("BufReadPre", {
 	pattern = "*",
 	group = vim.api.nvim_create_augroup("Colorizer-setup", { clear = true }),
+	once = true,
 	callback = function()
 		require("colorizer").setup({
 			parsers = {
