@@ -1,9 +1,9 @@
-local DEFAULT_OPTS = { noremap = true, silent = true, nowait = true }
+local DEFAULT_OPTS = { silent = true, nowait = true }
 
 local keymap = function(mode, lhs, rhs, options)
 	-- merge default options with user-provided options (prefer user options)
 	local opts = vim.tbl_deep_extend("force", DEFAULT_OPTS, options or {})
-	return vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+	return vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 --Remap space as leader key
