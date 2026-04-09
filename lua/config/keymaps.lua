@@ -42,3 +42,7 @@ keymap("x", "J", ":move '>+1<CR>gv-gv")
 keymap("x", "K", ":move '<-2<CR>gv-gv")
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
+
+-- Move up and down history in command mode
+keymap("c", "<C-j>", "<Down>", { silent = false })
+keymap("c", "<C-k>", "<Up>", { silent = false })
