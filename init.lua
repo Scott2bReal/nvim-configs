@@ -1,5 +1,7 @@
 vim.loader.enable()
 
+require("vim._core.ui2").enable({})
+
 -- Set colorscheme right away
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = vim.api.nvim_create_augroup("immediate_colorscheme", { clear = true }),

@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd("BufWritePre", {
 	group = vim.api.nvim_create_augroup("conform-setup", { clear = true }),
 	callback = function()
 		require("conform").setup({

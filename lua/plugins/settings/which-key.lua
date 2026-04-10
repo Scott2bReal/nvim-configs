@@ -322,5 +322,10 @@ local mappings = with_default_configs({
 		fzf_lua.lsp_document_symbols,
 		desc = "Workspace Symbols",
 	},
+	{
+		"<leader>R",
+		"<cmd>restart<cr>",
+		desc = "Restart neovim",
+	},
 })
 require("which-key").add(mappings)
