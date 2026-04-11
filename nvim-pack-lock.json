@@ -9,11 +9,11 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
-      "rev": "07aa57148ac28986bab9f55e87ee3d929e2726b1",
+      "rev": "ad7e729e9a6348f7da482be0271d452dbc4c8e2c",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "fzf-lua": {
-      "rev": "eee072d89ccdc0a4627bf67d0757d2e4981c7292",
+      "rev": "657c1bbb7357c61e26a20d868b53a460b05c18c0",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "63a3c6a80538de1003373a619e29aeda27809ad3",
+      "rev": "0a3b42c3e503df87aef6d6513e13148381495c3a",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -41,7 +41,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "69b7433355664cf76898eb86a12a019f39bd86d1",
+      "rev": "4182d64727fb4876407af65c181b85428a4a70d1",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-colorizer.lua": {
@@ -49,7 +49,7 @@
       "src": "https://github.com/catgoose/nvim-colorizer.lua"
     },
     "nvim-lspconfig": {
-      "rev": "c588db330592fa477a70d2fee6ba20a57194bdc3",
+      "rev": "cb5bc0b2b35a6d513e3298d285db81453e791f4f",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-surround": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "plenary.nvim": {
-      "rev": "fcb3e9ac127d178b4c189088396165b3facc219e",
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rainbow-delimiters.nvim": {
