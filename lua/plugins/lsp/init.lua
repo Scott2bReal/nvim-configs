@@ -10,6 +10,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 			"yamlls",
 			"oxfmt",
 			"oxlint",
+			"gopls",
 		}
 
 		require("mason").setup({
