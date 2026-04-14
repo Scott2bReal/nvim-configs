@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 			"tailwindcss",
 			"prismals",
 			"oxlint",
+			"gopls",
 		}
 
 		require("mason").setup({
