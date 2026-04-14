@@ -191,6 +191,38 @@ local mappings = with_default_configs({
 		desc = "Rename",
 	},
 	{
+		"<leader>lt",
+		group = "Typescript",
+	},
+	{
+		"<leader>lta",
+		function()
+			require("vtsls").commands.add_missing_imports()
+		end,
+		desc = "Add missing imports",
+	},
+	{
+		"<leader>ltc",
+		function()
+			require("vtsls").commands.goto_project_config()
+		end,
+		desc = "Go to tsconfig",
+	},
+	{
+		"<leader>ltg",
+		function()
+			require("vtsls").commands.goto_source_definition()
+		end,
+		desc = "Go to source definition",
+	},
+	{
+		"<leader>ltr",
+		function()
+			require("vtsls").commands.rename_file()
+		end,
+		desc = "Rename file",
+	},
+	{
 		"<leader>n",
 		group = "Notifications",
 	},

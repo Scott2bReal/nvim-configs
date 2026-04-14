@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 			"prismals",
 			"oxlint",
 			"gopls",
+			"vtsls",
 		}
 
 		require("mason").setup({
@@ -64,14 +65,5 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("lazydev-setup", { clear = true }),
 	callback = function()
 		require("lazydev").setup()
-	end,
-})
-
-local ts_patterns = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = ts_patterns,
-	group = vim.api.nvim_create_augroup("typescript-tools-setup", { clear = true }),
-	callback = function()
-		require("typescript-tools").setup({})
 	end,
 })

@@ -68,9 +68,9 @@
       "rev": "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
-    "plenary.nvim": {
-      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
-      "src": "https://github.com/nvim-lua/plenary.nvim"
+    "nvim-vtsls": {
+      "rev": "0b5f73c9e50ce95842ea07bb3f05c7d66d87d14a",
+      "src": "https://github.com/yioneko/nvim-vtsls"
     },
     "rainbow-delimiters.nvim": {
       "rev": "aab6caaffd79b8def22ec4320a5344f7c42f58d2",
@@ -79,10 +79,6 @@
     "rose-pine": {
       "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
       "src": "https://github.com/rose-pine/neovim"
-    },
-    "typescript-tools.nvim": {
-      "rev": "c2f5910074103705661e9651aa841e0d7eea9932",
-      "src": "https://github.com/pmizio/typescript-tools.nvim"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
