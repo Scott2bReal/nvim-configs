@@ -5,11 +5,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 			"bashls",
 			"jsonls",
 			"lua_ls",
-			"html",
-			"eslint",
 			"yamlls",
-			"oxfmt",
-			"oxlint",
 			"gopls",
 		}
 
