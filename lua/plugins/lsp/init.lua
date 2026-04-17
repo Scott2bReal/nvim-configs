@@ -8,6 +8,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 			"astro",
 			"biome",
 			"bashls",
+			"cssls",
 			"jsonls",
 			"lua_ls",
 			"html",
