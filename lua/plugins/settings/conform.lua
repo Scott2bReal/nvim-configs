@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				caddy = { "caddy" },
+				go = { "goimports" },
 			},
 			formatters = {
 				caddy = {
