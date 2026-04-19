@@ -6,6 +6,7 @@ local autotag_patterns = {
 	"svelte",
 	"vue",
 	"tsx",
+	"templ",
 }
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = autotag_patterns,
