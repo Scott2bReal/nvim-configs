@@ -21,6 +21,7 @@ local parsers = {
 	"lua",
 	"make",
 	"markdown",
+	"prisma",
 	"regex",
 	"rst",
 	"ruby",
