@@ -22,7 +22,7 @@ local plugins = {
 	gh("nvim-mini/mini.nvim"),
 	gh("ibhagwan/fzf-lua"),
 	gh("folke/which-key.nvim"),
-	gh("Saghen/blink.cmp"),
+	{ src = gh("Saghen/blink.cmp"), version = "v1.10.2" },
 	gh("lukas-reineke/indent-blankline.nvim"),
 	gh("lewis6991/gitsigns.nvim"),
 	gh("kylechui/nvim-surround"),
