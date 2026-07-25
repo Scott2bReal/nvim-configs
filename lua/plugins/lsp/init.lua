@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 			"cssls",
 			"jsonls",
 			"lua_ls",
+			"glsl_analyzer",
 			"html",
 			"eslint",
 			"yamlls",
